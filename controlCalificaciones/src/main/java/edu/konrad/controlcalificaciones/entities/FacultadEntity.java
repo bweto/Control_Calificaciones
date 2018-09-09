@@ -29,8 +29,8 @@ public class FacultadEntity implements Serializable {
      /*
     *relación uno a muchos facultad con programa
     */
-     @OneToMany( targetEntity = ProgramaEntity.class )
-     private List programas;
+//     @OneToMany( targetEntity = ProgramaEntity.class )
+//     private List programas;
     /*
     constructor e la clase
     */
@@ -58,12 +58,5 @@ public class FacultadEntity implements Serializable {
         this.nombreFacultad = nombreFacultad;
     }
 
-    public List getProgramas() {
-        return programas;
-    }
-
-    public void setProgramas(List programas) {
-        this.programas = programas;
-    }
     
 }

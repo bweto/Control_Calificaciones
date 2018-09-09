@@ -31,8 +31,8 @@ public class GrupoEntity implements Serializable{
     *
     */
     
-     @OneToMany( targetEntity = CursoEntity.class )
-     private List cursos;
+//     @OneToMany( targetEntity = CursoEntity.class )
+//     private List cursos;
     /*
     constructor de clase
     */

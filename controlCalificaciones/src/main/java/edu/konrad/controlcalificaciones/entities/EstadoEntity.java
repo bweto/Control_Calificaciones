@@ -26,8 +26,8 @@ public class EstadoEntity implements Serializable {
     @Column(name = "nombre_estado", nullable = false)
     private String nombreEstado;
     
-     @OneToMany( targetEntity = CursoEntity.class )
-     private List cursos;
+//     @OneToMany( targetEntity = CursoEntity.class )
+//     private List cursos;
     /*
     constructor de la clase
     */

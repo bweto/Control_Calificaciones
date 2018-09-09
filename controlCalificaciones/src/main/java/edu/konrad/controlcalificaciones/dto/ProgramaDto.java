@@ -1,6 +1,7 @@
 
 package edu.konrad.controlcalificaciones.dto;
 
+import edu.konrad.controlcalificaciones.entities.FacultadEntity;
 import edu.konrad.controlcalificaciones.entities.ProgramaEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class ProgramaDto {
     /*
     *Identificación de la facultad
     */
-    private long idFacultad;
+    private FacultadEntity Facultad;
     /*
     *Nombre del programa
     */
@@ -37,7 +38,7 @@ public class ProgramaDto {
 
     public ProgramaDto(ProgramaEntity programa) {
         this.idPrograma = programa.getIdPrograma();
-        this.idFacultad = programa.getIdPrograma();
+        this.Facultad = programa.getFacultad();
         this.nombrePrograma = programa.getNombrePrograma();
     }
     
@@ -48,7 +49,7 @@ public class ProgramaDto {
     public ProgramaEntity toEntity(){
         ProgramaEntity entity = new ProgramaEntity();
         entity.setIdPrograma(this.idPrograma);
-        entity.setIdFacultad(this.idFacultad);
+        entity.setFacultad(this.Facultad);
         entity.setNombrePrograma(this.nombrePrograma);
         return entity;
     }
@@ -77,12 +78,12 @@ public class ProgramaDto {
         this.idPrograma = idPrograma;
     }
 
-    public long getIdFacultad() {
-        return idFacultad;
+    public FacultadEntity getFacultad() {
+        return Facultad;
     }
 
-    public void setIdFacultad(long idFacultad) {
-        this.idFacultad = idFacultad;
+    public void setFacultad(FacultadEntity Facultad) {
+        this.Facultad = Facultad;
     }
 
     public String getNombrePrograma() {

@@ -6,12 +6,13 @@
 package edu.konrad.controlcalificaciones.entities;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 
 /**
  *Clase donde se almacena la informacion de 
@@ -22,10 +23,15 @@ public class InscripcionEntity implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idInscripcion;
-    private long idCurso;
-    private long idEstudiante;
-//     @OneToMany( targetEntity = MateriInscritaEntity.class )
-//     private List materiaInscrita;
+    
+    @ManyToOne
+    @JoinColumn(name ="curso")
+    private CursoEntity curso;
+    
+    @ManyToOne
+    @JoinColumn(name ="estudiante")
+    private EstudianteEntity estudiante;
+
     /*
     Constructor de la clase
     */
@@ -46,20 +52,22 @@ public class InscripcionEntity implements Serializable{
         this.idInscripcion = idInscripcion;
     }
 
-    public long getIdCurso() {
-        return idCurso;
+    public CursoEntity getCurso() {
+        return curso;
     }
 
-    public void setIdCurso(long idCurso) {
-        this.idCurso = idCurso;
+    public void setCurso(CursoEntity curso) {
+        this.curso = curso;
     }
 
-    public long getIdEstudiante() {
-        return idEstudiante;
+    public EstudianteEntity getEstudiante() {
+        return estudiante;
     }
 
-    public void setIdEstudiante(long idEstudiante) {
-        this.idEstudiante = idEstudiante;
+    public void setEstudiante(EstudianteEntity estudiante) {
+        this.estudiante = estudiante;
     }
+    
+    
     
 }

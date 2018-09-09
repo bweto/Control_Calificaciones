@@ -11,7 +11,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+
 
 /**
  *
@@ -22,30 +25,28 @@ public class UsuarioEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idUsuario;
-    private long tipoId;
     @Column(name = "numero_id", nullable = false)
     private int numeroId;
     @Column(name = "nombre_usuario", nullable = false)
     private String nombreUsuario;
     @Column(name = "apellido_usuario", nullable = false)
     private String apellidoUsuario;
-    @Column(name = "id_rol", nullable = false)
-    private long idRol;
     @Column(name = "genero", nullable = false)
     private String genero;
     @Column(name = "email", nullable = false)
     private String email;
     
-//    /*
-//    *Relaciones uno a uno de la tabla usuario con las tablas estudainteEntity, profesorentity y 
-//    *coordinador entity
-//    */
-//    @OneToOne
-//    private EstudianteEntity estudiante;
-//    @OneToOne
-//    private ProfesorEntity profesor;
-//    @OneToOne
-//    private CoordinadorEntity coordinador;
+    /*
+    *Relaciones uno a muchos de la tabla usuario con las tablas tipoId y rol.  
+    */
+    @ManyToOne
+    @JoinColumn(name ="tipo_id")
+    private TipoIdEntity tipoId;
+      
+    @ManyToOne
+    @JoinColumn(name ="rol")
+    private RolEntity rol;
+   
     /*
     Constructor de la clase 
     */
@@ -63,14 +64,6 @@ public class UsuarioEntity implements Serializable {
 
     public void setIdUsuario(long idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    public long getTipoId() {
-        return tipoId;
-    }
-
-    public void setTipoId(long tipoId) {
-        this.tipoId = tipoId;
     }
 
     public int getNumeroId() {
@@ -97,14 +90,6 @@ public class UsuarioEntity implements Serializable {
         this.apellidoUsuario = apellidoUsuario;
     }
 
-    public long getIdRol() {
-        return idRol;
-    }
-
-    public void setIdRol(long idRol) {
-        this.idRol = idRol;
-    }
-
     public String getGenero() {
         return genero;
     }
@@ -121,30 +106,20 @@ public class UsuarioEntity implements Serializable {
         this.email = email;
     }
 
-//    public EstudianteEntity getEstudiante() {
-//        return estudiante;
-//    }
-//
-//    public void setEstudiante(EstudianteEntity estudiante) {
-//        this.estudiante = estudiante;
-//    }
-//
-//    public ProfesorEntity getProfesor() {
-//        return profesor;
-//    }
-//
-//    public void setProfesor(ProfesorEntity profesor) {
-//        this.profesor = profesor;
-//    }
-//
-//    public CoordinadorEntity getCoordinador() {
-//        return coordinador;
-//    }
+    public TipoIdEntity getTipoId() {
+        return tipoId;
+    }
 
-//    public void setCoordinador(CoordinadorEntity coordinador) {
-//        this.coordinador = coordinador;
-//    }
-    
-    
+    public void setTipoId(TipoIdEntity tipoId) {
+        this.tipoId = tipoId;
+    }
+
+    public RolEntity getRol() {
+        return rol;
+    }
+
+    public void setRol(RolEntity rol) {
+        this.rol = rol;
+    }
 
 }

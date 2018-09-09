@@ -2,6 +2,9 @@
 package edu.konrad.controlcalificaciones.dto;
 
 
+import edu.konrad.controlcalificaciones.entities.CalificacionEntity;
+import edu.konrad.controlcalificaciones.entities.EstadoEntity;
+import edu.konrad.controlcalificaciones.entities.InscripcionEntity;
 import edu.konrad.controlcalificaciones.entities.MateriaInscritaEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,15 +23,15 @@ public class MateriaInscritaDto {
     /*
      id de inscripcion
     */
-    private long idInscripcion;
+    private InscripcionEntity inscripcion;
     /*
     id de estado
     */
-    private long idEstado;
+    private EstadoEntity estado;
     /*
      id de calificacion
     */
-    private long idCalificacion;
+    private CalificacionEntity calificacion;
     
     /*
      Constructor basico
@@ -43,9 +46,9 @@ public class MateriaInscritaDto {
     */
     public MateriaInscritaDto(MateriaInscritaEntity materia) {
         this.idMateria = materia.getIdMateria();
-        this.idInscripcion = materia.getIdInscripcion();
-        this.idEstado = materia.getIdEstado();
-        this.idCalificacion = materia.getIdCalificacion();
+        this.inscripcion = materia.getInscripcion();
+        this.estado = materia.getEstado();
+        this.calificacion = materia.getCalificacion();
     }
     
     /*
@@ -55,9 +58,9 @@ public class MateriaInscritaDto {
     public MateriaInscritaEntity toEntity(){
         MateriaInscritaEntity entity = new MateriaInscritaEntity();
         entity.setIdMateria(this.idMateria);
-        entity.setIdInscripcion(this.idInscripcion);
-        entity.setIdEstado(this.idEstado);
-        entity.setIdCalificacion(this.idCalificacion);
+        entity.setInscripcion(this.inscripcion);
+        entity.setEstado(this.estado);
+        entity.setCalificacion(this.calificacion);
         return entity;
     }
     
@@ -85,28 +88,28 @@ public class MateriaInscritaDto {
         this.idMateria = idMateria;
     }
 
-    public long getIdInscripcion() {
-        return idInscripcion;
+    public InscripcionEntity getIdInscripcion() {
+        return inscripcion;
     }
 
-    public void setIdInscripcion(long idInscripcion) {
-        this.idInscripcion = idInscripcion;
+    public void setInscripcion(InscripcionEntity idInscripcion) {
+        this.inscripcion = inscripcion;
     }
 
-    public long getIdEstado() {
-        return idEstado;
+    public EstadoEntity getEstado() {
+        return estado;
     }
 
-    public void setIdEstado(long idEstado) {
-        this.idEstado = idEstado;
+    public void setEstado(EstadoEntity idEstado) {
+        this.estado = estado;
     }
 
-    public long getIdCalificacion() {
-        return idCalificacion;
+    public CalificacionEntity getCalificacion() {
+        return calificacion;
     }
 
-    public void setIdCalificacion(long idCalificacion) {
-        this.idCalificacion = idCalificacion;
+    public void setCalificacion(CalificacionEntity calificacion) {
+        this.calificacion = calificacion;
     }
     
     

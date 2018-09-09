@@ -1,6 +1,8 @@
 
 package edu.konrad.controlcalificaciones.dto;
 
+import edu.konrad.controlcalificaciones.entities.RolEntity;
+import edu.konrad.controlcalificaciones.entities.TipoIdEntity;
 import edu.konrad.controlcalificaciones.entities.UsuarioEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +20,7 @@ public class UsuarioDto {
     /*
     *tipo de is de un usuario
     */
-    private long tipoId;
+    private TipoIdEntity tipoId;
     /*
     *numero de identificacion de un usuario
     */
@@ -34,7 +36,7 @@ public class UsuarioDto {
     /*
     *rol de un usuario
     */
-    private long idRol;
+    private RolEntity Rol;
     /*
     *genero de un usuario
     */
@@ -71,7 +73,7 @@ public class UsuarioDto {
         this.apellidoUsuario = usuario.getApellidoUsuario();
         this.tipoId = usuario.getTipoId();
         this.numeroId = usuario.getNumeroId();
-        this.idRol = usuario.getIdRol();
+        this.Rol = usuario.getRol();
         this.genero = usuario.getGenero();
         this.email = usuario.getEmail();
     }
@@ -93,7 +95,7 @@ public class UsuarioDto {
         entity.setApellidoUsuario(this.apellidoUsuario);
         entity.setTipoId(this.tipoId);
         entity.setNumeroId(this.numeroId);
-        entity.setIdRol(this.idRol);
+        entity.setRol(this.Rol);
         entity.setGenero(this.genero);
         entity.setEmail(this.email);
         return entity;
@@ -145,7 +147,7 @@ public class UsuarioDto {
      *
      * @return
      */
-    public long getTipoId() {
+    public TipoIdEntity getTipoId() {
         return tipoId;
     }
 
@@ -153,7 +155,7 @@ public class UsuarioDto {
      *
      * @param tipoId
      */
-    public void setTipoId(long tipoId) {
+    public void setTipoId(TipoIdEntity tipoId) {
         this.tipoId = tipoId;
     }
 
@@ -209,16 +211,16 @@ public class UsuarioDto {
      *
      * @return
      */
-    public long getIdRol() {
-        return idRol;
+    public RolEntity getRol() {
+        return Rol;
     }
 
     /**
      *
      * @param idRol
      */
-    public void setIdRol(long idRol) {
-        this.idRol = idRol;
+    public void setRol(RolEntity Rol) {
+        this.Rol = Rol;
     }
 
     /**

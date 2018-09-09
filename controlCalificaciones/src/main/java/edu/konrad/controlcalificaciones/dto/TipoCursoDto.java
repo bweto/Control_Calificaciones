@@ -1,6 +1,7 @@
 
 package edu.konrad.controlcalificaciones.dto;
 
+import edu.konrad.controlcalificaciones.entities.ProgramaEntity;
 import edu.konrad.controlcalificaciones.entities.TipoCursoEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class TipoCursoDto {
     /*
     *id programa 
     */
-    private long idprograma;
+    private ProgramaEntity programa;
     /*
     *nombre del tipo de curso
     */
@@ -36,7 +37,7 @@ public class TipoCursoDto {
     */
     public TipoCursoDto( TipoCursoEntity tipoCursoEntity){
         this.idTipoCurso = tipoCursoEntity.getIdTipoCurso();
-        this.idprograma = tipoCursoEntity.getIdprograma();
+        this.programa = tipoCursoEntity.getPrograma();
         this.nombreTipoCurso = tipoCursoEntity.getNombreTipoCurso();
     }
     
@@ -47,7 +48,7 @@ public class TipoCursoDto {
     public TipoCursoEntity toEnntity(){
         TipoCursoEntity entity = new TipoCursoEntity();
         entity.setIdTipoCurso( this.idTipoCurso);
-        entity.setIdprograma(this.idprograma);
+        entity.setPrograma(this.programa);
         entity.setNombreTipoCurso(this.nombreTipoCurso);
         return entity;
     }
@@ -77,12 +78,12 @@ public class TipoCursoDto {
         this.idTipoCurso = idTipoCurso;
     }
 
-    public long getIdprograma() {
-        return idprograma;
+    public ProgramaEntity getPrograma() {
+        return programa;
     }
 
-    public void setIdprograma(long idprograma) {
-        this.idprograma = idprograma;
+    public void setPrograma(ProgramaEntity programa) {
+        this.programa = programa;
     }
 
     public String getNombreTipoCurso() {

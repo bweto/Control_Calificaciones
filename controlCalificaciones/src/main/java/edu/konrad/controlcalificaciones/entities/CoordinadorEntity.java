@@ -15,6 +15,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * Clase encargada de almacenar la infromaciòn de los coordinadores
@@ -27,9 +29,12 @@ public class CoordinadorEntity implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idCoordinador;
     
-    private long idUsuario;
-    private long idPrograma;
-
+    @ManyToOne
+    @JoinColumn(name ="usuario")
+    private UsuarioEntity usuario;
+    @ManyToOne
+    @JoinColumn(name ="programa")
+    private ProgramaEntity programa;
     /*
     Constructor de la clase
      */
@@ -46,20 +51,20 @@ public class CoordinadorEntity implements Serializable{
         this.idCoordinador = idCoordinador;
     }
 
-    public long getIdUsuario() {
-        return idUsuario;
+    public UsuarioEntity getUsuario() {
+        return usuario;
     }
 
-    public void setIdUsuario(long idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setUsuario(UsuarioEntity usuario) {
+        this.usuario = usuario;
     }
 
-    public long getIdPrograma() {
-        return idPrograma;
+    public ProgramaEntity getPrograma() {
+        return programa;
     }
 
-    public void setIdPrograma(long idPrograma) {
-        this.idPrograma = idPrograma;
+    public void setPrograma(ProgramaEntity programa) {
+        this.programa = programa;
     }
 
 }

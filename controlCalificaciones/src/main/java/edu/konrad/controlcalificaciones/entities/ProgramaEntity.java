@@ -12,8 +12,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 
 /**
  *Clase encargada de almacenar la información sobre el programa al que pertenece
@@ -25,18 +26,14 @@ public class ProgramaEntity implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idPrograma;
-    private long idFacultad;
     @Column(name = "nombre_programa", nullable = false)
     private String nombrePrograma;
      /*
-    *Relaciones uno a uno de la tabla programa con las tablas estudainteEntity
+    *Relaciones muchos a uno de la tabla programa con la facultad
     */
-//    @OneToOne
-//    private EstudianteEntity estudiante;
-//    @OneToOne
-//    private CoordinadorEntity coordinador;
-//     @OneToMany( targetEntity = TipoCursoEntity.class )
-//     private List TipoCursos;
+    @ManyToOne
+    @JoinColumn(name ="Facultad")
+    private FacultadEntity facultad;
     /*
     Constructor de la clase
     */
@@ -56,14 +53,6 @@ public class ProgramaEntity implements Serializable{
         this.idPrograma = idPrograma;
     }
 
-    public long getIdFacultad() {
-        return idFacultad;
-    }
-
-    public void setIdFacultad(long idFacultad) {
-        this.idFacultad = idFacultad;
-    }
-
     public String getNombrePrograma() {
         return nombrePrograma;
     }
@@ -72,28 +61,12 @@ public class ProgramaEntity implements Serializable{
         this.nombrePrograma = nombrePrograma;
     }
 
-//    public EstudianteEntity getEstudiante() {
-//        return estudiante;
-//    }
-//
-//    public void setEstudiante(EstudianteEntity estudiante) {
-//        this.estudiante = estudiante;
-//    }
-//
-//    public CoordinadorEntity getCoordinador() {
-//        return coordinador;
-//    }
-//
-//    public void setCoordinador(CoordinadorEntity coordinador) {
-//        this.coordinador = coordinador;
-//    }
-//
-//    public List getTipoCursos() {
-//        return TipoCursos;
-//    }
-//
-//    public void setTipoCursos(List TipoCursos) {
-//        this.TipoCursos = TipoCursos;
-//    }
+    public FacultadEntity getFacultad() {
+        return facultad;
+    }
 
+    public void setFacultad(FacultadEntity facultad) {
+        this.facultad = facultad;
+    }
+    
 }

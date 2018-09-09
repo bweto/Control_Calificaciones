@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -24,12 +26,12 @@ public class TipoCursoEntity implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idTipoCurso;
-    private long idprograma;
     @Column(name = "nombre_tipo_curso", nullable = false)
     private String nombreTipoCurso;
     
-     @OneToMany( targetEntity = CursoEntity.class )
-     private List cursos;
+    @ManyToOne
+    @JoinColumn(name ="programa")
+    private ProgramaEntity programa;
     /*
     Constructor de la clase
     */
@@ -48,14 +50,6 @@ public class TipoCursoEntity implements Serializable{
         this.idTipoCurso = idTipoCurso;
     }
 
-    public long getIdprograma() {
-        return idprograma;
-    }
-
-    public void setIdprograma(long idprograma) {
-        this.idprograma = idprograma;
-    }
-
     public String getNombreTipoCurso() {
         return nombreTipoCurso;
     }
@@ -64,14 +58,14 @@ public class TipoCursoEntity implements Serializable{
         this.nombreTipoCurso = nombreTipoCurso;
     }
 
-    public List getCursos() {
-        return cursos;
+    public ProgramaEntity getPrograma() {
+        return programa;
     }
 
-    public void setCursos(List cursos) {
-        this.cursos = cursos;
+    public void setPrograma(ProgramaEntity programa) {
+        this.programa = programa;
     }
-    
+
     
     
 }

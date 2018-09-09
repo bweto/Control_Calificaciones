@@ -1,7 +1,9 @@
 
 package edu.konrad.controlcalificaciones.dto;
 
+import edu.konrad.controlcalificaciones.entities.AreaEntity;
 import edu.konrad.controlcalificaciones.entities.ProfesorEntity;
+import edu.konrad.controlcalificaciones.entities.UsuarioEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,11 +20,11 @@ public class ProfesorDto {
     /*
     *id del usuario
     */
-    private long idUsuario;
+    private UsuarioEntity usuario;
     /*
     *id del area
     */
-    private long idArea;
+    private AreaEntity area;
     /*
     *cantidad de cursos
     */
@@ -42,8 +44,8 @@ public class ProfesorDto {
 
     public ProfesorDto(ProfesorEntity profesor) {
         this.idProfesor = profesor.getIdProfesor();
-        this.idUsuario = profesor.getIdUsuario();
-        this.idArea = profesor.getIdArea();
+        this.usuario = profesor.getUsuario();
+        this.area = profesor.getArea();
         this.cantidadCursos = profesor.getCantidadCursos();
     }
     
@@ -54,8 +56,8 @@ public class ProfesorDto {
     public ProfesorEntity toEntity(){
         ProfesorEntity entity = new ProfesorEntity();
         entity.setIdProfesor(this.idProfesor);
-        entity.setIdUsuario(this.idUsuario);
-        entity.setIdArea(this.idArea);
+        entity.setUsuario(this.usuario);
+        entity.setArea(this.area);
         entity.setCantidadCursos(this.cantidadCursos);
         return entity;
     }
@@ -84,20 +86,20 @@ public class ProfesorDto {
         this.idProfesor = idProfesor;
     }
 
-    public long getIdUsuario() {
-        return idUsuario;
+    public UsuarioEntity getUsuario() {
+        return usuario;
     }
 
-    public void setIdUsuario(long idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setUsuario(UsuarioEntity usuario) {
+        this.usuario = usuario;
     }
 
-    public long getIdArea() {
-        return idArea;
+    public AreaEntity getArea() {
+        return area;
     }
 
-    public void setIdArea(long idArea) {
-        this.idArea = idArea;
+    public void setArea(AreaEntity area) {
+        this.area = area;
     }
 
     public int getCantidadCursos() {

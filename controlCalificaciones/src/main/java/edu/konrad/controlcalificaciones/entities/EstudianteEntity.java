@@ -12,6 +12,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -23,17 +26,20 @@ public class EstudianteEntity implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idEstudiante;
-    private long idPrograma;
-    private long idUsuario;
+    private int codigoEstudiante;
     @Column(name = "primer_corte", nullable = false)
     private int cantidadMaterias;
     
     /*
     *relación uno a muchos estudiante con inscripción
     */
-    @OneToMany( targetEntity = InscripcionEntity.class )
-     private List Inscripciones;
+    @ManyToOne
+    @JoinColumn(name ="usuario")
+    private UsuarioEntity usuario;
     
+    @ManyToOne
+    @JoinColumn(name ="programa")
+    private ProgramaEntity programa;
     /*
     Constructor de la clase
     */
@@ -51,22 +57,6 @@ public class EstudianteEntity implements Serializable{
         this.idEstudiante = idEstudiante;
     }
 
-    public long getIdPrograma() {
-        return idPrograma;
-    }
-
-    public void setIdPrograma(long idPrograma) {
-        this.idPrograma = idPrograma;
-    }
-
-    public long getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
     public int getCantidadMaterias() {
         return cantidadMaterias;
     }
@@ -75,16 +65,28 @@ public class EstudianteEntity implements Serializable{
         this.cantidadMaterias = cantidadMaterias;
     }
 
-    public List getInscripciones() {
-        return Inscripciones;
+    public int getCodigoEstudiante() {
+        return codigoEstudiante;
     }
 
-    public void setInscripciones(List Inscripciones) {
-        this.Inscripciones = Inscripciones;
+    public void setCodigoEstudiante(int codigoEstudiante) {
+        this.codigoEstudiante = codigoEstudiante;
+    }
+
+    public UsuarioEntity getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(UsuarioEntity usuario) {
+        this.usuario = usuario;
+    }
+
+    public ProgramaEntity getPrograma() {
+        return programa;
+    }
+
+    public void setPrograma(ProgramaEntity programa) {
+        this.programa = programa;
     }
     
-    
-    
-    
-   
 }

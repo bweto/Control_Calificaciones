@@ -6,13 +6,14 @@
 package edu.konrad.controlcalificaciones.entities;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 
 /**
  *Clase que se encarga de almacenar l ainfroamcion de los cursos.
@@ -23,15 +24,24 @@ public class CursoEntity implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idCurso;
-    
-    private long idProfesor;
-    private long idGrupo;
-    private long idTipoCurso;
-    private long idNivel;
     @Column(name = "nombre_curso", nullable = false)
     private String nombreCurso;
-//     @OneToMany( targetEntity = MateriInscritaEntity.class )
-//     private List materiasInscritas;
+    
+    @ManyToOne
+    @JoinColumn(name ="profesor")
+    private ProfesorEntity profesor;
+    
+    @ManyToOne
+    @JoinColumn(name ="grupo")
+    private GrupoEntity grupo;
+    
+    @ManyToOne
+    @JoinColumn(name ="tipo_curso")
+    private TipoCursoEntity tipoCurso;
+    
+    @ManyToOne
+    @JoinColumn(name ="nivel_academico")
+    private NivelAcademicoEntity nivelAcademico;
     /*
     Constructor de la clase
     */
@@ -51,44 +61,44 @@ public class CursoEntity implements Serializable{
         this.idCurso = idCurso;
     }
 
-    public long getIdProfesor() {
-        return idProfesor;
-    }
-
-    public void setIdProfesor(long idProfesor) {
-        this.idProfesor = idProfesor;
-    }
-
-    public long getIdGrupo() {
-        return idGrupo;
-    }
-
-    public void setIdGrupo(long idGrupo) {
-        this.idGrupo = idGrupo;
-    }
-
-    public long getIdTipoCurso() {
-        return idTipoCurso;
-    }
-
-    public void setIdTipoCurso(long idTipoCurso) {
-        this.idTipoCurso = idTipoCurso;
-    }
-
-    public long getIdNivel() {
-        return idNivel;
-    }
-
-    public void setIdNivel(long idNivel) {
-        this.idNivel = idNivel;
-    }
-
     public String getNombreCurso() {
         return nombreCurso;
     }
 
     public void setNombreCurso(String nombreCurso) {
         this.nombreCurso = nombreCurso;
+    }
+
+    public ProfesorEntity getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(ProfesorEntity profesor) {
+        this.profesor = profesor;
+    }
+
+    public GrupoEntity getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(GrupoEntity grupo) {
+        this.grupo = grupo;
+    }
+
+    public TipoCursoEntity getTipoCurso() {
+        return tipoCurso;
+    }
+
+    public void setTipoCurso(TipoCursoEntity tipoCurso) {
+        this.tipoCurso = tipoCurso;
+    }
+
+    public NivelAcademicoEntity getNivelAcademico() {
+        return nivelAcademico;
+    }
+
+    public void setNivelAcademico(NivelAcademicoEntity nivelAcademico) {
+        this.nivelAcademico = nivelAcademico;
     }
     
     

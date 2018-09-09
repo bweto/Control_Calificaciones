@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -23,15 +25,17 @@ public class ProfesorEntity implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idProfesor;
-    private long idUsuario;
-    private long idArea;
     @Column(name = "cantidad_cursos", nullable = false)
     private int cantidadCursos;
     /*
     *Relaciones uno a muchos entre profesores y curso
     */
-     @OneToMany( targetEntity = CursoEntity.class )
-     private List cursos;
+    @ManyToOne
+    @JoinColumn(name ="usuario")
+    private UsuarioEntity usuario;
+    @ManyToOne
+    @JoinColumn(name ="area")
+    private AreaEntity area;
     /*
     Constructor de la clase
     */
@@ -48,42 +52,30 @@ public class ProfesorEntity implements Serializable{
     public void setIdProfesor(long idProfesor) {
         this.idProfesor = idProfesor;
     }
-
-    public long getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public long getIdArea() {
-        return idArea;
-    }
-
-    public void setIdArea(long idArea) {
-        this.idArea = idArea;
-    }
-
+    
     public int getCantidadCursos() {
         return cantidadCursos;
     }
 
     public void setCantidadCursos(int cantidadCursos) {
         this.cantidadCursos = cantidadCursos;
+    }   
+
+    public UsuarioEntity getUsuario() {
+        return usuario;
     }
 
-    public List getCursos() {
-        return cursos;
+    public void setUsuario(UsuarioEntity usuario) {
+        this.usuario = usuario;
     }
 
-    public void setCursos(List cursos) {
-        this.cursos = cursos;
+    public AreaEntity getArea() {
+        return area;
     }
-    
-    
-    
-    
+
+    public void setArea(AreaEntity area) {
+        this.area = area;
+    }
     
     
 }

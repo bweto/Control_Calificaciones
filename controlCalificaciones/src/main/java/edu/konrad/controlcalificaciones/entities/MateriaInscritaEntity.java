@@ -15,6 +15,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *Clase donde se almacena la infroamcion de los cursos inscritos
@@ -25,10 +27,18 @@ public class MateriaInscritaEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idMateria;
-    private long idInscripcion;
-    private long idEstado;
-    private long idCalificacion;
+
+    @ManyToOne
+    @JoinColumn(name ="inscripcion")
+    private InscripcionEntity inscripcion;
     
+    @ManyToOne
+    @JoinColumn(name ="estado")
+    private EstadoEntity estado;
+    
+    @ManyToOne
+    @JoinColumn(name ="calificacion")
+    private CalificacionEntity calificacion;
     /*
     constructor de la clase
     */
@@ -47,28 +57,30 @@ public class MateriaInscritaEntity implements Serializable {
         this.idMateria = idMateria;
     }
 
-    public long getIdInscripcion() {
-        return idInscripcion;
+    public InscripcionEntity getInscripcion() {
+        return inscripcion;
     }
 
-    public void setIdInscripcion(long idInscripcion) {
-        this.idInscripcion = idInscripcion;
+    public void setInscripcion(InscripcionEntity inscripcion) {
+        this.inscripcion = inscripcion;
     }
 
-    public long getIdEstado() {
-        return idEstado;
+    public EstadoEntity getEstado() {
+        return estado;
     }
 
-    public void setIdEstado(long idEstado) {
-        this.idEstado = idEstado;
+    public void setEstado(EstadoEntity estado) {
+        this.estado = estado;
     }
 
-    public long getIdCalificacion() {
-        return idCalificacion;
+    public CalificacionEntity getCalificacion() {
+        return calificacion;
     }
 
-    public void setIdCalificacion(long idCalificacion) {
-        this.idCalificacion = idCalificacion;
+    public void setCalificacion(CalificacionEntity calificacion) {
+        this.calificacion = calificacion;
     }
+
+    
     
 }

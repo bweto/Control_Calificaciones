@@ -19,14 +19,14 @@ public class TipoCursoPersistence {
     /*
     *Atributo de persistenia para la clase tipoCurso
     */
-    @PersistenceContext(unitName = "tipoCursoPU")
+    @PersistenceContext(unitName = "contorlcalificacionesPU")
     private EntityManager entityManager;
     
     /*
     *Metodo para encontrar todos los objetos de tipoCurso
     */
     public List<TipoCursoEntity> findAll(){
-        Query queryTipoCurso = entityManager.createQuery("select t from tipoCursoEntety t");
+        Query queryTipoCurso = entityManager.createQuery("select t from tipo_curso t");
         return queryTipoCurso.getResultList();
     }
     

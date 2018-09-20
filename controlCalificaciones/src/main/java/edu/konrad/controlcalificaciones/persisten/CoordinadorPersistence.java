@@ -21,14 +21,14 @@ public class CoordinadorPersistence {
     /*
     *Atributo para la persistencia
     */
-    @PersistenceContext(unitName = "coordinadorPU")
+    @PersistenceContext(unitName = "contorlcalificacionesPU")
     private EntityManager entityManager;
     
     /*
     *Metodo para buscar todos los coordinadores
     */
     public List<CoordinadorEntity> findAll(){
-        Query query = entityManager.createQuery("select c from CoordinadorEntity c");
+        Query query = entityManager.createQuery("select c from coordinador c");
         return query.getResultList();
     }
     

@@ -18,14 +18,14 @@ public class RolPersistence {
     /*
     *Atributo para la persistencia 
     */
-    @PersistenceContext(unitName = "rolPU")
+    @PersistenceContext(unitName = "contorlcalificacionesPU")
     private EntityManager entityManager;
     
     /*
     *Metodo para obtener todos los objeto de tipo rol
     */
     public List<RolEntity> findAll(){
-        Query queryRol = entityManager.createQuery("select r from RolEntity r");
+        Query queryRol = entityManager.createQuery("select r from rol r");
         return queryRol.getResultList();
     }
     

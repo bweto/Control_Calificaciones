@@ -18,14 +18,14 @@ public class UsuarioPersistence {
     /*
     *Se crea el atributo de persistencia usado po el JPA
     */
-  @PersistenceContext(unitName = "Usuario")
+  @PersistenceContext(unitName = "contorlcalificacionesPU")
   private EntityManager entitieManager;
   
   /*
   *Metodo que obtiene todos los usuarios
   */
   public List<UsuarioEntity> findAll(){
-     Query queryUsuario = entitieManager.createQuery("select U from UsuarioEntity U");
+     Query queryUsuario = entitieManager.createQuery("select U from usuario U");
      return queryUsuario.getResultList();
   }
   

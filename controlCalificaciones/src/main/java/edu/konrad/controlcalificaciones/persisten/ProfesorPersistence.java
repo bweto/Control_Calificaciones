@@ -22,14 +22,15 @@ public class ProfesorPersistence {
     /*
     *Atributo de persistencia
     */
-    @PersistenceContext(unitName = "profesorPU")
+    @PersistenceContext(unitName = "contorlcalificacionesPU"
+            + "")
     private EntityManager entityManager;
     
     /*
     *Metodo para buscar todos los elementos 
     */
     public List<ProfesorEntity> findAll(){
-     Query query = entityManager.createQuery("select p from ProfesorEntity p");
+     Query query = entityManager.createQuery("select p from profesor p");
      return query.getResultList();
     }
     /*

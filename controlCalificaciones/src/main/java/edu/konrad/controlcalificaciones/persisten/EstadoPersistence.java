@@ -17,14 +17,14 @@ public class EstadoPersistence {
    /*
     *Atributo de persistencia
     */ 
-    @PersistenceContext(unitName = "estadoPU")
+    @PersistenceContext(unitName = "contorlcalificacionesPU")
     private EntityManager entityManager;
     
     /*
     *Metodo para buscar todos los estados
     */
     public List<EstadoEntity> findAll(){
-        Query query = entityManager.createQuery("select e from EstadoEntity e");
+        Query query = entityManager.createQuery("select e from estado e");
         return query.getResultList();
     }
     

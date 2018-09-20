@@ -17,14 +17,14 @@ public class CursoPersistence {
     /*
     *Atributo para la persistencia
     */
-    @PersistenceContext(unitName = "cursoPU")
+    @PersistenceContext(unitName = "contorlcalificacionesPU")
     private EntityManager entityManager;
     
     /*
     *Metodo para buscar todos los cursos
     */
     public List<CursoEntity> findAll(){
-        Query query = entityManager.createQuery("select c from CursoEntity");
+        Query query = entityManager.createQuery("select c from curso c");
         return query.getResultList();
     }
     

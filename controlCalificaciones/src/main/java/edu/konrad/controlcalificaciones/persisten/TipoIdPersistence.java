@@ -20,14 +20,14 @@ public class TipoIdPersistence {
     /*
     *atributo de percistencia 
     */
-    @PersistenceContext(unitName = "tipoIdPU")
+    @PersistenceContext(unitName = "contorlcalificacionesPU")
     private EntityManager entityManager;
     
     /*
     *Metodo que obtiene todos los tipos id
     */
     public List<TipoIdEntity> findAll(){
-      Query queryTipoId = entityManager.createQuery("select T from TipoIdEntity T ");
+      Query queryTipoId = entityManager.createQuery("select T from tipo_id T ");
       return queryTipoId.getResultList();
     }
     

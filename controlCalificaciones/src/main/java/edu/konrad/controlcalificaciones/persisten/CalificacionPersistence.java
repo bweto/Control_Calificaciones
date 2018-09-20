@@ -17,14 +17,14 @@ public class CalificacionPersistence {
     /*
     *Ateributo para la persistencia
     */
-    @PersistenceContext(unitName = "calificacionPU")
+    @PersistenceContext(unitName = "contorlcalificacionesPU")
     private EntityManager entityManager;
     
     /*
     *Metodo para buscar todas las calificaciones
     */
     public List<CalificacionEntity> findAll(){
-        Query query = entityManager.createQuery("select c from CalificacionEntity c");
+        Query query = entityManager.createQuery("select c from calificacion c");
         return query.getResultList();
     }
     

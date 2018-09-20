@@ -22,7 +22,7 @@ public class InscripcionPersistence {
     /*
     *Atributo para la persistencia
     */
-    @PersistenceContext(unitName = "inscripcionPU")
+    @PersistenceContext(unitName = "contorlcalificacionesPU")
     private EntityManager entityManager;
     
     /*
@@ -30,7 +30,7 @@ public class InscripcionPersistence {
     */
     
     public List<InscripcionEntity> findAll(){
-        Query query = entityManager.createQuery("select i from InscripcionEntity i");
+        Query query = entityManager.createQuery("select i from inscripcion i");
         return query.getResultList() ;
     }
     

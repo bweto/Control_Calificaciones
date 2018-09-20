@@ -17,14 +17,14 @@ public class AreaPersistence {
     /*
     *Atributo de persistencia
     */
-    @PersistenceContext(unitName = "areaPU")
+    @PersistenceContext(unitName = "contorlcalificacionesPU")
     private EntityManager entityManager;
     
     /*
     *Metodo para buscar todas las areas
     */
     public List<AreaEntity> findAll(){
-        Query query = entityManager.createQuery("select a from AreaEntity a");
+        Query query = entityManager.createQuery("select a from area a");
         return query.getResultList();
     }
     

@@ -18,14 +18,14 @@ public class NivelAcademicoPersistence {
     /*
     *Atributo para la persistencia de la clase
     */
-    @PersistenceContext(unitName = "nivelAcademicoPU")
+    @PersistenceContext(unitName = "contorlcalificacionesPU")
     private EntityManager entityManager;
     
     /*
     *Metodo para buscar todos los elementos del tipo NivelAcademico
     */
     public List<NivelAcademicoEntity> findAll(){
-        Query query = entityManager.createQuery("select n from NivelAcademicoEntity n");
+        Query query = entityManager.createQuery("select n from nivel_academico n");
         return query.getResultList();
     }
     

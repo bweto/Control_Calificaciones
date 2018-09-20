@@ -18,14 +18,14 @@ public class GrupoPersistence {
     /*
     *Atributo para la persistencia
     */
-    @PersistenceContext(unitName = "grupoPU")
+    @PersistenceContext(unitName = "contorlcalificacionesPU")
     private EntityManager entityManager;
     
     /*
     *Metodo para obtener todos los grupos
     */
     public List<GrupoEntity> findAll(){
-        Query query = entityManager.createQuery("select g from GrupoEntity g");
+        Query query = entityManager.createQuery("select g from grupo g");
         return query.getResultList();
     }
     

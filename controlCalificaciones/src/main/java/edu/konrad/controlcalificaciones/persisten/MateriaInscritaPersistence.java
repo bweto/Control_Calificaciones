@@ -18,14 +18,14 @@ public class MateriaInscritaPersistence {
     /*
     *atributo para la persistencia
     */
-    @PersistenceContext(unitName = "materiaInscritaPU")
+    @PersistenceContext(unitName = "contorlcalificacionesPU")
     private EntityManager entityManager;
     
     /*
     *Metodo para buscar todos los elementos de materiaInscrita
     */
     public List<MateriaInscritaEntity> findAll(){
-        Query query = entityManager.createQuery("select m from MateriInscritaEntety m");
+        Query query = entityManager.createQuery("select m from materi_inscrita m");
         return query.getResultList();
     }
     /*

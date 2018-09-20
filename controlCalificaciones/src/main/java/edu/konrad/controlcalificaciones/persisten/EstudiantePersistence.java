@@ -22,14 +22,14 @@ public class EstudiantePersistence {
     /*
     *Atributo de persistencia
     */
-    @PersistenceContext(unitName = "estudiantePU")
+    @PersistenceContext(unitName = "contorlcalificacionesPU")
     private EntityManager entityManager;
     
     /*
     *Metodo para buscar todos los estudiantes
     */
     public List<EstudianteEntity> findAll(){
-       Query query = entityManager.createQuery("select e from EstudianteEntity e");
+       Query query = entityManager.createQuery("select e from estudiante e");
         return query.getResultList();
     }
     

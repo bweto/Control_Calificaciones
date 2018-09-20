@@ -18,14 +18,14 @@ public class FacultadPersistence {
     /*
     *Atributo de persistencia
     */
-    @PersistenceContext(unitName = "facultadPU")
+    @PersistenceContext(unitName = "contorlcalificacionesPU")
     private EntityManager entityManager;
     
     /*
     *Metodo para buscar todas las facultades
     */
     public List<FacultadEntity> findAll(){
-        Query query = entityManager.createQuery("select f from FacultadEntity f");
+        Query query = entityManager.createQuery("select f from facultad f");
         return query.getResultList();
     }
     

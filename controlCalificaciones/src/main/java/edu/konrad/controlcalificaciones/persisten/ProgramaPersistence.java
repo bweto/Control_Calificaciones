@@ -18,14 +18,14 @@ public class ProgramaPersistence {
     /*
     *Atributo de persistencia
     */
-    @PersistenceContext(unitName = "ProgramaPU")
+    @PersistenceContext(unitName = "contorlcalificacionesPU")
     private EntityManager entityManager;
     
     /*
     *Metodo para obtener todos los objetos tipo Programa
     */
     public List<ProgramaEntity> findAll(){
-       Query query = entityManager.createQuery("Select p from Programa p");
+       Query query = entityManager.createQuery("Select p from programa p");
         return query.getResultList();
     }
     /*

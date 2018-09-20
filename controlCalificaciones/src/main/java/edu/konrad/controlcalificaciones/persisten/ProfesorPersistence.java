@@ -5,6 +5,7 @@
  */
 package edu.konrad.controlcalificaciones.persisten;
 
+import edu.konrad.controlcalificaciones.entities.MateriaInscritaEntity;
 import edu.konrad.controlcalificaciones.entities.ProfesorEntity;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -33,6 +34,15 @@ public class ProfesorPersistence {
      Query query = entityManager.createQuery("select p from profesor p");
      return query.getResultList();
     }
+    
+    /*
+    *Metodo Para buscar un profesor por Id
+    */
+    public ProfesorEntity find(long id){        
+        return entityManager.find(ProfesorEntity.class, id);
+    }
+    
+    
     /*
     *Metodo para crear un nuevo Profesor
     */

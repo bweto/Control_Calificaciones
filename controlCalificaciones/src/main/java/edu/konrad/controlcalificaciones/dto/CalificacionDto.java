@@ -1,35 +1,52 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.konrad.controlcalificaciones.dto;
 
 import edu.konrad.controlcalificaciones.entities.CalificacionEntity;
-import edu.konrad.controlcalificaciones.entities.MateriaInscritaEntity;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author bwto
+ *Clase Dto para realizar el mapeo relacional de la información de las 
+ * calificaciones
+ * @author Dayan Olaya y Roberto Garcia
  */
 public class CalificacionDto {
-    
+    /*      
+    Identificación de la calificación
+    */
     private long idCalificacion;
+    /*
+    Nota del primer corte
+    */
     private int primerCorte;
+    /*
+    Nota del segundo corte
+    */
     private int segundoCorte;
+    /*
+    Nota del tercer corte
+    */
     private int tercerCorte;
-
+    
+    /*
+    Constructor basico de la clase 
+    */
     public CalificacionDto() {
     }
-
+    
+    /*
+    Constructor parametrico, apartir de una entidad calificación
+    */
     public CalificacionDto(CalificacionEntity calificacion) {
         this.idCalificacion = calificacion.getIdCalificacion();
         this.primerCorte = calificacion.getPrimerCorte();
         this.segundoCorte = calificacion.getSegundoCorte();
         this.tercerCorte = calificacion.getTercerCorte();
     }
+    
+    /*
+    Crear un Dto apartir de una entidad calificación
+    */
     
     public CalificacionEntity toEntity(){
         CalificacionEntity entity = new CalificacionEntity();
@@ -42,7 +59,7 @@ public class CalificacionDto {
     
     /*
      Metodo para crear una lista de objetos relacionaleas apartir de una lista
-     de objetos MateriInscritaEntity
+     de objetos CalificacionEntity
     */
     public List<CalificacionDto> toMateriaDtoList(List<CalificacionEntity> calificacionList){
         List<CalificacionDto> calificacionDtoList = new ArrayList<>();

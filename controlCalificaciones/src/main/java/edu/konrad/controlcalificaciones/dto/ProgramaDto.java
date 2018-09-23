@@ -1,4 +1,3 @@
-
 package edu.konrad.controlcalificaciones.dto;
 
 import edu.konrad.controlcalificaciones.entities.FacultadEntity;
@@ -19,7 +18,7 @@ public class ProgramaDto {
     /*
     *Identificación de la facultad
     */
-    private FacultadEntity Facultad;
+    private FacultadDto Facultad;
     /*
     *Nombre del programa
     */
@@ -38,8 +37,13 @@ public class ProgramaDto {
 
     public ProgramaDto(ProgramaEntity programa) {
         this.idPrograma = programa.getIdPrograma();
-        this.Facultad = programa.getFacultad();
         this.nombrePrograma = programa.getNombrePrograma();
+        if(programa.getFacultad() != null){
+            FacultadEntity entity = new FacultadEntity();
+            entity.setIdFacultad(programa.getFacultad().getIdFacultad());
+            entity.setNombreFacultad(programa.getFacultad().getNombreFacultad());
+            this.Facultad = new FacultadDto(entity);
+        }
     }
     
     /*
@@ -49,7 +53,7 @@ public class ProgramaDto {
     public ProgramaEntity toEntity(){
         ProgramaEntity entity = new ProgramaEntity();
         entity.setIdPrograma(this.idPrograma);
-        entity.setFacultad(this.Facultad);
+        entity.setFacultad(this.Facultad.toEntity());
         entity.setNombrePrograma(this.nombrePrograma);
         return entity;
     }
@@ -78,13 +82,7 @@ public class ProgramaDto {
         this.idPrograma = idPrograma;
     }
 
-    public FacultadEntity getFacultad() {
-        return Facultad;
-    }
-
-    public void setFacultad(FacultadEntity Facultad) {
-        this.Facultad = Facultad;
-    }
+    
 
     public String getNombrePrograma() {
         return nombrePrograma;
@@ -92,6 +90,14 @@ public class ProgramaDto {
 
     public void setNombrePrograma(String nombrePrograma) {
         this.nombrePrograma = nombrePrograma;
+    }
+
+    public FacultadDto getFacultad() {
+        return Facultad;
+    }
+
+    public void setFacultad(FacultadDto Facultad) {
+        this.Facultad = Facultad;
     }
     
 }

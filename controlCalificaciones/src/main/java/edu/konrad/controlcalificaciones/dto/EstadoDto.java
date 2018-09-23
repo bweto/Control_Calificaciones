@@ -1,35 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.konrad.controlcalificaciones.dto;
 
 import edu.konrad.controlcalificaciones.entities.EstadoEntity;
-import edu.konrad.controlcalificaciones.entities.MateriaInscritaEntity;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author bwto
+ *Mapeo relacional para objetos de tipo Estado entity
+ * @author Dayan olaya y Roberto Garcia
  */
 public class EstadoDto {
     
     private long idEstado;
     private String nombreEstado;
 
+    /*
+    *Constructor basico
+    */
     public EstadoDto() {
     }
-
+    
+    /*
+    *constructor para crear dto a partir de entidades
+    */
     public EstadoDto(EstadoEntity estado) {
         this.idEstado = estado.getIdEstado();
         this.nombreEstado = estado.getNombreEstado();
     }
 
     /*
-     Crear una mariaInscritaEntity con un objeto relacional
-     @return MateriInscritaEntity
+     Crear una EstadoEntity con un objeto relacional
+     @return EstadoEntity
     */
     public EstadoEntity toEntity(){
         EstadoEntity entity = new EstadoEntity();
@@ -40,7 +41,7 @@ public class EstadoDto {
     
     /*
      Metodo para crear una lista de objetos relacionaleas apartir de una lista
-     de objetos MateriInscritaEntity
+     de objetos EstadoEntity
     */
     public List<EstadoDto> toEstadoDtoList(List<EstadoEntity> estadoList){
         List<EstadoDto> estadoDtoList = new ArrayList<>();

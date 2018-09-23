@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.konrad.controlcalificaciones.dto;
 
 import edu.konrad.controlcalificaciones.entities.CoordinadorEntity;
@@ -26,12 +21,12 @@ public class CoordinadorDto {
     /*
     *Objeto usuario, donde se almacena la información general del coordinador
     */
-    private UsuarioEntity usuario;
+    private UsuarioDto usuario;
     
     /*
     * Objeto programa, donde se almacena la información general del programa
     */
-    private ProgramaEntity programa;
+    private ProgramaDto programa;
     
     /*
     * Constructor basico
@@ -43,9 +38,28 @@ public class CoordinadorDto {
     *Constructor de Dto apartir de un coordinador entity
     */
     public CoordinadorDto(CoordinadorEntity coordinador) {
-        this.idCoordinador = coordinador.getIdCoordinador();
-        this.usuario = coordinador.getUsuario();
-        this.programa = coordinador.getPrograma();
+        this.idCoordinador = usuario.getIdUsuario();
+        
+        if(coordinador.getUsuario() != null){
+            UsuarioEntity entity = new UsuarioEntity();
+            entity.setIdUsuario(coordinador.getUsuario().getIdUsuario());
+            entity.setApellidoUsuario(coordinador.getUsuario().getApellidoUsuario());
+            entity.setEmail(coordinador.getUsuario().getEmail());
+            entity.setGenero(coordinador.getUsuario().getGenero());
+            entity.setNombreUsuario(coordinador.getUsuario().getNombreUsuario());
+            entity.setRol(coordinador.getUsuario().getRol());
+            entity.setTipoId(coordinador.getUsuario().getTipoId());
+            this.usuario = new UsuarioDto(entity);
+        }
+        if(coordinador.getPrograma() != null){
+            ProgramaEntity entity = new ProgramaEntity();
+            entity.setFacultad(coordinador.getPrograma().getFacultad());
+            entity.setNombrePrograma(coordinador.getPrograma().getNombrePrograma());
+            entity.setIdPrograma(coordinador.getPrograma().getIdPrograma());
+            this.programa = new ProgramaDto(entity);
+        }
+        
+           
     }
     
     /*
@@ -54,8 +68,8 @@ public class CoordinadorDto {
     public CoordinadorEntity toEntity(){
         CoordinadorEntity entity = new CoordinadorEntity();
         entity.setIdCoordinador(this.idCoordinador);
-        entity.setPrograma(this.programa);
-        entity.setUsuario(this.getUsuario());
+        entity.setPrograma(this.programa.toEntity());
+        entity.setUsuario(this.usuario.toEntity());
         return entity;
     }
     
@@ -79,21 +93,23 @@ public class CoordinadorDto {
         this.idCoordinador = idCoordinador;
     }
 
-    public UsuarioEntity getUsuario() {
+    public UsuarioDto getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(UsuarioEntity usuario) {
+    public void setUsuario(UsuarioDto usuario) {
         this.usuario = usuario;
     }
 
-    public ProgramaEntity getPrograma() {
+    public ProgramaDto getPrograma() {
         return programa;
     }
 
-    public void setPrograma(ProgramaEntity programa) {
+    public void setPrograma(ProgramaDto programa) {
         this.programa = programa;
     }
+
+    
     
     
 }

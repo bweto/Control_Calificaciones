@@ -1,32 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.konrad.controlcalificaciones.dto;
 
 import edu.konrad.controlcalificaciones.entities.FacultadEntity;
-import edu.konrad.controlcalificaciones.entities.MateriaInscritaEntity;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author bwto
+ *Clase que hace el mapeo relacional de objetos facultad entity a facultad Dto
+ * @author Dayan olaya y Roberto Garcia
  */
 public class FacultadDto {
     
      private long idFacultad;
      private String nombreFacultad;
-
+     
+    /*
+     *Constructor basico
+     */ 
     public FacultadDto() {
     }
-
+    
+    /*
+    *Constructor para construir dto a partir de facultad entity
+    */
     public FacultadDto(FacultadEntity facultad) {
         this.idFacultad = facultad.getIdFacultad();
         this.nombreFacultad = facultad.getNombreFacultad();
     }
     
+    /*
+    *crea un entidad a partir de una FacultadDto
+    */
     public FacultadEntity toEntity(){
         FacultadEntity entity = new FacultadEntity();
         entity.setIdFacultad(this.idFacultad);
@@ -36,7 +39,7 @@ public class FacultadDto {
     
     /*
      Metodo para crear una lista de objetos relacionaleas apartir de una lista
-     de objetos MateriInscritaEntity
+     de objetos FacultadEntity
     */
     public List<FacultadDto> toFacultadDtoList(List<FacultadEntity> facultadList){
         List<FacultadDto> facultadDtoList = new ArrayList<>();

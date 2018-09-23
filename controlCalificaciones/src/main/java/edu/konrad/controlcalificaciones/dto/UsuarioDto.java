@@ -20,7 +20,7 @@ public class UsuarioDto {
     /*
     *tipo de is de un usuario
     */
-    private TipoIdEntity tipoId;
+    private TipoIdDto tipoId;
     /*
     *numero de identificacion de un usuario
     */
@@ -36,7 +36,7 @@ public class UsuarioDto {
     /*
     *rol de un usuario
     */
-    private RolEntity Rol;
+    private RolDto Rol;
     /*
     *genero de un usuario
     */
@@ -71,11 +71,26 @@ public class UsuarioDto {
         this.idUsuario = usuario.getIdUsuario();
         this.nombreUsuario = usuario.getNombreUsuario();
         this.apellidoUsuario = usuario.getApellidoUsuario();
-        this.tipoId = usuario.getTipoId();
         this.numeroId = usuario.getNumeroId();
-        this.Rol = usuario.getRol();
         this.genero = usuario.getGenero();
         this.email = usuario.getEmail();
+        
+        if(usuario.getTipoId() != null){
+            TipoIdEntity entity = new TipoIdEntity();
+            entity.setIdTipoId(usuario.getIdUsuario());
+            entity.setNombreTipoId(usuario.getTipoId().getNombreTipoId());
+            entity.setUsuarios(usuario.getTipoId().getUsuarios());
+            this.tipoId = new TipoIdDto(entity);
+        }
+        
+        if(usuario.getRol() != null){
+           RolEntity entity = new RolEntity();
+           entity.setIdRol(usuario.getRol().getIdRol());
+           entity.setNombreRol(usuario.getRol().getNombreRol());
+           entity.setUsuarios(usuario.getRol().getUsuarios());
+           this.Rol = new RolDto(entity);
+        }
+        
     }
     
     /*
@@ -93,9 +108,9 @@ public class UsuarioDto {
         entity.setIdUsuario(this.idUsuario);
         entity.setNombreUsuario(this.nombreUsuario);
         entity.setApellidoUsuario(this.apellidoUsuario);
-        entity.setTipoId(this.tipoId);
+        entity.setTipoId(this.tipoId.toEntity());
         entity.setNumeroId(this.numeroId);
-        entity.setRol(this.Rol);
+        entity.setRol(this.Rol.toEntity());
         entity.setGenero(this.genero);
         entity.setEmail(this.email);
         return entity;
@@ -143,21 +158,7 @@ public class UsuarioDto {
         this.idUsuario = idUsuario;
     }
 
-    /**
-     *
-     * @return
-     */
-    public TipoIdEntity getTipoId() {
-        return tipoId;
-    }
-
-    /**
-     *
-     * @param tipoId
-     */
-    public void setTipoId(TipoIdEntity tipoId) {
-        this.tipoId = tipoId;
-    }
+    
 
     /**
      *
@@ -207,21 +208,23 @@ public class UsuarioDto {
         this.apellidoUsuario = apellidoUsuario;
     }
 
-    /**
-     *
-     * @return
-     */
-    public RolEntity getRol() {
+    public TipoIdDto getTipoId() {
+        return tipoId;
+    }
+
+    public void setTipoId(TipoIdDto tipoId) {
+        this.tipoId = tipoId;
+    }
+
+    public RolDto getRol() {
         return Rol;
     }
 
-    /**
-     *
-     * @param idRol
-     */
-    public void setRol(RolEntity Rol) {
+    public void setRol(RolDto Rol) {
         this.Rol = Rol;
     }
+
+
 
     /**
      *

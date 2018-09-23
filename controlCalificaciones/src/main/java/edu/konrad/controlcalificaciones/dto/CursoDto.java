@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.konrad.controlcalificaciones.dto;
 
 import edu.konrad.controlcalificaciones.entities.CursoEntity;
 import edu.konrad.controlcalificaciones.entities.GrupoEntity;
-import edu.konrad.controlcalificaciones.entities.MateriaInscritaEntity;
 import edu.konrad.controlcalificaciones.entities.NivelAcademicoEntity;
 import edu.konrad.controlcalificaciones.entities.ProfesorEntity;
 import edu.konrad.controlcalificaciones.entities.TipoCursoEntity;
@@ -15,44 +9,80 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author bwto
+ Clase Dto para realizar el mapeo relacional de la información de los
+ * cursos
+ * @author Dayan olaya y Roberto Garcia
  */
 public class CursoDto {
     
     private long idCurso;
     private String nombreCurso;
-    private ProfesorEntity profesor;
-    private GrupoEntity grupo;
-    private TipoCursoEntity tipoCurso;
-    private NivelAcademicoEntity nivelAcademico;
-
+    private ProfesorDto profesor;
+    private GrupoDto grupo;
+    private TipoCursoDto tipoCurso;
+    private NivelAcademicoDto nivelAcademico;
+    
+    /*
+    *Constructor basico
+    */
     public CursoDto() {
     }
-
+    
+    /*
+    *crear un Dto a partir de un entity
+    */
     public CursoDto(CursoEntity curso) {
         this.idCurso = curso.getIdCurso();
         this.nombreCurso = curso.getNombreCurso();
-        this.profesor = curso.getProfesor();
-        this.grupo = curso.getGrupo();
-        this.tipoCurso = curso.getTipoCurso();
-        this.nivelAcademico = curso.getNivelAcademico();
+        if(curso.getProfesor() != null){
+            ProfesorEntity entity = new ProfesorEntity();
+            entity.setArea(curso.getProfesor().getArea());
+            entity.setCantidadCursos(curso.getProfesor().getCantidadCursos());
+            entity.setIdProfesor(curso.getProfesor().getIdProfesor());
+            entity.setUsuario(curso.getProfesor().getUsuario());
+            this.profesor = new ProfesorDto(entity);
+        }
+        if(curso.getGrupo() != null){
+            GrupoEntity entity = new GrupoEntity();
+            entity.setCupo(curso.getGrupo().getCupo());
+            entity.setHorario(curso.getGrupo().getHorario());
+            entity.setIdGrupo(curso.getGrupo().getIdGrupo());
+            this.grupo = new GrupoDto(entity);
+        }
+        if(curso.getNivelAcademico() != null){
+            NivelAcademicoEntity entity = new NivelAcademicoEntity();
+            entity.setCursos(curso.getNivelAcademico().getCursos());
+            entity.setIdNivelAcademico(curso.getNivelAcademico().getIdNivelAcademico());
+            entity.setNombreNivelAcademico(curso.getNivelAcademico().getNombreNivelAcademico());
+            this.nivelAcademico = new NivelAcademicoDto(entity);
+        }
+        if(curso.getTipoCurso() != null){
+            TipoCursoEntity entity = new TipoCursoEntity();
+            entity.setIdTipoCurso(curso.getTipoCurso().getIdTipoCurso());
+            entity.setNombreTipoCurso(curso.getTipoCurso().getNombreTipoCurso());
+            entity.setPrograma(curso.getTipoCurso().getPrograma());
+            this.tipoCurso = new TipoCursoDto(entity);
+        }
+       
     }
     
+    /*
+    *crear un entity apartir de un dto
+    */
      public CursoEntity toEntity(){
         CursoEntity entity = new CursoEntity();
         entity.setIdCurso(this.idCurso);
-        entity.setNivelAcademico(this.nivelAcademico);
+        entity.setNivelAcademico(this.nivelAcademico.toEntity());
         entity.setNombreCurso(this.nombreCurso);
-        entity.setProfesor(this.profesor);
-        entity.setGrupo(this.grupo);
-        entity.setTipoCurso(this.tipoCurso);
+        entity.setProfesor(this.profesor.toEntity());
+        entity.setGrupo(this.grupo.toEntity());
+        entity.setTipoCurso(this.tipoCurso.toEnntity());
         return entity;
     }
     
     /*
      Metodo para crear una lista de objetos relacionaleas apartir de una lista
-     de objetos MateriInscritaEntity
+     de objetos cursoEntity
     */
     public List<CursoDto> toCursoDtoList(List<CursoEntity> cursoList){
         List<CursoDto> cursoDtoList = new ArrayList<>();
@@ -78,37 +108,39 @@ public class CursoDto {
         this.nombreCurso = nombreCurso;
     }
 
-    public ProfesorEntity getProfesor() {
+    public ProfesorDto getProfesor() {
         return profesor;
     }
 
-    public void setProfesor(ProfesorEntity profesor) {
+    public void setProfesor(ProfesorDto profesor) {
         this.profesor = profesor;
     }
 
-    public GrupoEntity getGrupo() {
+    public GrupoDto getGrupo() {
         return grupo;
     }
 
-    public void setGrupo(GrupoEntity grupo) {
+    public void setGrupo(GrupoDto grupo) {
         this.grupo = grupo;
     }
 
-    public TipoCursoEntity getTipoCurso() {
+    public TipoCursoDto getTipoCurso() {
         return tipoCurso;
     }
 
-    public void setTipoCurso(TipoCursoEntity tipoCurso) {
+    public void setTipoCurso(TipoCursoDto tipoCurso) {
         this.tipoCurso = tipoCurso;
     }
 
-    public NivelAcademicoEntity getNivelAcademico() {
+    public NivelAcademicoDto getNivelAcademico() {
         return nivelAcademico;
     }
 
-    public void setNivelAcademico(NivelAcademicoEntity nivelAcademico) {
+    public void setNivelAcademico(NivelAcademicoDto nivelAcademico) {
         this.nivelAcademico = nivelAcademico;
     }
+
+   
     
     
     

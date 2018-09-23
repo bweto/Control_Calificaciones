@@ -19,7 +19,7 @@ public class TipoCursoDto {
     /*
     *id programa 
     */
-    private ProgramaEntity programa;
+    private ProgramaDto programa;
     /*
     *nombre del tipo de curso
     */
@@ -37,8 +37,15 @@ public class TipoCursoDto {
     */
     public TipoCursoDto( TipoCursoEntity tipoCursoEntity){
         this.idTipoCurso = tipoCursoEntity.getIdTipoCurso();
-        this.programa = tipoCursoEntity.getPrograma();
         this.nombreTipoCurso = tipoCursoEntity.getNombreTipoCurso();
+        if(tipoCursoEntity.getPrograma() != null){
+            ProgramaEntity entity = new ProgramaEntity();
+            entity.setFacultad(tipoCursoEntity.getPrograma().getFacultad());
+            entity.setIdPrograma(tipoCursoEntity.getPrograma().getIdPrograma());
+            entity.setNombrePrograma(tipoCursoEntity.getPrograma().getNombrePrograma());
+            this.programa = new ProgramaDto(entity);
+        }
+      
     }
     
     /*
@@ -48,7 +55,7 @@ public class TipoCursoDto {
     public TipoCursoEntity toEnntity(){
         TipoCursoEntity entity = new TipoCursoEntity();
         entity.setIdTipoCurso( this.idTipoCurso);
-        entity.setPrograma(this.programa);
+        entity.setPrograma(this.programa.toEntity());
         entity.setNombreTipoCurso(this.nombreTipoCurso);
         return entity;
     }
@@ -78,13 +85,7 @@ public class TipoCursoDto {
         this.idTipoCurso = idTipoCurso;
     }
 
-    public ProgramaEntity getPrograma() {
-        return programa;
-    }
-
-    public void setPrograma(ProgramaEntity programa) {
-        this.programa = programa;
-    }
+    
 
     public String getNombreTipoCurso() {
         return nombreTipoCurso;
@@ -92,6 +93,14 @@ public class TipoCursoDto {
 
     public void setNombreTipoCurso(String nombreTipoCurso) {
         this.nombreTipoCurso = nombreTipoCurso;
+    }
+
+    public ProgramaDto getPrograma() {
+        return programa;
+    }
+
+    public void setPrograma(ProgramaDto programa) {
+        this.programa = programa;
     }
     
 }

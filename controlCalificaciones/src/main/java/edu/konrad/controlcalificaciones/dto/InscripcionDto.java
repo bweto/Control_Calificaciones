@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.konrad.controlcalificaciones.dto;
 
 import edu.konrad.controlcalificaciones.entities.CursoEntity;
 import edu.konrad.controlcalificaciones.entities.EstudianteEntity;
 import edu.konrad.controlcalificaciones.entities.InscripcionEntity;
-import edu.konrad.controlcalificaciones.entities.MateriaInscritaEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,34 +15,60 @@ public class InscripcionDto {
     
     private long idInscripcion;
      
-    private CursoEntity curso;
+    private CursoDto curso;
      
-    private EstudianteEntity estudiante;
-
+    private EstudianteDto estudiante;
+    
+    /*
+    *Constructor Basico
+    */
     public InscripcionDto() {
-    }
-
-    public InscripcionDto(InscripcionEntity inscripcion) {
-        this.idInscripcion = inscripcion.getIdInscripcion();
-        this.curso = inscripcion.getCurso();
-        this.estudiante = inscripcion.getEstudiante();
     }
     
     /*
-     Crear una mariaInscritaEntity con un objeto relacional
-     @return MateriInscritaEntity
+    *Constructor de un objeto inscripcionDto a partir de un objeto inscripcionentity
+    */
+    public InscripcionDto(InscripcionEntity inscripcion) {
+       this.idInscripcion = inscripcion.getIdInscripcion();
+       if(inscripcion.getCurso()!= null){
+           CursoEntity entity = new CursoEntity();
+           entity.setGrupo(inscripcion.getCurso().getGrupo());
+           entity.setIdCurso(inscripcion.getCurso().getIdCurso());
+           entity.setNivelAcademico(inscripcion.getCurso().getNivelAcademico());
+           entity.setNombreCurso(inscripcion.getCurso().getNombreCurso());
+           entity.setProfesor(inscripcion.getCurso().getProfesor());
+           entity.setTipoCurso(inscripcion.getCurso().getTipoCurso());
+           this.curso = new CursoDto(entity);
+       } 
+       
+       if(inscripcion.getEstudiante() != null){
+           EstudianteEntity entity = new EstudianteEntity();
+           entity.setCantidadMaterias(inscripcion.getEstudiante().getCantidadMaterias());
+           entity.setCodigoEstudiante(inscripcion.getEstudiante().getCodigoEstudiante());
+           entity.setIdEstudiante(inscripcion.getEstudiante().getIdEstudiante());
+           entity.setPrograma(inscripcion.getEstudiante().getPrograma());
+           entity.setUsuario(inscripcion.getEstudiante().getUsuario());
+           this.estudiante = new EstudianteDto(entity);
+                   
+        }
+        
+    }
+    
+    /*
+     Crear una InscripcionEntity con un objeto relacional
+     @return InscripcionEntity
     */
     public InscripcionEntity toEntity(){
         InscripcionEntity entity = new InscripcionEntity();
         entity.setIdInscripcion(this.idInscripcion);
-        entity.setCurso(this.curso);
-        entity.setEstudiante(this.estudiante);
+        entity.setCurso(this.curso.toEntity());
+        entity.setEstudiante(this.estudiante.toEntity());
         return entity;
     }
     
     /*
      Metodo para crear una lista de objetos relacionaleas apartir de una lista
-     de objetos MateriInscritaEntity
+     de objetos inscripcionEntity
     */
     public List<InscripcionDto> toInscripcionDtoList(List<InscripcionEntity> inscripcionList){
         List<InscripcionDto> inscripcionDtoList = new ArrayList<>();
@@ -66,22 +86,20 @@ public class InscripcionDto {
         this.idInscripcion = idInscripcion;
     }
 
-    public CursoEntity getCurso() {
+    public CursoDto getCurso() {
         return curso;
     }
 
-    public void setCurso(CursoEntity curso) {
+    public void setCurso(CursoDto curso) {
         this.curso = curso;
     }
 
-    public EstudianteEntity getEstudiante() {
+    public EstudianteDto getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(EstudianteEntity estudiante) {
+    public void setEstudiante(EstudianteDto estudiante) {
         this.estudiante = estudiante;
     }
-    
-    
-    
+
 }

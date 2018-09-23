@@ -20,11 +20,11 @@ public class ProfesorDto {
     /*
     *id del usuario
     */
-    private UsuarioEntity usuario;
+    private UsuarioDto usuario;
     /*
     *id del area
     */
-    private AreaEntity area;
+    private AreaDto area;
     /*
     *cantidad de cursos
     */
@@ -44,8 +44,23 @@ public class ProfesorDto {
 
     public ProfesorDto(ProfesorEntity profesor) {
         this.idProfesor = profesor.getIdProfesor();
-        this.usuario = profesor.getUsuario();
-        this.area = profesor.getArea();
+        if(profesor.getUsuario() != null){
+            UsuarioEntity entity = new UsuarioEntity();
+            entity.setIdUsuario(profesor.getUsuario().getIdUsuario());
+            entity.setApellidoUsuario(profesor.getUsuario().getApellidoUsuario());
+            entity.setEmail(profesor.getUsuario().getEmail());
+            entity.setGenero(profesor.getUsuario().getGenero());
+            entity.setNombreUsuario(profesor.getUsuario().getNombreUsuario());
+            entity.setRol(profesor.getUsuario().getRol());
+            entity.setTipoId(profesor.getUsuario().getTipoId());
+            this.usuario = new UsuarioDto(entity);
+        }
+        if(profesor.getArea()!= null){
+            AreaEntity entity = new AreaEntity();
+            entity.setIdArea(profesor.getArea().getIdArea());
+            entity.setNombreArea(profesor.getArea().getNombreArea());
+            this.area = new AreaDto(entity);
+        }
         this.cantidadCursos = profesor.getCantidadCursos();
     }
     
@@ -56,8 +71,8 @@ public class ProfesorDto {
     public ProfesorEntity toEntity(){
         ProfesorEntity entity = new ProfesorEntity();
         entity.setIdProfesor(this.idProfesor);
-        entity.setUsuario(this.usuario);
-        entity.setArea(this.area);
+        entity.setUsuario(this.usuario.toEntity());
+        entity.setArea(this.area.toEntity());
         entity.setCantidadCursos(this.cantidadCursos);
         return entity;
     }
@@ -86,21 +101,7 @@ public class ProfesorDto {
         this.idProfesor = idProfesor;
     }
 
-    public UsuarioEntity getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(UsuarioEntity usuario) {
-        this.usuario = usuario;
-    }
-
-    public AreaEntity getArea() {
-        return area;
-    }
-
-    public void setArea(AreaEntity area) {
-        this.area = area;
-    }
+    
 
     public int getCantidadCursos() {
         return cantidadCursos;
@@ -108,6 +109,22 @@ public class ProfesorDto {
 
     public void setCantidadCursos(int cantidadCursos) {
         this.cantidadCursos = cantidadCursos;
+    }
+
+    public UsuarioDto getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(UsuarioDto usuario) {
+        this.usuario = usuario;
+    }
+
+    public AreaDto getArea() {
+        return area;
+    }
+
+    public void setArea(AreaDto area) {
+        this.area = area;
     }
     
     

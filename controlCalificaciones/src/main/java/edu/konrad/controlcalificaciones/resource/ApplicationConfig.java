@@ -11,7 +11,7 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-/**
+/**Clase encargada de ayudar a consumir los servicios rest
  * @author Dayan Olaya y Roberto Garcia
  */
 @ApplicationPath("/api")

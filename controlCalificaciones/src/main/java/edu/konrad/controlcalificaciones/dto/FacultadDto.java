@@ -41,7 +41,7 @@ public class FacultadDto {
      Metodo para crear una lista de objetos relacionaleas apartir de una lista
      de objetos FacultadEntity
     */
-    public List<FacultadDto> toFacultadDtoList(List<FacultadEntity> facultadList){
+    public static List<FacultadDto> toFacultadDtoList(List<FacultadEntity> facultadList){
         List<FacultadDto> facultadDtoList = new ArrayList<>();
         for(FacultadEntity entity : facultadList){
             facultadDtoList.add(new FacultadDto(entity));

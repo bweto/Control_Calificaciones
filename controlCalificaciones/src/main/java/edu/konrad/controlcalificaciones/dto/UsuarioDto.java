@@ -126,7 +126,7 @@ public class UsuarioDto {
      * @return
      */
 
-    public List<UsuarioDto> toUsersList(List<UsuarioEntity> ListaUsuarios){
+    public static List<UsuarioDto> toUsersList(List<UsuarioEntity> ListaUsuarios){
       List<UsuarioDto> listaUsuariosDto = new ArrayList<>();
       for(UsuarioEntity entity : ListaUsuarios){
           listaUsuariosDto.add(new UsuarioDto(entity));

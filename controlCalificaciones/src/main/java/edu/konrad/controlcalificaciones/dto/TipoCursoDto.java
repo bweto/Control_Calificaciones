@@ -65,7 +65,7 @@ public class TipoCursoDto {
     *@param List<TipoCursoEntity> tipoCursoEntityList
     *@return List<TipoCursoDto>
     */
-    public List<TipoCursoDto> toTipopCursoList(List<TipoCursoEntity> tipoCursoEntityList){
+    public static List<TipoCursoDto> toTipopCursoList(List<TipoCursoEntity> tipoCursoEntityList){
        List<TipoCursoDto> tipoCursoDtoList = new ArrayList<>();
        for(TipoCursoEntity entity : tipoCursoEntityList){
            tipoCursoDtoList.add(new TipoCursoDto(entity));

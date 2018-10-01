@@ -43,7 +43,7 @@ public class GrupoDto {
     /*
     *crea un grupo de objetos dto a partir de un grupo de objetos grupo entity
     */
-    public List<GrupoDto> toGrupoDtoList(List<GrupoEntity> grupoList){
+    public static List<GrupoDto> toGrupoDtoList(List<GrupoEntity> grupoList){
         List<GrupoDto> grupoDtoList = new ArrayList<>();
         for(GrupoEntity entity : grupoList){
             grupoDtoList.add(new GrupoDto(entity));

@@ -61,7 +61,7 @@ public class CalificacionDto {
      Metodo para crear una lista de objetos relacionaleas apartir de una lista
      de objetos CalificacionEntity
     */
-    public List<CalificacionDto> toMateriaDtoList(List<CalificacionEntity> calificacionList){
+    public static List<CalificacionDto> toMateriaDtoList(List<CalificacionEntity> calificacionList){
         List<CalificacionDto> calificacionDtoList = new ArrayList<>();
         for(CalificacionEntity entity : calificacionList){
             calificacionDtoList.add(new CalificacionDto(entity));

@@ -52,7 +52,7 @@ public class TipoIdDto {
     *@return List<TipoIdEntity> listTipoId
     */
     
-    public List<TipoIdDto> toTipoIdList(List<TipoIdEntity> listaTipoIdEntity){
+    public static List<TipoIdDto> toTipoIdList(List<TipoIdEntity> listaTipoIdEntity){
        List<TipoIdDto> listaTipoIdDto = new ArrayList<>();
        for(TipoIdEntity entity : listaTipoIdEntity){
            listaTipoIdDto.add(new TipoIdDto(entity));

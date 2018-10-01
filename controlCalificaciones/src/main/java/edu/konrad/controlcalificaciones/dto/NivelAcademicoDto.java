@@ -52,7 +52,7 @@ public class NivelAcademicoDto {
      Metodo encargado de crear un lista de objetos de modelo relacional a partir de una
      lista de objetos NivelAcademicoEntity
     */
-    public List<NivelAcademicoDto> toNivelAcademicoDtoList(List<NivelAcademicoEntity> nivelList){
+    public static List<NivelAcademicoDto> toNivelAcademicoDtoList(List<NivelAcademicoEntity> nivelList){
       List<NivelAcademicoDto> nivelAcademicoDtoList = new ArrayList<>();
       for(NivelAcademicoEntity entity : nivelList){
         nivelAcademicoDtoList.add(new NivelAcademicoDto(entity));

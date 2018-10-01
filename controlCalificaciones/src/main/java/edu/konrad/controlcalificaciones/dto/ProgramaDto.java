@@ -62,7 +62,7 @@ public class ProgramaDto {
     *Metodo para crear una lista de objetos relacionales a partir de una lista 
     *de la entidad programa
     */
-    public List<ProgramaDto> toProgramaList(List<ProgramaEntity> programaList){
+    public static List<ProgramaDto> toProgramaList(List<ProgramaEntity> programaList){
        List<ProgramaDto> ProgramaDtoList = new ArrayList<>();
        for(ProgramaEntity entity : programaList){
            ProgramaDtoList.add(new ProgramaDto(entity));

@@ -77,7 +77,7 @@ public class CoordinadorDto {
      Metodo para crear una lista de objetos relacionaleas apartir de una lista
      de objetos Coordinador Entity
     */
-    public List<CoordinadorDto> toCoordinadorDtoList(List<CoordinadorEntity> coordinadorList){
+    public static List<CoordinadorDto> toCoordinadorDtoList(List<CoordinadorEntity> coordinadorList){
         List<CoordinadorDto> coordinadorDtoList = new ArrayList<>();
         for(CoordinadorEntity entity : coordinadorList){
             coordinadorDtoList.add(new CoordinadorDto(entity));

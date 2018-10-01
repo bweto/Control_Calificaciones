@@ -70,7 +70,7 @@ public class InscripcionDto {
      Metodo para crear una lista de objetos relacionaleas apartir de una lista
      de objetos inscripcionEntity
     */
-    public List<InscripcionDto> toInscripcionDtoList(List<InscripcionEntity> inscripcionList){
+    public static List<InscripcionDto> toInscripcionDtoList(List<InscripcionEntity> inscripcionList){
         List<InscripcionDto> inscripcionDtoList = new ArrayList<>();
         for(InscripcionEntity entity : inscripcionList){
             inscripcionDtoList.add(new InscripcionDto(entity));

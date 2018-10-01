@@ -87,7 +87,7 @@ public class MateriaInscritaDto {
      Metodo para crear una lista de objetos relacionaleas apartir de una lista
      de objetos MateriInscritaEntity
     */
-    public List<MateriaInscritaDto> toMateriaDtoList(List<MateriaInscritaEntity> materiaList){
+    public static List<MateriaInscritaDto> toMateriaDtoList(List<MateriaInscritaEntity> materiaList){
         List<MateriaInscritaDto> materiaDtoList = new ArrayList<>();
         for(MateriaInscritaEntity entity : materiaList){
             materiaDtoList.add(new MateriaInscritaDto(entity));

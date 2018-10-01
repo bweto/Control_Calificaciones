@@ -84,7 +84,7 @@ public class CursoDto {
      Metodo para crear una lista de objetos relacionaleas apartir de una lista
      de objetos cursoEntity
     */
-    public List<CursoDto> toCursoDtoList(List<CursoEntity> cursoList){
+    public static List<CursoDto> toCursoDtoList(List<CursoEntity> cursoList){
         List<CursoDto> cursoDtoList = new ArrayList<>();
         for(CursoEntity entity : cursoList){
             cursoDtoList.add(new CursoDto(entity));

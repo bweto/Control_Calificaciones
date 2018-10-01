@@ -43,7 +43,7 @@ public class EstadoDto {
      Metodo para crear una lista de objetos relacionaleas apartir de una lista
      de objetos EstadoEntity
     */
-    public List<EstadoDto> toEstadoDtoList(List<EstadoEntity> estadoList){
+    public static List<EstadoDto> toEstadoDtoList(List<EstadoEntity> estadoList){
         List<EstadoDto> estadoDtoList = new ArrayList<>();
         for(EstadoEntity entity : estadoList){
             estadoDtoList.add(new EstadoDto(entity));

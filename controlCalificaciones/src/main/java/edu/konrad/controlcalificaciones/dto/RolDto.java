@@ -52,7 +52,7 @@ public class RolDto {
     *@param List<RolEntity> 
     *@return List<RolDto>
     */
-    public List<RolDto> toRollist(List<RolEntity> rolEntityList){
+    public static List<RolDto> toRollist(List<RolEntity> rolEntityList){
        List<RolDto> rolDtoList = new ArrayList<>();
        for(RolEntity entity : rolEntityList){
            rolDtoList.add(new RolDto(entity));

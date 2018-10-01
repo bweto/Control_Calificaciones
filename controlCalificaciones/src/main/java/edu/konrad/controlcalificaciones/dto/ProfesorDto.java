@@ -81,7 +81,7 @@ public class ProfesorDto {
     *Metodo para crear una lista de modelos de objeto entidad a partir de 
      una lista de objetos profesor entity 
     */
-    public List<ProfesorDto> toProfesorDtoList(List<ProfesorEntity> profesorList){
+    public static List<ProfesorDto> toProfesorDtoList(List<ProfesorEntity> profesorList){
       List<ProfesorDto> profesorDtoList = new ArrayList<>();
       for(ProfesorEntity entity : profesorList){
           profesorDtoList.add(new ProfesorDto(entity));

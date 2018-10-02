@@ -11,6 +11,10 @@ import java.util.List;
  * @author Dayan Olaya, Roberto Garcia
  */
 public class TipoCursoDto {
+
+    public static List<TipoCursoDto> toTipoCursoList(List<TipoCursoEntity> tipoCurso) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     /*
     *id tipo de curso 
@@ -101,6 +105,10 @@ public class TipoCursoDto {
 
     public void setPrograma(ProgramaDto programa) {
         this.programa = programa;
+    }
+
+    public TipoCursoEntity toEntity() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

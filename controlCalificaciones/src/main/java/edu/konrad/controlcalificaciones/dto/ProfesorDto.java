@@ -12,6 +12,10 @@ import java.util.List;
  * @author Dayan Olaya, Roberto Garcia
  */
 public class ProfesorDto {
+
+    public static List<ProfesorDto> toProfesorList(List<ProfesorEntity> profesor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     /*
     *id del profesor

@@ -11,6 +11,10 @@ import java.util.List;
  * @author Dayan Olaya y Roberto Garcia
  */
 public class CalificacionDto {
+
+    public static List<CalificacionDto> toCalificacionList(List<CalificacionEntity> calificacion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     /*      
     Identificación de la calificación
     */

@@ -10,6 +10,10 @@ import java.util.List;
  * @author Dayan Olaya, Roberto Garcia
  */
 public class RolDto {
+
+    public static List<RolDto> toRolList(List<RolEntity> rol) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     /*
     *id rol
     

@@ -14,6 +14,10 @@ import java.util.List;
  * @author Dayan olaya y Roberto Garcia
  */
 public class CursoDto {
+
+    public static List<CursoDto> toCursoList(List<CursoEntity> curso) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     private long idCurso;
     private String nombreCurso;

@@ -12,11 +12,6 @@ import java.util.List;
  * @author Dayan Olaya y Roberto Garcia 
  */
 public class CoordinadorDto {
-
-    public static List<CoordinadorDto> toCoordinadorList(List<CoordinadorEntity> coordinador) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     /*
     *identificación del coordindor
     */

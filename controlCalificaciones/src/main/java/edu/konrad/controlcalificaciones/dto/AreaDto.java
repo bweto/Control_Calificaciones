@@ -8,13 +8,11 @@ import java.util.List;
 
 /**
  *
- * @author bwto
+ * @author 
  */
 public class AreaDto {
 
-    public static List<AreaDto> toAreaList(List<AreaEntity> areas) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
     
     private long idArea;
     private String nombreArea;
@@ -39,7 +37,7 @@ public class AreaDto {
      Metodo para crear una lista de objetos relacionaleas apartir de una lista
      de objetos MateriInscritaEntity
     */
-    public List<AreaDto> toAreaDtoList(List<AreaEntity> areaList){
+    public static List<AreaDto> toAreaDtoList(List<AreaEntity> areaList){
         List<AreaDto> areaDtoList = new ArrayList<>();
         for(AreaEntity entity : areaList){
             areaDtoList.add(new AreaDto(entity));

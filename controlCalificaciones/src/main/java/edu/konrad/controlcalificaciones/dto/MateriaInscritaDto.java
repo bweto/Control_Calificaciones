@@ -15,10 +15,6 @@ import java.util.List;
  * @author Dayan Olaya Roberto Garcia
  */
 public class MateriaInscritaDto {
-
-    public static List<MateriaInscritaDto> toMateriaInscritaList(List<MateriaInscritaEntity> materiaInscrita) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     /*
      identificador de materia

@@ -1,10 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.konrad.controlcalificaciones.resource;
 
+/**
+ *Clase para crear el comportamiento de los servicios rest de un tipo de curso
+ * @author Dayan Olaya y Robereto Garcia
+ */
 import edu.konrad.controlcalificaciones.dto.TipoCursoDto;
 import edu.konrad.controlcalificaciones.entities.TipoCursoEntity;
 import edu.konrad.controlcalificaciones.logic.TipoCursoLogic;
@@ -20,55 +20,70 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-/**
- * @author Dayan Olaya y Roberto Garcia
- */
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("/tipoCurso")
+
 public class TipoCursoResource {
-    
-    @EJB
+  @EJB
     private TipoCursoLogic tipoCursoLogic;
     
+  /*
+  Obtiene todos los tipos de curso utilizando el metodo http get
+  */
     @GET
-    public List<TipoCursoDto> getTipoCursoList() {
+    public List<TipoCursoDto> getTipoCursoList(){
         List<TipoCursoEntity> tipoCurso = tipoCursoLogic.ObtenerTipoCurso();
-        return TipoCursoDto.toTipoCursoList(tipoCurso);
+        return  TipoCursoDto.toTipopCursoList(tipoCurso);
     }
     
+    /*
+    obtiene un tipo de curso utilizando el metodo get y un paratemro id
+    */
     @GET
     @Path("{id: \\d+}")
-    public TipoCursoDto getTipoCurso(@PathParam("id") long id) {
+    public TipoCursoDto getTipoCurso(@PathParam("id") long id){
         TipoCursoEntity tipoCurso = tipoCursoLogic.ObtenerTipoCurso(id);
-        return new TipoCursoDto(tipoCurso);
+        return  new TipoCursoDto(tipoCurso);
     }
-    
+    /*
+    crea un nuevo tipo de curso
+    */
     @POST
-    public TipoCursoDto crearTipoCurso(TipoCursoDto tipoCursoNuevo) {
-        return new TipoCursoDto(tipoCursoLogic.crearTipoCurso(tipoCursoNuevo.toEntity()));
+    public TipoCursoDto crearTipoCurso(TipoCursoDto tipoCursoNuevo){
+        
+        return new TipoCursoDto(tipoCursoLogic.crearTipoCurso(tipoCursoNuevo.toEnntity()));
     }
     
+    /*
+    actualiza un tipo de curso
+    */
     @PUT
     @Path("{id: \\d+}")
-    public TipoCursoDto updateTipoCurso(@PathParam("id") long id, TipoCursoDto tipoCursoDto) {
+    public TipoCursoDto updateTipoCurso(@PathParam("id") long id, TipoCursoDto tipoCursoDto){
         TipoCursoEntity tipoCursoEntity = tipoCursoLogic.ObtenerTipoCurso(id);
-        if (tipoCursoEntity == null) {
-            throw new RuntimeException("No existe el tipo de curso");
-        } else {
-            tipoCursoLogic.actualizarTipoCurso(id, tipoCursoDto.toEntity());
+        if(tipoCursoEntity == null){
+        throw new RuntimeException("No existe el tipo curso");
+        }
+        else{
+        tipoCursoLogic.actualizarTipoCurso(id, tipoCursoDto.toEnntity());
         }
         return tipoCursoDto;
     }
     
+    /*
+    Borra un tipo de curso
+    */
     @DELETE
     @Path("{id: \\d+}")
-    public void delete(@PathParam("id") long id) {
+    public void delete(@PathParam("id") long id){
         TipoCursoEntity tipoCursoEntity = tipoCursoLogic.ObtenerTipoCurso(id);
-        if (tipoCursoEntity == null) {
-            throw new RuntimeException("No existe el tipo de curso");
-        } else {
-            tipoCursoLogic.borrarTipoCurso(id);
+        if(tipoCursoEntity == null){
+        throw new RuntimeException("No existe el tipo de curso");
         }
-    }    
+        else{
+        tipoCursoLogic.borrarTipoCurso(id);
+        }
+    }
+    
 }

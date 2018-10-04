@@ -11,9 +11,7 @@ import java.util.List;
  */
 public class EstadoDto {
 
-    public static List<EstadoDto> toEstadoList(List<EstadoEntity> estado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
     
     private long idEstado;
     private String nombreEstado;

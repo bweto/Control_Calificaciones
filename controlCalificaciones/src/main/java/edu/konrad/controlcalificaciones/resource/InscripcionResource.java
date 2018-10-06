@@ -50,7 +50,7 @@ public class InscripcionResource {
     */
     @POST
     public InscripcionDto crearInscripcion(InscripcionDto inscripcionNueva){
-       return new InscripcionDto.crearInscripcion(inscripcionNueva.toEntity());
+       return new InscripcionDto(inscripcionNueva.toEntity());
        
     }
     /*

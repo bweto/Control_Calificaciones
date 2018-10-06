@@ -48,8 +48,8 @@ public class CursoResource {
     */
     @POST
     public CursoDto crearCurso(CursoDto cursoNuevo){
-        cursoLogic.crearCurso(cursoNuevo.toEntity());
-        return cursoNuevo;
+        return CursoDto.crearCurso(cursoNuevo.toEntity());
+       
     }
     /*
     Actualizar Curso

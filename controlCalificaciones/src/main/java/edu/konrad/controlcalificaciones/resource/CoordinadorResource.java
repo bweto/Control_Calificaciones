@@ -49,8 +49,8 @@ public class CoordinadorResource {
         */
         @POST
         public CoordinadorDto crearCoordinador(CoordinadorDto coordinadorNuevo){
-            coordinadorLogic.crearCoordinador(coordinadorNuevo.toEntity());
-            return coordinadorNuevo;
+             return new CoordinadorDto.crearCoordinador(coordinadorNuevo.toEntity());
+             
         }
         
         /*

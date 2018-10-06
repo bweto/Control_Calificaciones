@@ -48,8 +48,8 @@ public class EstudianteResource {
     */
     @POST
     public EstudianteDto crearEstudiante(EstudianteDto estudianteNuevo){
-        estudianteLogic.crearEstudiante(estudianteNuevo.toEntity());
-        return estudianteNuevo;
+        return new EstudianteDto.crearEstudiante(estudianteNuevo.toEntity());
+        
     }
     
     /*

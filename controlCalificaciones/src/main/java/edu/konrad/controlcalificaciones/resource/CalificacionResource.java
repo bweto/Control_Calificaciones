@@ -49,7 +49,7 @@ public class CalificacionResource {
     */
     @POST
     public CalificacionDto crearCalificacion(CalificacionDto calificacionNueva){
-        return new CalificacionDto.crearCalificacion(calificacionNueva.toEntity());
+        return new CalificacionDto(calificacionNueva.toEntity());
          
     }
     

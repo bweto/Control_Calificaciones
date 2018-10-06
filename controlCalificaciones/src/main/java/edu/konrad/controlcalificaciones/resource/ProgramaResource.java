@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.konrad.controlcalificaciones.resource;
 
 import edu.konrad.controlcalificaciones.dto.ProgramaDto;
@@ -21,54 +17,74 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
- * @author Dayan Olaya y Roberto Garcia
+ *almacena el comportamiento de los servicios rest de un programa
+ * @author Dayan olaya y Roberto Garcia 
  */
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("/programa")
 public class ProgramaResource {
-    
+   
     @EJB
     private ProgramaLogic programaLogic;
     
+    /*
+    Obtener todos los programas 
+    */
     @GET
-    public List<ProgramaDto> getProgramaList() {
+    public List<ProgramaDto> obtenerProgramas(){
         List<ProgramaEntity> programa = programaLogic.ObtenerPrograma();
         return ProgramaDto.toProgramaList(programa);
     }
     
+    /*
+    Obtener programa por id
+    */
     @GET
     @Path("{id: \\d+}")
-    public ProgramaDto getPrograma(@PathParam("id") long id) {
+    public ProgramaDto obtenerPrograma(@PathParam("id") long id){
         ProgramaEntity programa = programaLogic.ObtenerPrograma(id);
         return new ProgramaDto(programa);
     }
     
+    /*
+    crear un progrma
+    */
+    
     @POST
-    public ProgramaDto crearPrograma(ProgramaDto programaNuevo) {
+    public ProgramaDto crearPrograma(ProgramaDto programaNuevo){
         return new ProgramaDto(programaLogic.crearPrograma(programaNuevo.toEntity()));
     }
     
+    /*
+    Actualizar un programa
+    */
     @PUT
     @Path("{id: \\d+}")
-    public ProgramaDto updatePrograma(@PathParam("id") long id, ProgramaDto programaDto) {
-        ProgramaEntity programaEntity = programaLogic.ObtenerPrograma(id);
-        if (programaEntity == null) {
-            throw new RuntimeException("No existe el programa");
-        } else {
-            programaLogic.actualizarPrograma(id, programaDto.toEntity());
-        }
-        return programaDto;
+    public ProgramaDto actualizarPrograma(@PathParam("id") long id, ProgramaDto programaNuevo){
+       ProgramaEntity programa = programaLogic.ObtenerPrograma(id);
+       if(programa == null){
+           throw new RuntimeException("No existe el programa");
+       }
+       else{
+           programaLogic.actualizarPrograma(id, programaNuevo.toEntity());
+       }
+       return programaNuevo;
     }
     
+    /*
+    Borrar un programa
+    */
     @DELETE
     @Path("{id: \\d+}")
-    public void delete(@PathParam("id") long id) {
-        ProgramaEntity programaEntity = programaLogic.ObtenerPrograma(id);
-        if (programaEntity == null) {
+    public void borrarPrograma(@PathParam("id") long id){
+        ProgramaEntity programa = programaLogic.ObtenerPrograma(id);
+        
+        if(programa == null){
             throw new RuntimeException("No existe el programa");
-        } else {
+        }
+        else{
             programaLogic.borrarPrograma(id);
         }
-    }   
+    }
 }

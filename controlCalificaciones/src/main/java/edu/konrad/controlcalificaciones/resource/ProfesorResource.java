@@ -21,6 +21,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
+ *Crea el comportamiento de los servicios rest para un profesor
  * @author Dayan Olaya y Roberto Garcia
  */
 @Produces(MediaType.APPLICATION_JSON)
@@ -31,44 +32,60 @@ public class ProfesorResource {
     @EJB
     private ProfesorLogic profesorLogic;
     
+    /*
+    Obtener todos los profesores
+    */
     @GET
-    public List<ProfesorDto> getProfesorList() {
-        List<ProfesorEntity> profesor = profesorLogic.ObtenerProfesor();
-        return ProfesorDto.toProfesorList(profesor);
+    public List<ProfesorDto> obtenerProfesores(){
+        return ProfesorDto.toProfesorDtoList(profesorLogic.ObtenerProfesor());
     }
+    
+    /*
+    Obtener profesor por id
+    */
     
     @GET
     @Path("{id: \\d+}")
-    public ProfesorDto getProfesor(@PathParam("id") long id) {
-        ProfesorEntity profesor = profesorLogic.ObtenerProfesor(id);
-        return new ProfesorDto(profesor);
+    public ProfesorDto obtenerProfesor(@PathParam("id") long id){
+        return new ProfesorDto(profesorLogic.ObtenerProfesor(id));
     }
     
+    /*
+    crear profesor
+    */
     @POST
-    public ProfesorDto crearProfesor(ProfesorDto profesorNuevo) {
-        return new ProfesorDto(profesorLogic.crearProfesor(profesorNuevo.toEntity()));
+    public ProfesorDto crearProfesor(ProfesorDto profesorNuevo){
+        profesorLogic.crearProfesor(profesorNuevo.toEntity());
+        return profesorNuevo;
     }
-    
+    /*
+    Actualizar profesor
+    */
     @PUT
     @Path("{id: \\d+}")
-    public ProfesorDto updateProfesor(@PathParam("id") long id, ProfesorDto profesorDto) {
-        ProfesorEntity profesorEntity = profesorLogic.ObtenerProfesor(id);
-        if (profesorEntity == null) {
-            throw new RuntimeException("No existe el profesor");
-        } else {
-            profesorLogic.actualizarProfesor(id, profesorDto.toEntity());
-        }
-        return profesorDto;
+    public ProfesorDto actualizarProfesor(@PathParam("id") long id, ProfesorDto profesorNuevo){
+      ProfesorEntity profesor = profesorLogic.ObtenerProfesor(id);
+      if(profesor == null){
+         throw new RuntimeException("No existe el profesor");
+      }
+      else{
+          profesorLogic.actualizarProfesor(id, profesorNuevo.toEntity());
+      }
+      return profesorNuevo;
     }
     
+    /*
+    Borrar profesor
+    */
     @DELETE
     @Path("{id: \\d+}")
-    public void delete(@PathParam("id") long id) {
-        ProfesorEntity profesorEntity = profesorLogic.ObtenerProfesor(id);
-        if (profesorEntity == null) {
-            throw new RuntimeException("No existe el profesor");
-        } else {
-            profesorLogic.borrarProfesor(id);
-        }
-    }     
+    public void borrarProfesor(@PathParam("id") long id){
+      ProfesorEntity profesor = profesorLogic.ObtenerProfesor(id);
+      if(profesor == null){
+         throw new RuntimeException("No existe el profesor");
+      }
+      else{ 
+          profesorLogic.borrarProfesor(id);
+      } 
+    }
 }

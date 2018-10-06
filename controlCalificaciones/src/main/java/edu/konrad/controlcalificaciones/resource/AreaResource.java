@@ -1,21 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.konrad.controlcalificaciones.resource;
 
 import edu.konrad.controlcalificaciones.dto.AreaDto;
-import edu.konrad.controlcalificaciones.entities.AreaEntity;
 import edu.konrad.controlcalificaciones.logic.AreaLogic;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import static javax.ws.rs.HttpMethod.DELETE;
-import static javax.ws.rs.HttpMethod.POST;
-import static javax.ws.rs.HttpMethod.PUT;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -24,54 +16,67 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
+ *Clase que contiene las caracteristicas de los servicios de area 
  * @author Dayan Olaya y Roberto Garcia
  */
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("/area")
 public class AreaResource {
-    
     @EJB
     private AreaLogic areaLogic;
     
-     @GET
-    public List<AreaDto> getAreaList() {
-        List<AreaEntity> area = areaLogic.ObtenerArea();
-        return AreaDto.toAreaList(area);
+    /*
+    Obtener todas las areas
+    */
+    @GET
+    public List<AreaDto> obtenerArea(){
+        return AreaDto.toAreaDtoList(areaLogic.ObtenerArea());
     }
     
+    /*
+    obtener una area por id
+    */
     @GET
     @Path("{id: \\d+}")
-    public AreaDto getArea(@PathParam("id") long id) {
-        AreaEntity area = areaLogic.ObtenerArea(id);
-        return new AreaDto(area);
+    public AreaDto obtenerArea(@PathParam("id")long id){
+        return new AreaDto(areaLogic.ObtenerArea(id));
     }
-    
+    /*
+    crear area
+    */
     @POST
-    public AreaDto crearArea(AreaDto areaNuevo) {
-        return new AreaDto(areaLogic.crearArea(areaNuevo.toEntity()));
+    public AreaDto crearArea(AreaDto areaNueva){
+        areaLogic.crearArea(areaLogic.crearArea(areaNueva.toEntity()));
+        return areaNueva;
     }
     
+    /*}
+    Actuaizar area
+    */
     @PUT
     @Path("{id: \\d+}")
-    public AreaDto updateArea(@PathParam("id") long id, AreaDto areaDto) {
-        AreaEntity areaEntity = areaLogic.ObtenerArea(id);
-        if (areaEntity == null) {
-            throw new RuntimeException("No existe el area");
-        } else {
-            areaLogic.actualizarArea(id, areaDto.toEntity());
+    public AreaDto actualizarArea(@PathParam("id")long id, AreaDto areaNueva){
+        if(areaLogic.ObtenerArea()== null){
+            throw new RuntimeException("No existe area");
         }
-        return areaDto;
+        else{
+            areaLogic.actualizarArea(id, areaNueva.toEntity());
+        }
+        return areaNueva;
     }
     
+    /*
+    Borrar area
+    */
     @DELETE
     @Path("{id: \\d+}")
-    public void delete(@PathParam("id") long id) {
-        AreaEntity areaEntity = areaLogic.ObtenerArea(id);
-        if (areaEntity == null) {
-            throw new RuntimeException("No existe el area");
-        } else {
+    public void borrarArea(@PathParam("id")long id){
+        if(areaLogic.ObtenerArea(id) == null){
+            throw new RuntimeException("No existe calificación");
+        }
+        else{
             areaLogic.borrarArea(id);
         }
-    } 
+    }
 }

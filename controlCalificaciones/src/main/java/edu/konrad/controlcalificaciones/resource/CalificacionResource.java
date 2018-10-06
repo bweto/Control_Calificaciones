@@ -1,19 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.konrad.controlcalificaciones.resource;
 
 import edu.konrad.controlcalificaciones.dto.CalificacionDto;
-import edu.konrad.controlcalificaciones.entities.CalificacionEntity;
 import edu.konrad.controlcalificaciones.logic.CalificacionLogic;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import static javax.ws.rs.HttpMethod.PUT;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -22,54 +16,69 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
+ *Clases que contiene las caracteristicas de los servicios rest 
  * @author Dayan Olaya y Roberto Garcia
  */
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("/calificacion")
 public class CalificacionResource {
-    
+  
     @EJB
     private CalificacionLogic calificacionLogic;
     
+    /*
+    Obtener todas las calificaciones
+    */
     @GET
-    public List<CalificacionDto> getCalificacionList() {
-        List<CalificacionEntity> calificacion = calificacionLogic.ObtenerCalificacion();
-        return CalificacionDto.toCalificacionList(calificacion);
+    public List<CalificacionDto> obtenerCalificaciones(){
+        return CalificacionDto.toMateriaDtoList(calificacionLogic.ObtenerCalificacion());
     }
     
+    /*
+    obtener calificaciones por id
+    */
     @GET
     @Path("{id: \\d+}")
-    public CalificacionDto getCalificacion(@PathParam("id") long id) {
-        CalificacionEntity calificacion = calificacionLogic.ObtenerCalificacion(id);
-        return new CalificacionDto(calificacion);
+    public CalificacionDto obtenerCalificacion(@PathParam("id")long id){
+        return new CalificacionDto(calificacionLogic.ObtenerCalificacion(id));
     }
     
+    /*
+    crear calificacion
+    */
     @POST
-    public CalificacionDto crearCalificacion(CalificacionDto calificacionNuevo) {
-        return new CalificacionDto(calificacionLogic.crearCalificacion(calificacionNuevo.toEntity()));
+    public CalificacionDto crearCalificacion(CalificacionDto calificacionNueva){
+        calificacionLogic.crearCalificacion(calificacionNueva.toEntity());
+        return calificacionNueva;
     }
     
+    /*
+    actualizar calificacion
+    */
     @PUT
     @Path("{id: \\d+}")
-    public CalificacionDto updateCalificacion(@PathParam("id") long id, CalificacionDto calificacionDto) {
-        CalificacionEntity calificacionEntity = calificacionLogic.ObtenerCalificacion(id);
-        if (calificacionEntity == null) {
-            throw new RuntimeException("No existe la calificacion");
-        } else {
-            calificacionLogic.actualizarCalificacion(id, calificacionDto.toEntity());
+    public CalificacionDto actualizarCalificacion(@PathParam("id")long id, CalificacionDto calificacionNueva){
+        if(calificacionLogic.ObtenerCalificacion(id) == null){
+            throw new RuntimeException("No existe calificación");
         }
-        return calificacionDto;
+        else{
+            calificacionLogic.actualizarCalificacion(id, calificacionNueva.toEntity());
+        }
+        return calificacionNueva;
     }
     
+    /*
+    borrar Calificacion
+    */
     @DELETE
     @Path("{id: \\d+}")
-    public void delete(@PathParam("id") long id) {
-        CalificacionEntity calificacionEntity = calificacionLogic.ObtenerCalificacion(id);
-        if (calificacionEntity == null) {
-            throw new RuntimeException("No existe la calificacion");
-        } else {
+    public void borrarCalificacion(@PathParam("id")long id){
+        if(calificacionLogic.ObtenerCalificacion(id) == null){
+            throw new RuntimeException("No existe calificación");
+        }
+        else{
             calificacionLogic.borrarCalificacion(id);
         }
-    } 
+    }
 }

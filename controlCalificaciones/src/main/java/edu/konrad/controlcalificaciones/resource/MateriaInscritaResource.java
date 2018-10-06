@@ -10,65 +10,78 @@ import edu.konrad.controlcalificaciones.entities.MateriaInscritaEntity;
 import edu.konrad.controlcalificaciones.logic.MateriaInscritaLogic;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.websocket.server.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
+ *Clase que constiene la caracteristica de los servicios rest para una materia inscrita
  * @author Dayan Olaya y Roberto Garcia
  */
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@Path("/materiaInscrita")
+@Path("/MateriaInscrita")
 public class MateriaInscritaResource {
     
     @EJB
-    private MateriaInscritaLogic materiaInscritaLogic;
+    private MateriaInscritaLogic materiaLogic;
     
+    /*
+    Obtener todas las materis ainscritas
+    */
     @GET
-    public List<MateriaInscritaDto> getMateriaInscritaList() {
-        List<MateriaInscritaEntity> materiaInscrita = materiaInscritaLogic.ObtenerMateriaInscrita();
-        return MateriaInscritaDto.toMateriaInscritaList(materiaInscrita);
+    public List<MateriaInscritaDto> obtenerMaterias(){
+        return MateriaInscritaDto.toMateriaDtoList(materiaLogic.ObtenerMateriaInscrita());
     }
-    
+    /*
+    Obtener mateias inscritas por id
+    */
     @GET
     @Path("{id: \\d+}")
-    public MateriaInscritaDto getMateriaInscrita(@PathParam("id") long id) {
-        MateriaInscritaEntity materiaInscrita = materiaInscritaLogic.ObtenerMateriaInscrita(id);
-        return new MateriaInscritaDto(materiaInscrita);
+    public MateriaInscritaDto obtenerMateria(@PathParam("id") long id){
+      return new MateriaInscritaDto(materiaLogic.ObtenerMateriaInscrita(id));
     }
-    
+    /*
+    crear materia
+    */
     @POST
-    public MateriaInscritaDto crearMateriaInscrita(MateriaInscritaDto materiaInscritaNuevo) {
-        return new MateriaInscritaDto(materiaInscritaLogic.crearMateriaInscrita(materiaInscritaNuevo.toEntity()));
+    public MateriaInscritaDto crearMateria(MateriaInscritaDto nuevaMateria){
+        materiaLogic.crearMateriaInscrita(nuevaMateria.toEntity());
+        return nuevaMateria;
     }
-    
+    /*
+    Actualizar Materia
+    */
     @PUT
     @Path("{id: \\d+}")
-    public MateriaInscritaDto updateMateriaInscrita(@PathParam("id") long id, MateriaInscritaDto materiaInscritaDto) {
-        MateriaInscritaEntity materiaInscritaEntity = materiaInscritaLogic.ObtenerMateriaInscrita(id);
-        if (materiaInscritaEntity == null) {
-            throw new RuntimeException("No existe la materia inscrita");
-        } else {
-            materiaInscritaLogic.actualizarMateriaInscrita(id, materiaInscritaDto.toEntity());
+    public MateriaInscritaDto actualizarMateria(@PathParam("id")long id, MateriaInscritaDto mateiaNueva){
+        MateriaInscritaEntity materia = materiaLogic.ObtenerMateriaInscrita(id);
+        if(materia == null){
+            throw new RuntimeException("No existe una materia inscrita");
         }
-        return materiaInscritaDto;
+        else{
+            materiaLogic.actualizarMateriaInscrita(id, mateiaNueva.toEntity());
+        }
+        return  mateiaNueva;
     }
-    
+    /*
+     borrar una materia
+    */
     @DELETE
     @Path("{id: \\d+}")
-    public void delete(@PathParam("id") long id) {
-        MateriaInscritaEntity materiaInscritaEntity = materiaInscritaLogic.ObtenerMateriaInscrita(id);
-        if (materiaInscritaEntity == null) {
-            throw new RuntimeException("No existe la materia inscrita");
-        } else {
-            materiaInscritaLogic.borrarMateriaInscrita(id);
+    public void borrarMateria(@PathParam("id")long id){
+        MateriaInscritaEntity materia = materiaLogic.ObtenerMateriaInscrita(id);
+        if(materia == null){
+            throw new RuntimeException("No existe una materia inscrita");
         }
-    }    
+        else{
+            materiaLogic.borrarMateriaInscrita(id);
+        }
+}
 }

@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.konrad.controlcalificaciones.resource;
 
 import edu.konrad.controlcalificaciones.dto.GrupoDto;
-import edu.konrad.controlcalificaciones.entities.GrupoEntity;
 import edu.konrad.controlcalificaciones.logic.GrupoLogic;
 import java.util.List;
 import javax.ejb.EJB;
@@ -21,6 +16,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
+ *Clase encargada de almacenar las caracteristicas de los servicios rest para un grupo
  * @author Dayan Olaya y Roberto Garcia
  */
 @Produces(MediaType.APPLICATION_JSON)
@@ -31,44 +27,58 @@ public class GrupoResource {
     @EJB
     private GrupoLogic grupoLogic;
     
+    /*
+    Obtener todos los grupos
+    */
     @GET
-    public List<GrupoDto> getGrupoList() {
-        List<GrupoEntity> grupo = grupoLogic.ObtenerGrupo();
-        return GrupoDto.toGrupoList(grupo);
+    public List<GrupoDto> obtenerGrupos(){
+        return GrupoDto.toGrupoDtoList(grupoLogic.ObtenerGrupo());
     }
     
+    /*
+    Obtener grupo por id
+    */
     @GET
     @Path("{id: \\d+}")
-    public GrupoDto getGrupo(@PathParam("id") long id) {
-        GrupoEntity grupo = grupoLogic.ObtenerGrupo(id);
-        return new GrupoDto(grupo);
+    public GrupoDto obtenerGrupo(@PathParam("id")long id){
+        return new GrupoDto(grupoLogic.ObtenerGrupo(id));
     }
     
+    /*
+    crear grupo
+    */
     @POST
-    public GrupoDto crearGrupo(GrupoDto grupoNuevo) {
-        return new GrupoDto(grupoLogic.crearGrupo(grupoNuevo.toEntity()));
+    public GrupoDto crearGrupo(GrupoDto grupoNuevo){
+        grupoLogic.crearGrupo(grupoNuevo.toEntity());
+        return grupoNuevo;
     }
     
+    /*
+    Actualizar un grupo
+    */
     @PUT
     @Path("{id: \\d+}")
-    public GrupoDto updateGrupo(@PathParam("id") long id, GrupoDto grupoDto) {
-        GrupoEntity grupoEntity = grupoLogic.ObtenerGrupo(id);
-        if (grupoEntity == null) {
+    public GrupoDto actualizarGrupo(@PathParam("id")long id, GrupoDto grupoDto){
+        if(grupoLogic.ObtenerGrupo(id) == null){
             throw new RuntimeException("No existe el grupo");
-        } else {
+        }
+        else{
             grupoLogic.actualizarGrupo(id, grupoDto.toEntity());
         }
         return grupoDto;
     }
     
+    /*
+    Borrar un grupo
+    */
     @DELETE
     @Path("{id: \\d+}")
-    public void delete(@PathParam("id") long id) {
-        GrupoEntity grupoEntity = grupoLogic.ObtenerGrupo(id);
-        if (grupoEntity == null) {
+    public void borrarGrupo(@PathParam("id")long id){
+        if(grupoLogic.ObtenerGrupo(id) == null){
             throw new RuntimeException("No existe el grupo");
-        } else {
+        }
+        else{
             grupoLogic.borrarGrupo(id);
         }
-    }    
+    }
 }

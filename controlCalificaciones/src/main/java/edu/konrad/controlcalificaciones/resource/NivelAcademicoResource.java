@@ -21,7 +21,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
- * @author Dayan Olaya y Roberto Garcia
+ *clase que contiene las carateristicas de los servicios rest para un nivel 
+ * academico
+ * @author Dayan olaya y Roberto Garcia
  */
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -29,46 +31,61 @@ import javax.ws.rs.core.MediaType;
 public class NivelAcademicoResource {
     
     @EJB
-    private NivelAcademicoLogic nivelAcademicoLogic;
+    private NivelAcademicoLogic nivelLogic;
     
+    /*
+    Obtener todos los nivel academicos
+    */
     @GET
-    public List<NivelAcademicoDto> getNivelAcademicoList() {
-        List<NivelAcademicoEntity> nivelAcademico = nivelAcademicoLogic.ObtenerNivelAcademico();
-        return NivelAcademicoDto.toNivelAcademicoList(nivelAcademico);
+    public List<NivelAcademicoDto> obtenerNiveles(){
+       return NivelAcademicoDto.toNivelAcademicoDtoList(nivelLogic.ObtenerNivelAcademico());
     }
-    
+    /*
+    Obtener nivl acdemico por id
+    */
     @GET
     @Path("{id: \\d+}")
-    public NivelAcademicoDto getNivelAcademico(@PathParam("id") long id) {
-        NivelAcademicoEntity nivelAcademico = nivelAcademicoLogic.ObtenerNivelAcademico(id);
-        return new NivelAcademicoDto(nivelAcademico);
+    public NivelAcademicoDto obtenerNivel(@PathParam("id")long id){
+        return new NivelAcademicoDto(nivelLogic.ObtenerNivelAcademico(id));
     }
     
+    /*
+    crear un nivel academico
+    */
     @POST
-    public NivelAcademicoDto crearNivelAcademico(NivelAcademicoDto nivelAcademicoNuevo) {
-        return new NivelAcademicoDto(nivelAcademicoLogic.crearNivelAcademico(nivelAcademicoNuevo.toEntity()));
+    public NivelAcademicoDto crearNivel(NivelAcademicoDto nivelNuevo){
+        nivelLogic.crearNivelAcademico(nivelNuevo.toEntity());
+        return nivelNuevo;
     }
     
+    /*
+    Actualizar nivel academico
+    */
     @PUT
     @Path("{id: \\d+}")
-    public NivelAcademicoDto updateNivelAcademico(@PathParam("id") long id, NivelAcademicoDto nivelAcademicoDto) {
-        NivelAcademicoEntity nivelAcademicoEntity = nivelAcademicoLogic.ObtenerNivelAcademico(id);
-        if (nivelAcademicoEntity == null) {
+    public NivelAcademicoDto actualizarNivel(@PathParam("id")long id, NivelAcademicoDto nivelNuevo){
+        NivelAcademicoEntity nivel = nivelLogic.ObtenerNivelAcademico(id);
+        if(nivel == null){
             throw new RuntimeException("No existe el nivel academico");
-        } else {
-            nivelAcademicoLogic.actualizarNivelAcademico(id, nivelAcademicoDto.toEntity());
         }
-        return nivelAcademicoDto;
+        else{
+            nivelLogic.actualizarNivelAcademico(id, nivelNuevo.toEntity());
+        }
+        return nivelNuevo;
     }
-    
+    /*
+    borrar nivel 
+    */
     @DELETE
     @Path("{id: \\d+}")
-    public void delete(@PathParam("id") long id) {
-        NivelAcademicoEntity nivelAcademicoEntity = nivelAcademicoLogic.ObtenerNivelAcademico(id);
-        if (nivelAcademicoEntity == null) {
+    public void borrarNivel(@PathParam("id")long id){
+          NivelAcademicoEntity nivel = nivelLogic.ObtenerNivelAcademico(id);
+        if(nivel == null){
             throw new RuntimeException("No existe el nivel academico");
-        } else {
-            nivelAcademicoLogic.borrarNivelAcademico(id);
         }
-    }   
+        else{
+            nivelLogic.borrarNivelAcademico(id);
+        }
+    }
+            
 }

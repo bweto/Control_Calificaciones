@@ -1,26 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.konrad.controlcalificaciones.resource;
 
 import edu.konrad.controlcalificaciones.dto.FacultadDto;
-import edu.konrad.controlcalificaciones.entities.FacultadEntity;
 import edu.konrad.controlcalificaciones.logic.FacultadLogic;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.websocket.server.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
+ *Clase que se encarga de almacenar el comportamiento de los servicios rest de 
+ * una facultad
  * @author Dayan Olaya y Roberto Garcia
  */
 @Produces(MediaType.APPLICATION_JSON)
@@ -31,44 +28,59 @@ public class FacultadResource {
     @EJB
     private FacultadLogic facultadLogic;
     
+    /*
+    Obtener todas las facultades
+    */
     @GET
-    public List<FacultadDto> getEFacultadList() {
-        List<FacultadEntity> facultad = facultadLogic.ObtenerFacultad();
-        return FacultadDto.toFacultadList(facultad);
+    public List<FacultadDto> obtenerFacultad(){
+        return FacultadDto.toFacultadDtoList(facultadLogic.ObtenerFacultad());
     }
     
+    /*
+    Obtener facultad por id
+    */
     @GET
     @Path("{id: \\d+}")
-    public FacultadDto getFacultad(@PathParam("id") long id) {
-        FacultadEntity facultad = facultadLogic.ObtenerFacultad(id);
-        return new FacultadDto(facultad);
+    public FacultadDto obtenerFacultad(@PathParam("id")long id){
+        return new FacultadDto(facultadLogic.ObtenerFacultad(id));
     }
     
+    /*
+    crear una facultad
+    */
     @POST
-    public FacultadDto crearFacultad(FacultadDto facultadNuevo) {
-        return new FacultadDto(facultadLogic.crearFacultad(facultadNuevo.toEntity()));
+    public FacultadDto crearFacultad(FacultadDto facultadNueva){
+        facultadLogic.crearFacultad(facultadNueva.toEntity());
+        return facultadNueva;
     }
     
+    /*
+    Actualizar una facultad
+    */
     @PUT
     @Path("{id: \\d+}")
-    public FacultadDto updateFacultad(@PathParam("id") long id, FacultadDto facultadDto) {
-        FacultadEntity facultadEntity = facultadLogic.ObtenerFacultad(id);
-        if (facultadEntity == null) {
+    public FacultadDto actualizarFacultad(@PathParam("id")long id, FacultadDto facultadNueva){
+        if(facultadLogic.ObtenerFacultad(id) == null){
             throw new RuntimeException("No existe la facultad");
-        } else {
-            facultadLogic.actualizarFacultad(id, facultadDto.toEntity());
         }
-        return facultadDto;
+        else{
+            facultadLogic.actualizarFacultad(id, facultadNueva.toEntity());
+        }
+        return facultadNueva;
     }
     
+    /*
+    Borrar una facultad
+    */
     @DELETE
     @Path("{id: \\d+}")
-    public void delete(@PathParam("id") long id) {
-        FacultadEntity facultadEntity = facultadLogic.ObtenerFacultad(id);
-        if (facultadEntity == null) {
+    public void borrarFacultad(@PathParam("id")long id){
+        if(facultadLogic.ObtenerFacultad(id) == null){
             throw new RuntimeException("No existe la facultad");
-        } else {
+        }
+        else{
             facultadLogic.borrarFacultad(id);
         }
-    }    
+    }
+    
 }

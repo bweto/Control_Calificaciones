@@ -1,19 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.konrad.controlcalificaciones.resource;
 
 import edu.konrad.controlcalificaciones.dto.EstudianteDto;
-import edu.konrad.controlcalificaciones.entities.EstudianteEntity;
 import edu.konrad.controlcalificaciones.logic.EstudianteLogic;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import static javax.ws.rs.HttpMethod.PUT;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -22,54 +16,68 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
+ *Clase encargada de almacenar las caracteristicas de los servicios rest para un estudiante
  * @author Dayan Olaya y Roberto Garcia
  */
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@Path("/estudiante")
+@Path("/estudiante") 
 public class EstudianteResource {
-    
-    @EJB
+   @EJB
     private EstudianteLogic estudianteLogic;
     
+    /*
+    Obtener todos los estudiantes
+    */
     @GET
-    public List<EstudianteDto> getEstudianteList() {
-        List<EstudianteEntity> estudiante = estudianteLogic.ObtenerEstudiante();
-        return EstudianteDto.toEstudianteList(estudiante);
+    public List<EstudianteDto> obtenerEstudiante(){
+        return EstudianteDto.toEstudianteDtoList(estudianteLogic.ObtenerEstudiante());
     }
     
+    /*
+    Obtener estudiante por id
+    */
     @GET
     @Path("{id: \\d+}")
-    public EstudianteDto getEstudiante(@PathParam("id") long id) {
-        EstudianteEntity estudiante = estudianteLogic.ObtenerEstudiante(id);
-        return new EstudianteDto(estudiante);
+    public EstudianteDto obtenerEstudiante(@PathParam("id")long id){
+        return new EstudianteDto(estudianteLogic.ObtenerEstudiante(id));
     }
     
+    /*
+    crear estudiante
+    */
     @POST
-    public EstudianteDto crearEstudiante(EstudianteDto estudianteNuevo) {
-        return new EstudianteDto(estudianteLogic.crearEstudiante(estudianteNuevo.toEntity()));
+    public EstudianteDto crearEstudiante(EstudianteDto estudianteNuevo){
+        estudianteLogic.crearEstudiante(estudianteNuevo.toEntity());
+        return estudianteNuevo;
     }
     
+    /*
+    Actualizar un estudiante
+    */
     @PUT
     @Path("{id: \\d+}")
-    public EstudianteDto updateEstudiante(@PathParam("id") long id, EstudianteDto estudianteDto) {
-        EstudianteEntity estudianteEntity = estudianteLogic.ObtenerEstudiante(id);
-        if (estudianteEntity == null) {
+    public EstudianteDto actualizarEstudiante(@PathParam("id")long id, EstudianteDto estudianteDto){
+        if(estudianteLogic.ObtenerEstudiante(id) == null){
             throw new RuntimeException("No existe el estudiante");
-        } else {
+        }
+        else{
             estudianteLogic.actualizarEstudiante(id, estudianteDto.toEntity());
         }
         return estudianteDto;
     }
     
+    /*
+    Borrar un estudiante
+    */
     @DELETE
     @Path("{id: \\d+}")
-    public void delete(@PathParam("id") long id) {
-        EstudianteEntity estudianteEntity = estudianteLogic.ObtenerEstudiante(id);
-        if (estudianteEntity == null) {
+    public void borrarEstudiante(@PathParam("id")long id){
+        if(estudianteLogic.ObtenerEstudiante(id) == null){
             throw new RuntimeException("No existe el estudiante");
-        } else {
+        }
+        else{
             estudianteLogic.borrarEstudiante(id);
         }
-    } 
+    }
 }

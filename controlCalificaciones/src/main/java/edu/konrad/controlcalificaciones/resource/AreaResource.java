@@ -47,8 +47,8 @@ public class AreaResource {
     */
     @POST
     public AreaDto crearArea(AreaDto areaNueva){
-        areaLogic.crearArea(areaLogic.crearArea(areaNueva.toEntity()));
-        return areaNueva;
+      return new areaDto.crearArea(areaLogic.crearArea(areaNueva.toEntity()));
+         
     }
     
     /*}

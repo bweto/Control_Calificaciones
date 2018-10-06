@@ -52,8 +52,8 @@ public class MateriaInscritaResource {
     */
     @POST
     public MateriaInscritaDto crearMateria(MateriaInscritaDto nuevaMateria){
-        materiaLogic.crearMateriaInscrita(nuevaMateria.toEntity());
-        return nuevaMateria;
+        return new MateriaDto.crearMateriaInscrita(nuevaMateria.toEntity());
+        
     }
     /*
     Actualizar Materia

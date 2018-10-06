@@ -48,7 +48,7 @@ public class CursoResource {
     */
     @POST
     public CursoDto crearCurso(CursoDto cursoNuevo){
-        return CursoDto.crearCurso(cursoNuevo.toEntity());
+        return new CursoDto.crearCurso(cursoNuevo.toEntity());
        
     }
     /*

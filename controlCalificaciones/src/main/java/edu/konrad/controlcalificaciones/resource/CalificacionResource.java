@@ -49,8 +49,8 @@ public class CalificacionResource {
     */
     @POST
     public CalificacionDto crearCalificacion(CalificacionDto calificacionNueva){
-        calificacionLogic.crearCalificacion(calificacionNueva.toEntity());
-        return calificacionNueva;
+        return new calificacionDto.crearCalificacion(calificacionNueva.toEntity());
+         
     }
     
     /*

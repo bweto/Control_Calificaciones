@@ -12,9 +12,6 @@ import java.util.List;
  */
 public class TipoCursoDto {
 
-    public static List<TipoCursoDto> toTipoCursoList(List<TipoCursoEntity> tipoCurso) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     /*
     *id tipo de curso 

@@ -9,10 +9,6 @@ import java.util.List;
  * @author Dayan olaya y Roberto Garcia
  */
 public class FacultadDto {
-
-    public static List<FacultadDto> toFacultadList(List<FacultadEntity> facultad) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
      private long idFacultad;
      private String nombreFacultad;

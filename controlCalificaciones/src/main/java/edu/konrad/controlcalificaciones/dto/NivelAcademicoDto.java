@@ -11,9 +11,6 @@ import java.util.List;
  */
 public class NivelAcademicoDto {
 
-    public static List<NivelAcademicoDto> toNivelAcademicoList(List<NivelAcademicoEntity> nivelAcademico) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     /*
     id del nivel academico

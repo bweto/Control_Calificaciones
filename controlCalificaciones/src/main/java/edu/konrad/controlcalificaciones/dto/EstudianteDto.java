@@ -13,9 +13,7 @@ import java.util.List;
  */
 public class EstudianteDto {
 
-    public static List<EstudianteDto> toEstudianteList(List<EstudianteEntity> estudiante) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
     
      private long idEstudiante;
      private int codigoEstudiante;
@@ -72,7 +70,7 @@ public class EstudianteDto {
      Metodo para crear una lista de objetos relacionaleas apartir de una lista
      de objetos EstudianteEntity
     */
-    public List<EstudianteDto> toEstudianteDtoList(List<EstudianteEntity> estudianteList){
+    public static List<EstudianteDto> toEstudianteDtoList(List<EstudianteEntity> estudianteList){
         List<EstudianteDto> estudianteDtoList = new ArrayList<>();
         for(EstudianteEntity entity : estudianteList){
             estudianteDtoList.add(new EstudianteDto(entity));

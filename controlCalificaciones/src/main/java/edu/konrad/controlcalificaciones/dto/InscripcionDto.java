@@ -13,10 +13,6 @@ import java.util.List;
  */
 public class InscripcionDto {
 
-    public static List<InscripcionDto> toInscripcionList(List<InscripcionEntity> inscripcion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     private long idInscripcion;
      
     private CursoDto curso;

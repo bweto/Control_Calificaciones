@@ -13,9 +13,6 @@ import java.util.List;
  */
 public class UsuarioDto {
 
-    public static List<UsuarioDto> toUsuarioList(List<UsuarioEntity> usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
    
     /*
     *id de un usuario

@@ -55,7 +55,7 @@ public class ProfesorResource {
     */
     @POST
     public ProfesorDto crearProfesor(ProfesorDto profesorNuevo){
-       return new ProfesorDto.crearProfesor(profesorNuevo.toEntity());
+       return new ProfesorDto(profesorNuevo.toEntity());
         
     }
     /*

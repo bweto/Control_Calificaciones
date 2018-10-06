@@ -48,7 +48,7 @@ public class EstudianteResource {
     */
     @POST
     public EstudianteDto crearEstudiante(EstudianteDto estudianteNuevo){
-        return new EstudianteDto.crearEstudiante(estudianteNuevo.toEntity());
+        return new EstudianteDto(estudianteNuevo.toEntity());
         
     }
     

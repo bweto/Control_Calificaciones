@@ -49,7 +49,7 @@ public class EstadoResource {
     */
     @POST
     public EstadoDto crearEstado(EstadoDto estadoNuevo){
-       return  new EstadoDto.crearEstado(estadoNuevo.toEntity());
+       return  new EstadoDto(estadoNuevo.toEntity());
         
     }
     

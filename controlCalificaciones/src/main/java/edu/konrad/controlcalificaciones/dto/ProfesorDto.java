@@ -53,6 +53,7 @@ public class ProfesorDto {
             entity.setNombreUsuario(profesor.getUsuario().getNombreUsuario());
             entity.setRol(profesor.getUsuario().getRol());
             entity.setTipoId(profesor.getUsuario().getTipoId());
+            entity.setPass(profesor.getUsuario().getPass());
             this.usuario = new UsuarioDto(entity);
         }
         if(profesor.getArea()!= null){

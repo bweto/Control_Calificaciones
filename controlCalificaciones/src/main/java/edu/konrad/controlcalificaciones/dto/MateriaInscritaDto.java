@@ -23,11 +23,11 @@ public class MateriaInscritaDto {
     /*
      id de inscripcion
     */
-    private InscripcionDto inscripcion;
-    /*
-    id de estado
-    */
-    private EstadoDto estado;
+//    private InscripcionDto inscripcion;
+//    /*
+//    id de estado
+//    */
+//    private EstadoDto estado;
     /*
      id de calificacion
     */
@@ -46,19 +46,19 @@ public class MateriaInscritaDto {
     */
     public MateriaInscritaDto(MateriaInscritaEntity materia) {
         this.idMateria = materia.getIdMateria();
-        if(materia.getInscripcion() != null){
-            InscripcionEntity entity = new InscripcionEntity();
-            entity.setCurso(materia.getInscripcion().getCurso());
-            entity.setEstudiante(materia.getInscripcion().getEstudiante());
-            entity.setIdInscripcion(materia.getInscripcion().getIdInscripcion());
-            this.inscripcion = new InscripcionDto(entity);
-        }
-        if(materia.getEstado() != null){
-         EstadoEntity entity = new EstadoEntity();
-         entity.setIdEstado(materia.getEstado().getIdEstado());
-         entity.setNombreEstado(materia.getEstado().getNombreEstado());
-         this.estado = new EstadoDto(entity);
-        }
+//        if(materia.getInscripcion() != null){
+//            InscripcionEntity entity = new InscripcionEntity();
+//            entity.setCurso(materia.getInscripcion().getCurso());
+//            entity.setEstudiante(materia.getInscripcion().getEstudiante());
+//            entity.setIdInscripcion(materia.getInscripcion().getIdInscripcion());
+//            this.inscripcion = new InscripcionDto(entity);
+//        }
+//        if(materia.getEstado() != null){
+//         EstadoEntity entity = new EstadoEntity();
+//         entity.setIdEstado(materia.getEstado().getIdEstado());
+//         entity.setNombreEstado(materia.getEstado().getNombreEstado());
+//         this.estado = new EstadoDto(entity);
+//        }
         if(materia.getCalificacion() != null){
             CalificacionEntity entity = new CalificacionEntity();
             entity.setIdCalificacion(materia.getCalificacion().getIdCalificacion());
@@ -77,8 +77,8 @@ public class MateriaInscritaDto {
     public MateriaInscritaEntity toEntity(){
         MateriaInscritaEntity entity = new MateriaInscritaEntity();
         entity.setIdMateria(this.idMateria);
-        entity.setInscripcion(this.inscripcion.toEntity());
-        entity.setEstado(this.estado.toEntity());
+//        entity.setInscripcion(this.inscripcion.toEntity());
+//        entity.setEstado(this.estado.toEntity());
         entity.setCalificacion(this.calificacion.toEntity());
         return entity;
     }
@@ -107,21 +107,21 @@ public class MateriaInscritaDto {
         this.idMateria = idMateria;
     }
 
-    public InscripcionDto getInscripcion() {
-        return inscripcion;
-    }
-
-    public void setInscripcion(InscripcionDto inscripcion) {
-        this.inscripcion = inscripcion;
-    }
-
-    public EstadoDto getEstado() {
-        return estado;
-    }
-
-    public void setEstado(EstadoDto estado) {
-        this.estado = estado;
-    }
+//    public InscripcionDto getInscripcion() {
+//        return inscripcion;
+//    }
+//
+//    public void setInscripcion(InscripcionDto inscripcion) {
+//        this.inscripcion = inscripcion;
+//    }
+//
+//    public EstadoDto getEstado() {
+//        return estado;
+//    }
+//
+//    public void setEstado(EstadoDto estado) {
+//        this.estado = estado;
+//    }
 
     public CalificacionDto getCalificacion() {
         return calificacion;

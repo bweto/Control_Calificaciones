@@ -43,6 +43,7 @@ public class EstudianteDto {
             entity.setNombreUsuario(estudiante.getUsuario().getNombreUsuario());
             entity.setRol(estudiante.getUsuario().getRol());
             entity.setTipoId(estudiante.getUsuario().getTipoId());
+            entity.setPass(estudiante.getUsuario().getPass());
             this.usuario = new UsuarioDto(entity);
         }
         if(estudiante.getPrograma() != null){
@@ -117,10 +118,5 @@ public class EstudianteDto {
     public void setPrograma(ProgramaDto programa) {
         this.programa = programa;
     }
-
-    
-    
-    
-     
-     
+   
 }

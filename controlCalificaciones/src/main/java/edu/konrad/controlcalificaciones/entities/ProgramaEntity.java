@@ -34,6 +34,14 @@ public class ProgramaEntity implements Serializable{
     @ManyToOne
     @JoinColumn(name ="Facultad")
     private FacultadEntity facultad;
+    
+    @ManyToOne
+    @JoinColumn(name ="tipo_curso")
+    private TipoCursoEntity tipoCurso;
+    
+    @ManyToOne
+    @JoinColumn(name ="nivel_academico")
+    private NivelAcademicoEntity nivelAcademico;
     /*
     Constructor de la clase
     */
@@ -69,4 +77,19 @@ public class ProgramaEntity implements Serializable{
         this.facultad = facultad;
     }
     
+    public TipoCursoEntity getTipoCurso() {
+        return tipoCurso;
+    }
+
+    public void setTipoCurso(TipoCursoEntity tipoCurso) {
+        this.tipoCurso = tipoCurso;
+    }
+
+    public NivelAcademicoEntity getNivelAcademico() {
+        return nivelAcademico;
+    }
+
+    public void setNivelAcademico(NivelAcademicoEntity nivelAcademico) {
+        this.nivelAcademico = nivelAcademico;
+    }
 }

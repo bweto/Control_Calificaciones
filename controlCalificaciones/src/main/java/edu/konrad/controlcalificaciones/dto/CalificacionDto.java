@@ -2,6 +2,8 @@
 package edu.konrad.controlcalificaciones.dto;
 
 import edu.konrad.controlcalificaciones.entities.CalificacionEntity;
+import edu.konrad.controlcalificaciones.entities.EstadoEntity;
+import edu.konrad.controlcalificaciones.entities.InscripcionEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,16 +22,24 @@ public class CalificacionDto {
     /*
     Nota del primer corte
     */
-    private int primerCorte;
+    private float primerCorte;
     /*
     Nota del segundo corte
     */
-    private int segundoCorte;
+    private float segundoCorte;
     /*
     Nota del tercer corte
     */
-    private int tercerCorte;
+    private float tercerCorte;
     
+    /*
+     id de inscripcion
+    */
+    private InscripcionDto inscripcion;
+    /*
+    id de estado
+    */
+    private EstadoDto estado;
     /*
     Constructor basico de la clase 
     */
@@ -44,6 +54,19 @@ public class CalificacionDto {
         this.primerCorte = calificacion.getPrimerCorte();
         this.segundoCorte = calificacion.getSegundoCorte();
         this.tercerCorte = calificacion.getTercerCorte();
+        if(calificacion.getInscripcion() != null){
+            InscripcionEntity entity = new InscripcionEntity();
+            entity.setCurso(calificacion.getInscripcion().getCurso());
+            entity.setEstudiante(calificacion.getInscripcion().getEstudiante());
+            entity.setIdInscripcion(calificacion.getInscripcion().getIdInscripcion());
+            this.inscripcion = new InscripcionDto(entity);
+        }
+        if(calificacion.getEstado() != null){
+         EstadoEntity entity = new EstadoEntity();
+         entity.setIdEstado(calificacion.getEstado().getIdEstado());
+         entity.setNombreEstado(calificacion.getEstado().getNombreEstado());
+         this.estado = new EstadoDto(entity);
+        }
     }
     
     /*
@@ -56,6 +79,8 @@ public class CalificacionDto {
         entity.setPrimerCorte(this.primerCorte);
         entity.setSegundoCorte(this.segundoCorte);
         entity.setTercerCorte(this.tercerCorte);
+        entity.setInscripcion(this.inscripcion.toEntity());
+        entity.setEstado(this.estado.toEntity());
         return entity;
     }
     
@@ -79,7 +104,7 @@ public class CalificacionDto {
         this.idCalificacion = idCalificacion;
     }
 
-    public int getPrimerCorte() {
+    public float getPrimerCorte() {
         return primerCorte;
     }
 
@@ -87,7 +112,7 @@ public class CalificacionDto {
         this.primerCorte = primerCorte;
     }
 
-    public int getSegundoCorte() {
+    public float getSegundoCorte() {
         return segundoCorte;
     }
 
@@ -95,12 +120,28 @@ public class CalificacionDto {
         this.segundoCorte = segundoCorte;
     }
 
-    public int getTercerCorte() {
+    public float getTercerCorte() {
         return tercerCorte;
     }
 
     public void setTercerCorte(int tercerCorte) {
         this.tercerCorte = tercerCorte;
+    }
+
+    public InscripcionDto getInscripcion() {
+        return inscripcion;
+    }
+
+    public void setInscripcion(InscripcionDto inscripcion) {
+        this.inscripcion = inscripcion;
+    }
+
+    public EstadoDto getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoDto estado) {
+        this.estado = estado;
     }
     
     

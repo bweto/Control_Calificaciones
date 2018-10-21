@@ -29,9 +29,9 @@ public class TipoCursoEntity implements Serializable{
     @Column(name = "nombre_tipo_curso", nullable = false)
     private String nombreTipoCurso;
     
-    @ManyToOne
-    @JoinColumn(name ="programa")
-    private ProgramaEntity programa;
+//    @ManyToOne
+//    @JoinColumn(name ="programa")
+//    private ProgramaEntity programa;
     /*
     Constructor de la clase
     */
@@ -58,13 +58,13 @@ public class TipoCursoEntity implements Serializable{
         this.nombreTipoCurso = nombreTipoCurso;
     }
 
-    public ProgramaEntity getPrograma() {
-        return programa;
-    }
-
-    public void setPrograma(ProgramaEntity programa) {
-        this.programa = programa;
-    }
+//    public ProgramaEntity getPrograma() {
+//        return programa;
+//    }
+//
+//    public void setPrograma(ProgramaEntity programa) {
+//        this.programa = programa;
+//    }
 
     
     

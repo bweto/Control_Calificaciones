@@ -34,10 +34,10 @@ public class InscripcionDto {
            CursoEntity entity = new CursoEntity();
            entity.setGrupo(inscripcion.getCurso().getGrupo());
            entity.setIdCurso(inscripcion.getCurso().getIdCurso());
-           entity.setNivelAcademico(inscripcion.getCurso().getNivelAcademico());
+//           entity.setNivelAcademico(inscripcion.getCurso().getNivelAcademico());
            entity.setNombreCurso(inscripcion.getCurso().getNombreCurso());
-           entity.setProfesor(inscripcion.getCurso().getProfesor());
-           entity.setTipoCurso(inscripcion.getCurso().getTipoCurso());
+//           entity.setProfesor(inscripcion.getCurso().getProfesor());
+//           entity.setTipoCurso(inscripcion.getCurso().getTipoCurso());
            this.curso = new CursoDto(entity);
        } 
        

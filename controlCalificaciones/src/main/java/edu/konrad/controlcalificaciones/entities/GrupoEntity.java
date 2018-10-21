@@ -6,13 +6,15 @@
 package edu.konrad.controlcalificaciones.entities;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+
 
 /**
  *Clase donde se almacena la información del grupo al que pertenece un curso.
@@ -27,6 +29,14 @@ public class GrupoEntity implements Serializable{
     private String horario;
     @Column(name = "cupo", nullable = false)
     private int cupo;
+    
+    @ManyToOne
+    @JoinColumn(name="profesor")
+    private ProfesorEntity profesor;
+    
+//    @ManyToOne
+//    @JoinColumn(name="curso")
+//    private CursoEntity curso;
     /*
     *
     */
@@ -67,6 +77,23 @@ public class GrupoEntity implements Serializable{
     public void setCupo(int cupo) {
         this.cupo = cupo;
     }
+
+    public ProfesorEntity getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(ProfesorEntity profesor) {
+        this.profesor = profesor;
+    }
+
+//    public CursoEntity getCurso() {
+//        return curso;
+//    }
+//
+//    public void setCurso(CursoEntity curso) {
+//        this.curso = curso;
+//    }
+    
     
     
 }

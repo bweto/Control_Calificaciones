@@ -21,10 +21,10 @@ public class CursoDto {
     
     private long idCurso;
     private String nombreCurso;
-    private ProfesorDto profesor;
+//    private ProfesorDto profesor;
     private GrupoDto grupo;
-    private TipoCursoDto tipoCurso;
-    private NivelAcademicoDto nivelAcademico;
+//    private TipoCursoDto tipoCurso;
+//    private NivelAcademicoDto nivelAcademico;
     
     /*
     *Constructor basico
@@ -38,35 +38,36 @@ public class CursoDto {
     public CursoDto(CursoEntity curso) {
         this.idCurso = curso.getIdCurso();
         this.nombreCurso = curso.getNombreCurso();
-        if(curso.getProfesor() != null){
-            ProfesorEntity entity = new ProfesorEntity();
-            entity.setArea(curso.getProfesor().getArea());
-            entity.setCantidadCursos(curso.getProfesor().getCantidadCursos());
-            entity.setIdProfesor(curso.getProfesor().getIdProfesor());
-            entity.setUsuario(curso.getProfesor().getUsuario());
-            this.profesor = new ProfesorDto(entity);
-        }
+//        if(curso.getProfesor() != null){
+//            ProfesorEntity entity = new ProfesorEntity();
+//            //entity.setArea(curso.getProfesor().getArea());
+//            entity.setCantidadCursos(curso.getProfesor().getCantidadCursos());
+//            entity.setIdProfesor(curso.getProfesor().getIdProfesor());
+//            entity.setUsuario(curso.getProfesor().getUsuario());
+//            this.profesor = new ProfesorDto(entity);
+//        }
         if(curso.getGrupo() != null){
             GrupoEntity entity = new GrupoEntity();
             entity.setCupo(curso.getGrupo().getCupo());
             entity.setHorario(curso.getGrupo().getHorario());
             entity.setIdGrupo(curso.getGrupo().getIdGrupo());
+            entity.setProfesor(curso.getGrupo().getProfesor());
             this.grupo = new GrupoDto(entity);
         }
-        if(curso.getNivelAcademico() != null){
-            NivelAcademicoEntity entity = new NivelAcademicoEntity();
-            entity.setCursos(curso.getNivelAcademico().getCursos());
-            entity.setIdNivelAcademico(curso.getNivelAcademico().getIdNivelAcademico());
-            entity.setNombreNivelAcademico(curso.getNivelAcademico().getNombreNivelAcademico());
-            this.nivelAcademico = new NivelAcademicoDto(entity);
-        }
-        if(curso.getTipoCurso() != null){
-            TipoCursoEntity entity = new TipoCursoEntity();
-            entity.setIdTipoCurso(curso.getTipoCurso().getIdTipoCurso());
-            entity.setNombreTipoCurso(curso.getTipoCurso().getNombreTipoCurso());
-            entity.setPrograma(curso.getTipoCurso().getPrograma());
-            this.tipoCurso = new TipoCursoDto(entity);
-        }
+//        if(curso.getNivelAcademico() != null){
+//            NivelAcademicoEntity entity = new NivelAcademicoEntity();
+//            entity.setCursos(curso.getNivelAcademico().getCursos());
+//            entity.setIdNivelAcademico(curso.getNivelAcademico().getIdNivelAcademico());
+//            entity.setNombreNivelAcademico(curso.getNivelAcademico().getNombreNivelAcademico());
+//            this.nivelAcademico = new NivelAcademicoDto(entity);
+//        }
+//        if(curso.getTipoCurso() != null){
+//            TipoCursoEntity entity = new TipoCursoEntity();
+//            entity.setIdTipoCurso(curso.getTipoCurso().getIdTipoCurso());
+//            entity.setNombreTipoCurso(curso.getTipoCurso().getNombreTipoCurso());
+//            entity.setPrograma(curso.getTipoCurso().getPrograma());
+//            this.tipoCurso = new TipoCursoDto(entity);
+//        }
        
     }
     
@@ -76,11 +77,11 @@ public class CursoDto {
      public CursoEntity toEntity(){
         CursoEntity entity = new CursoEntity();
         entity.setIdCurso(this.idCurso);
-        entity.setNivelAcademico(this.nivelAcademico.toEntity());
+//        entity.setNivelAcademico(this.nivelAcademico.toEntity());
         entity.setNombreCurso(this.nombreCurso);
-        entity.setProfesor(this.profesor.toEntity());
+//        entity.setProfesor(this.profesor.toEntity());
         entity.setGrupo(this.grupo.toEntity());
-        entity.setTipoCurso(this.tipoCurso.toEnntity());
+//        entity.setTipoCurso(this.tipoCurso.toEnntity());
         return entity;
     }
     
@@ -112,13 +113,13 @@ public class CursoDto {
         this.nombreCurso = nombreCurso;
     }
 
-    public ProfesorDto getProfesor() {
-        return profesor;
-    }
-
-    public void setProfesor(ProfesorDto profesor) {
-        this.profesor = profesor;
-    }
+//    public ProfesorDto getProfesor() {
+//        return profesor;
+//    }
+//
+//    public void setProfesor(ProfesorDto profesor) {
+//        this.profesor = profesor;
+//    }
 
     public GrupoDto getGrupo() {
         return grupo;
@@ -128,25 +129,20 @@ public class CursoDto {
         this.grupo = grupo;
     }
 
-    public TipoCursoDto getTipoCurso() {
-        return tipoCurso;
-    }
-
-    public void setTipoCurso(TipoCursoDto tipoCurso) {
-        this.tipoCurso = tipoCurso;
-    }
-
-    public NivelAcademicoDto getNivelAcademico() {
-        return nivelAcademico;
-    }
-
-    public void setNivelAcademico(NivelAcademicoDto nivelAcademico) {
-        this.nivelAcademico = nivelAcademico;
-    }
-
-   
-    
-    
-    
-    
+//    public TipoCursoDto getTipoCurso() {
+//        return tipoCurso;
+//    }
+//
+//    public void setTipoCurso(TipoCursoDto tipoCurso) {
+//        this.tipoCurso = tipoCurso;
+//    }
+//
+//    public NivelAcademicoDto getNivelAcademico() {
+//        return nivelAcademico;
+//    }
+//
+//    public void setNivelAcademico(NivelAcademicoDto nivelAcademico) {
+//        this.nivelAcademico = nivelAcademico;
+//    }
+ 
 }

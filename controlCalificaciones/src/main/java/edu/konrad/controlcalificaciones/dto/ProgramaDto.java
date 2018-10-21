@@ -1,7 +1,9 @@
 package edu.konrad.controlcalificaciones.dto;
 
 import edu.konrad.controlcalificaciones.entities.FacultadEntity;
+import edu.konrad.controlcalificaciones.entities.NivelAcademicoEntity;
 import edu.konrad.controlcalificaciones.entities.ProgramaEntity;
+import edu.konrad.controlcalificaciones.entities.TipoCursoEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +25,8 @@ public class ProgramaDto {
     *Nombre del programa
     */
     private String nombrePrograma;
-    
+    private TipoCursoDto tipoCurso;
+    private NivelAcademicoDto nivelAcademico;
     /*
     *Constructor basico
     */
@@ -44,6 +47,20 @@ public class ProgramaDto {
             entity.setNombreFacultad(programa.getFacultad().getNombreFacultad());
             this.Facultad = new FacultadDto(entity);
         }
+        if(programa.getNivelAcademico() != null){
+            NivelAcademicoEntity entity = new NivelAcademicoEntity();
+            entity.setCursos(programa.getNivelAcademico().getCursos());
+            entity.setIdNivelAcademico(programa.getNivelAcademico().getIdNivelAcademico());
+            entity.setNombreNivelAcademico(programa.getNivelAcademico().getNombreNivelAcademico());
+            this.nivelAcademico = new NivelAcademicoDto(entity);
+        }
+        if(programa.getTipoCurso() != null){
+            TipoCursoEntity entity = new TipoCursoEntity();
+            entity.setIdTipoCurso(programa.getTipoCurso().getIdTipoCurso());
+            entity.setNombreTipoCurso(programa.getTipoCurso().getNombreTipoCurso());
+//            entity.setPrograma(programa.getTipoCurso().getPrograma());
+            this.tipoCurso = new TipoCursoDto(entity);
+        }
     }
     
     /*
@@ -55,6 +72,8 @@ public class ProgramaDto {
         entity.setIdPrograma(this.idPrograma);
         entity.setFacultad(this.Facultad.toEntity());
         entity.setNombrePrograma(this.nombrePrograma);
+        entity.setNivelAcademico(this.nivelAcademico.toEntity());
+         entity.setTipoCurso(this.tipoCurso.toEnntity());
         return entity;
     }
     
@@ -100,4 +119,19 @@ public class ProgramaDto {
         this.Facultad = Facultad;
     }
     
+    public TipoCursoDto getTipoCurso() {
+        return tipoCurso;
+    }
+
+    public void setTipoCurso(TipoCursoDto tipoCurso) {
+        this.tipoCurso = tipoCurso;
+    }
+
+    public NivelAcademicoDto getNivelAcademico() {
+        return nivelAcademico;
+    }
+
+    public void setNivelAcademico(NivelAcademicoDto nivelAcademico) {
+        this.nivelAcademico = nivelAcademico;
+    }
 }

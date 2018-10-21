@@ -37,8 +37,6 @@ public class CoordinadorDto {
     *Constructor de Dto apartir de un coordinador entity
     */
     public CoordinadorDto(CoordinadorEntity coordinador) {
-        this.idCoordinador = usuario.getIdUsuario();
-        
         if(coordinador.getUsuario() != null){
             UsuarioEntity entity = new UsuarioEntity();
             entity.setIdUsuario(coordinador.getUsuario().getIdUsuario());
@@ -48,6 +46,7 @@ public class CoordinadorDto {
             entity.setNombreUsuario(coordinador.getUsuario().getNombreUsuario());
             entity.setRol(coordinador.getUsuario().getRol());
             entity.setTipoId(coordinador.getUsuario().getTipoId());
+            entity.setPass(coordinador.getUsuario().getPass());
             this.usuario = new UsuarioDto(entity);
         }
         if(coordinador.getPrograma() != null){
@@ -55,6 +54,8 @@ public class CoordinadorDto {
             entity.setFacultad(coordinador.getPrograma().getFacultad());
             entity.setNombrePrograma(coordinador.getPrograma().getNombrePrograma());
             entity.setIdPrograma(coordinador.getPrograma().getIdPrograma());
+            entity.setTipoCurso(coordinador.getPrograma().getTipoCurso());
+            entity.setNivelAcademico(coordinador.getPrograma().getNivelAcademico());
             this.programa = new ProgramaDto(entity);
         }
         
@@ -107,8 +108,5 @@ public class CoordinadorDto {
     public void setPrograma(ProgramaDto programa) {
         this.programa = programa;
     }
-
-    
-    
     
 }

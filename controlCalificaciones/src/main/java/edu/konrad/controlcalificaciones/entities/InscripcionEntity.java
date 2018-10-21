@@ -18,7 +18,7 @@ import javax.persistence.ManyToOne;
  *Clase donde se almacena la informacion de 
  * @author Dayan Olaya, Roberto Garcia 
  */
-@Entity(name = "isncripcion")
+@Entity(name = "inscripcion")
 public class InscripcionEntity implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

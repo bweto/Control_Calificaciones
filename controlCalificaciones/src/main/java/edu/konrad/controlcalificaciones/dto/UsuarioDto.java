@@ -48,6 +48,10 @@ public class UsuarioDto {
     private String email;
     
     /*
+    pass
+    */
+    private String pass;
+    /*
     *Constructor basico
     */
 
@@ -75,7 +79,7 @@ public class UsuarioDto {
         this.numeroId = usuario.getNumeroId();
         this.genero = usuario.getGenero();
         this.email = usuario.getEmail();
-        
+        this.pass = usuario.getPass();
         if(usuario.getTipoId() != null){
             TipoIdEntity entity = new TipoIdEntity();
             entity.setIdTipoId(usuario.getIdUsuario());
@@ -114,6 +118,7 @@ public class UsuarioDto {
         entity.setRol(this.Rol.toEntity());
         entity.setGenero(this.genero);
         entity.setEmail(this.email);
+        entity.setPass(this.pass);
         return entity;
     }
     
@@ -257,6 +262,14 @@ public class UsuarioDto {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
     }
     
     

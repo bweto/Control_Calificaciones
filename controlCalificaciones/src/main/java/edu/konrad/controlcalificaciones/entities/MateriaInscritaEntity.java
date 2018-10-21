@@ -1,13 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.konrad.controlcalificaciones.entities;
 
 import java.io.Serializable;
@@ -28,13 +19,13 @@ public class MateriaInscritaEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idMateria;
 
-    @ManyToOne
-    @JoinColumn(name ="inscripcion")
-    private InscripcionEntity inscripcion;
-    
-    @ManyToOne
-    @JoinColumn(name ="estado")
-    private EstadoEntity estado;
+//    @ManyToOne
+//    @JoinColumn(name ="inscripcion")
+//    private InscripcionEntity inscripcion;
+//    
+//    @ManyToOne
+//    @JoinColumn(name ="estado")
+//    private EstadoEntity estado;
     
     @ManyToOne
     @JoinColumn(name ="calificacion")
@@ -57,21 +48,21 @@ public class MateriaInscritaEntity implements Serializable {
         this.idMateria = idMateria;
     }
 
-    public InscripcionEntity getInscripcion() {
-        return inscripcion;
-    }
-
-    public void setInscripcion(InscripcionEntity inscripcion) {
-        this.inscripcion = inscripcion;
-    }
-
-    public EstadoEntity getEstado() {
-        return estado;
-    }
-
-    public void setEstado(EstadoEntity estado) {
-        this.estado = estado;
-    }
+//    public InscripcionEntity getInscripcion() {
+//        return inscripcion;
+//    }
+//
+//    public void setInscripcion(InscripcionEntity inscripcion) {
+//        this.inscripcion = inscripcion;
+//    }
+//
+//    public EstadoEntity getEstado() {
+//        return estado;
+//    }
+//
+//    public void setEstado(EstadoEntity estado) {
+//        this.estado = estado;
+//    }
 
     public CalificacionEntity getCalificacion() {
         return calificacion;

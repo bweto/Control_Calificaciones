@@ -27,21 +27,21 @@ public class CursoEntity implements Serializable{
     @Column(name = "nombre_curso", nullable = false)
     private String nombreCurso;
     
-    @ManyToOne
-    @JoinColumn(name ="profesor")
-    private ProfesorEntity profesor;
+//    @ManyToOne
+//    @JoinColumn(name ="profesor")
+//    private ProfesorEntity profesor;
     
     @ManyToOne
     @JoinColumn(name ="grupo")
     private GrupoEntity grupo;
     
-    @ManyToOne
-    @JoinColumn(name ="tipo_curso")
-    private TipoCursoEntity tipoCurso;
-    
-    @ManyToOne
-    @JoinColumn(name ="nivel_academico")
-    private NivelAcademicoEntity nivelAcademico;
+//    @ManyToOne
+//    @JoinColumn(name ="tipo_curso")
+//    private TipoCursoEntity tipoCurso;
+//    
+//    @ManyToOne
+//    @JoinColumn(name ="nivel_academico")
+//    private NivelAcademicoEntity nivelAcademico;
     /*
     Constructor de la clase
     */
@@ -69,13 +69,13 @@ public class CursoEntity implements Serializable{
         this.nombreCurso = nombreCurso;
     }
 
-    public ProfesorEntity getProfesor() {
-        return profesor;
-    }
-
-    public void setProfesor(ProfesorEntity profesor) {
-        this.profesor = profesor;
-    }
+//    public ProfesorEntity getProfesor() {
+//        return profesor;
+//    }
+//
+//    public void setProfesor(ProfesorEntity profesor) {
+//        this.profesor = profesor;
+//    }
 
     public GrupoEntity getGrupo() {
         return grupo;
@@ -85,21 +85,21 @@ public class CursoEntity implements Serializable{
         this.grupo = grupo;
     }
 
-    public TipoCursoEntity getTipoCurso() {
-        return tipoCurso;
-    }
-
-    public void setTipoCurso(TipoCursoEntity tipoCurso) {
-        this.tipoCurso = tipoCurso;
-    }
-
-    public NivelAcademicoEntity getNivelAcademico() {
-        return nivelAcademico;
-    }
-
-    public void setNivelAcademico(NivelAcademicoEntity nivelAcademico) {
-        this.nivelAcademico = nivelAcademico;
-    }
+//    public TipoCursoEntity getTipoCurso() {
+//        return tipoCurso;
+//    }
+//
+//    public void setTipoCurso(TipoCursoEntity tipoCurso) {
+//        this.tipoCurso = tipoCurso;
+//    }
+//
+//    public NivelAcademicoEntity getNivelAcademico() {
+//        return nivelAcademico;
+//    }
+//
+//    public void setNivelAcademico(NivelAcademicoEntity nivelAcademico) {
+//        this.nivelAcademico = nivelAcademico;
+//    }
     
     
 }

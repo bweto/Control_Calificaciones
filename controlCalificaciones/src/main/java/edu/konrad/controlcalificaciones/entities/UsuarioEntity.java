@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.konrad.controlcalificaciones.entities;
 
 import java.io.Serializable;
@@ -17,7 +13,8 @@ import javax.persistence.ManyToOne;
 
 
 /**
- *
+ *Clase Usuario 
+ * Representa la entidad de base de datos usuario
  * @author Dayan Olaya, Roberto Garcia
  */
 @Entity(name = "usuario")
@@ -35,6 +32,8 @@ public class UsuarioEntity implements Serializable {
     private String genero;
     @Column(name = "email", nullable = false)
     private String email;
+    @Column(name ="pass", nullable = false)
+    private String pass;
     
     /*
     *Relaciones uno a muchos de la tabla usuario con las tablas tipoId y rol.  
@@ -122,4 +121,13 @@ public class UsuarioEntity implements Serializable {
         this.rol = rol;
     }
 
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    
 }

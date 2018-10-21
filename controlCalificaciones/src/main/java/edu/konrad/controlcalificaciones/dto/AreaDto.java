@@ -2,7 +2,7 @@
 package edu.konrad.controlcalificaciones.dto;
 
 import edu.konrad.controlcalificaciones.entities.AreaEntity;
-import edu.konrad.controlcalificaciones.entities.MateriaInscritaEntity;
+//import edu.konrad.controlcalificaciones.entities.ProfesorEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,13 +16,21 @@ public class AreaDto {
     
     private long idArea;
     private String nombreArea;
-
+//    private ProfesorDto profesor;
+    
     public AreaDto() {
     }
 
     public AreaDto(AreaEntity area) {
         this.idArea = area.getIdArea();
         this.nombreArea = area.getNombreArea();
+//        if(area.getProfesor()!= null){
+//           ProfesorEntity entity = new ProfesorEntity();
+//           entity.setIdProfesor(area.getProfesor().getIdProfesor());
+//           entity.setUsuario(area.getProfesor().getUsuario());
+//           entity.setCantidadCursos(area.getProfesor().getCantidadCursos());
+//           this.profesor = new ProfesorDto(entity);
+//        }
     }
     
     
@@ -30,6 +38,7 @@ public class AreaDto {
         AreaEntity entity = new AreaEntity();
         entity.setIdArea(this.idArea);
         entity.setNombreArea(this.nombreArea);
+//        entity.setProfesor(this.profesor.toEntity());
         return entity;
     }
     

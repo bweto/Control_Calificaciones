@@ -1,6 +1,8 @@
 package edu.konrad.controlcalificaciones.dto;
 
+import edu.konrad.controlcalificaciones.entities.CursoEntity;
 import edu.konrad.controlcalificaciones.entities.GrupoEntity;
+import edu.konrad.controlcalificaciones.entities.ProfesorEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +17,8 @@ public class GrupoDto {
     private long idGrupo;
     private String horario;
     private int cupo;
-    
+    private ProfesorDto profesor;
+    private CursoDto curso;
     /*
     *Constructor basico
     */
@@ -29,6 +32,20 @@ public class GrupoDto {
         this.idGrupo = grupo.getIdGrupo();
         this.horario = grupo.getHorario();
         this.cupo = grupo.getCupo();
+        if(grupo.getProfesor()!= null){
+           ProfesorEntity entity = new ProfesorEntity();
+           entity.setIdProfesor(grupo.getProfesor().getIdProfesor());
+           entity.setUsuario(grupo.getProfesor().getUsuario());
+           entity.setCantidadCursos(grupo.getProfesor().getCantidadCursos());
+           this.profesor = new ProfesorDto(entity);
+        }
+//        if(grupo.getCurso()!= null){
+//           CursoEntity entity = new CursoEntity();
+//           entity.setIdCurso(grupo.getCurso().getIdCurso());
+//           entity.setNombreCurso(grupo.getCurso().getNombreCurso());
+//           
+//           this.curso = new CursoDto(entity);
+//        }
     }
     
     /*
@@ -39,6 +56,8 @@ public class GrupoDto {
         entity.setIdGrupo(this.idGrupo);
         entity.setHorario(this.horario);
         entity.setCupo(this.cupo);
+        entity.setProfesor(this.profesor.toEntity());
+//        entity.setCurso(this.curso.toEntity());
         return entity;
     }
     
@@ -76,6 +95,23 @@ public class GrupoDto {
     public void setCupo(int cupo) {
         this.cupo = cupo;
     }
+
+    public ProfesorDto getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(ProfesorDto profesor) {
+        this.profesor = profesor;
+    }
+
+    public CursoDto getCurso() {
+        return curso;
+    }
+
+    public void setCurso(CursoDto curso) {
+        this.curso = curso;
+    }
+    
     
     
 }

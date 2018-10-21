@@ -6,16 +6,13 @@
 package edu.konrad.controlcalificaciones.entities;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  *Clase donde se almacena la informaciòn de los estudiantes.
@@ -27,7 +24,7 @@ public class EstudianteEntity implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idEstudiante;
     private int codigoEstudiante;
-    @Column(name = "primer_corte", nullable = false)
+    @Column(name = "cantidad_materias", nullable = false)
     private int cantidadMaterias;
     
     /*

@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+//import javax.persistence.JoinColumn;
+//import javax.persistence.ManyToOne;
 
 /**
  *Clase encargada de almacenar la informaciòn sobre el area de profundisaciòn de
@@ -24,7 +26,9 @@ public class AreaEntity implements Serializable {
     private long idArea;
     @Column(name = "nombre_area", nullable = false)
     private String nombreArea;
-    
+//    @ManyToOne
+//    @JoinColumn(name ="profesor")
+//    private ProfesorEntity profesor;
     /*
     Constructor de la clase
     */
@@ -50,6 +54,14 @@ public class AreaEntity implements Serializable {
     public void setNombreArea(String nombreArea) {
         this.nombreArea = nombreArea;
     }
+
+//    public ProfesorEntity getProfesor() {
+//        return profesor;
+//    }
+//
+//    public void setProfesor(ProfesorEntity profesor) {
+//        this.profesor = profesor;
+//    }
     
     
     

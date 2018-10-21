@@ -20,7 +20,7 @@ public class TipoCursoDto {
     /*
     *id programa 
     */
-    private ProgramaDto programa;
+//    private ProgramaDto programa;
     /*
     *nombre del tipo de curso
     */
@@ -39,13 +39,13 @@ public class TipoCursoDto {
     public TipoCursoDto( TipoCursoEntity tipoCursoEntity){
         this.idTipoCurso = tipoCursoEntity.getIdTipoCurso();
         this.nombreTipoCurso = tipoCursoEntity.getNombreTipoCurso();
-        if(tipoCursoEntity.getPrograma() != null){
-            ProgramaEntity entity = new ProgramaEntity();
-            entity.setFacultad(tipoCursoEntity.getPrograma().getFacultad());
-            entity.setIdPrograma(tipoCursoEntity.getPrograma().getIdPrograma());
-            entity.setNombrePrograma(tipoCursoEntity.getPrograma().getNombrePrograma());
-            this.programa = new ProgramaDto(entity);
-        }
+//        if(tipoCursoEntity.getPrograma() != null){
+//            ProgramaEntity entity = new ProgramaEntity();
+//            entity.setFacultad(tipoCursoEntity.getPrograma().getFacultad());
+//            entity.setIdPrograma(tipoCursoEntity.getPrograma().getIdPrograma());
+//            entity.setNombrePrograma(tipoCursoEntity.getPrograma().getNombrePrograma());
+//            this.programa = new ProgramaDto(entity);
+//        }
       
     }
     
@@ -56,7 +56,7 @@ public class TipoCursoDto {
     public TipoCursoEntity toEnntity(){
         TipoCursoEntity entity = new TipoCursoEntity();
         entity.setIdTipoCurso( this.idTipoCurso);
-        entity.setPrograma(this.programa.toEntity());
+//        entity.setPrograma(this.programa.toEntity());
         entity.setNombreTipoCurso(this.nombreTipoCurso);
         return entity;
     }
@@ -96,16 +96,16 @@ public class TipoCursoDto {
         this.nombreTipoCurso = nombreTipoCurso;
     }
 
-    public ProgramaDto getPrograma() {
-        return programa;
-    }
-
-    public void setPrograma(ProgramaDto programa) {
-        this.programa = programa;
-    }
-
-    public TipoCursoEntity toEntity() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    public ProgramaDto getPrograma() {
+//        return programa;
+//    }
+//
+//    public void setPrograma(ProgramaDto programa) {
+//        this.programa = programa;
+//    }
+//
+//    public TipoCursoEntity toEntity() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
     
 }

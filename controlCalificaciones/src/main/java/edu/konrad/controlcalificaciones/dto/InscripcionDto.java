@@ -1,7 +1,7 @@
 package edu.konrad.controlcalificaciones.dto;
 
 import edu.konrad.controlcalificaciones.entities.CursoEntity;
-import edu.konrad.controlcalificaciones.entities.EstudianteEntity;
+//import edu.konrad.controlcalificaciones.entities.EstudianteEntity;
 import edu.konrad.controlcalificaciones.entities.InscripcionEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,19 +38,20 @@ public class InscripcionDto {
            entity.setNombreCurso(inscripcion.getCurso().getNombreCurso());
 //           entity.setProfesor(inscripcion.getCurso().getProfesor());
 //           entity.setTipoCurso(inscripcion.getCurso().getTipoCurso());
+           entity.setEstudiante(inscripcion.getCurso().getEstudiante());
            this.curso = new CursoDto(entity);
        } 
        
-       if(inscripcion.getEstudiante() != null){
-           EstudianteEntity entity = new EstudianteEntity();
-           entity.setCantidadMaterias(inscripcion.getEstudiante().getCantidadMaterias());
-           entity.setCodigoEstudiante(inscripcion.getEstudiante().getCodigoEstudiante());
-           entity.setIdEstudiante(inscripcion.getEstudiante().getIdEstudiante());
-           entity.setPrograma(inscripcion.getEstudiante().getPrograma());
-           entity.setUsuario(inscripcion.getEstudiante().getUsuario());
-           this.estudiante = new EstudianteDto(entity);
-                   
-        }
+//       if(inscripcion.getEstudiante() != null){
+//           EstudianteEntity entity = new EstudianteEntity();
+//           entity.setCantidadMaterias(inscripcion.getEstudiante().getCantidadMaterias());
+//           entity.setCodigoEstudiante(inscripcion.getEstudiante().getCodigoEstudiante());
+//           entity.setIdEstudiante(inscripcion.getEstudiante().getIdEstudiante());
+//           entity.setPrograma(inscripcion.getEstudiante().getPrograma());
+//           entity.setUsuario(inscripcion.getEstudiante().getUsuario());
+//           this.estudiante = new EstudianteDto(entity);
+//                   
+//        }
         
     }
     
@@ -62,7 +63,7 @@ public class InscripcionDto {
         InscripcionEntity entity = new InscripcionEntity();
         entity.setIdInscripcion(this.idInscripcion);
         entity.setCurso(this.curso.toEntity());
-        entity.setEstudiante(this.estudiante.toEntity());
+//        entity.setEstudiante(this.estudiante.toEntity());
         return entity;
     }
     

@@ -5,13 +5,16 @@
  */
 package edu.konrad.controlcalificaciones.entities;
 
+
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 
@@ -26,7 +29,9 @@ public class CursoEntity implements Serializable{
     private long idCurso;
     @Column(name = "nombre_curso", nullable = false)
     private String nombreCurso;
-    
+    @ManyToMany
+    @JoinColumn(name ="estudiante")
+    private List<EstudianteEntity> estudiante;
 //    @ManyToOne
 //    @JoinColumn(name ="profesor")
 //    private ProfesorEntity profesor;
@@ -52,7 +57,13 @@ public class CursoEntity implements Serializable{
     /*
     getters and setters de los atributos de la clase
     */
+    public List<EstudianteEntity> getEstudiante() {
+        return estudiante;
+    }
 
+    public void setEstudiante(List<EstudianteEntity> estudiante) {
+        this.estudiante = estudiante;
+    }
     public long getIdCurso() {
         return idCurso;
     }

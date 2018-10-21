@@ -28,9 +28,9 @@ public class InscripcionEntity implements Serializable{
     @JoinColumn(name ="curso")
     private CursoEntity curso;
     
-    @ManyToOne
-    @JoinColumn(name ="estudiante")
-    private EstudianteEntity estudiante;
+//    @ManyToOne
+//    @JoinColumn(name ="estudiante")
+//    private EstudianteEntity estudiante;
 
     /*
     Constructor de la clase
@@ -60,13 +60,13 @@ public class InscripcionEntity implements Serializable{
         this.curso = curso;
     }
 
-    public EstudianteEntity getEstudiante() {
-        return estudiante;
-    }
-
-    public void setEstudiante(EstudianteEntity estudiante) {
-        this.estudiante = estudiante;
-    }
+//    public EstudianteEntity getEstudiante() {
+//        return estudiante;
+//    }
+//
+//    public void setEstudiante(EstudianteEntity estudiante) {
+//        this.estudiante = estudiante;
+//    }
     
     
     

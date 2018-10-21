@@ -1,10 +1,11 @@
 package edu.konrad.controlcalificaciones.dto;
 
 import edu.konrad.controlcalificaciones.entities.CursoEntity;
+import edu.konrad.controlcalificaciones.entities.EstudianteEntity;
 import edu.konrad.controlcalificaciones.entities.GrupoEntity;
-import edu.konrad.controlcalificaciones.entities.NivelAcademicoEntity;
-import edu.konrad.controlcalificaciones.entities.ProfesorEntity;
-import edu.konrad.controlcalificaciones.entities.TipoCursoEntity;
+//import edu.konrad.controlcalificaciones.entities.NivelAcademicoEntity;
+//import edu.konrad.controlcalificaciones.entities.ProfesorEntity;
+//import edu.konrad.controlcalificaciones.entities.TipoCursoEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class CursoDto {
     private String nombreCurso;
 //    private ProfesorDto profesor;
     private GrupoDto grupo;
+    private List<EstudianteDto> estudiante;
 //    private TipoCursoDto tipoCurso;
 //    private NivelAcademicoDto nivelAcademico;
     
@@ -46,6 +48,19 @@ public class CursoDto {
 //            entity.setUsuario(curso.getProfesor().getUsuario());
 //            this.profesor = new ProfesorDto(entity);
 //        }
+        int i = 0;
+        for(EstudianteEntity entity: curso.getEstudiante()){
+            if(entity != null){
+                entity.setIdEstudiante(curso.getEstudiante().get(i).getIdEstudiante());
+                entity.setCodigoEstudiante(curso.getEstudiante().get(i).getCodigoEstudiante());
+                entity.setCantidadMaterias(curso.getEstudiante().get(i).getCantidadMaterias());
+                entity.setUsuario(curso.getEstudiante().get(i).getUsuario());
+                entity.setPrograma(curso.getEstudiante().get(i).getPrograma());
+                EstudianteDto dto = new EstudianteDto(entity);
+                this.estudiante.add(dto);
+                i++;
+            }
+        }
         if(curso.getGrupo() != null){
             GrupoEntity entity = new GrupoEntity();
             entity.setCupo(curso.getGrupo().getCupo());
@@ -54,20 +69,7 @@ public class CursoDto {
             entity.setProfesor(curso.getGrupo().getProfesor());
             this.grupo = new GrupoDto(entity);
         }
-//        if(curso.getNivelAcademico() != null){
-//            NivelAcademicoEntity entity = new NivelAcademicoEntity();
-//            entity.setCursos(curso.getNivelAcademico().getCursos());
-//            entity.setIdNivelAcademico(curso.getNivelAcademico().getIdNivelAcademico());
-//            entity.setNombreNivelAcademico(curso.getNivelAcademico().getNombreNivelAcademico());
-//            this.nivelAcademico = new NivelAcademicoDto(entity);
-//        }
-//        if(curso.getTipoCurso() != null){
-//            TipoCursoEntity entity = new TipoCursoEntity();
-//            entity.setIdTipoCurso(curso.getTipoCurso().getIdTipoCurso());
-//            entity.setNombreTipoCurso(curso.getTipoCurso().getNombreTipoCurso());
-//            entity.setPrograma(curso.getTipoCurso().getPrograma());
-//            this.tipoCurso = new TipoCursoDto(entity);
-//        }
+
        
     }
     
@@ -82,6 +84,11 @@ public class CursoDto {
 //        entity.setProfesor(this.profesor.toEntity());
         entity.setGrupo(this.grupo.toEntity());
 //        entity.setTipoCurso(this.tipoCurso.toEnntity());
+        List<EstudianteEntity> listaEstudiante = new ArrayList<>();
+        for(EstudianteDto dto : this.estudiante){
+            listaEstudiante.add(dto.toEntity()); 
+        }
+         entity.setEstudiante(listaEstudiante);
         return entity;
     }
     
@@ -113,14 +120,6 @@ public class CursoDto {
         this.nombreCurso = nombreCurso;
     }
 
-//    public ProfesorDto getProfesor() {
-//        return profesor;
-//    }
-//
-//    public void setProfesor(ProfesorDto profesor) {
-//        this.profesor = profesor;
-//    }
-
     public GrupoDto getGrupo() {
         return grupo;
     }
@@ -129,20 +128,12 @@ public class CursoDto {
         this.grupo = grupo;
     }
 
-//    public TipoCursoDto getTipoCurso() {
-//        return tipoCurso;
-//    }
-//
-//    public void setTipoCurso(TipoCursoDto tipoCurso) {
-//        this.tipoCurso = tipoCurso;
-//    }
-//
-//    public NivelAcademicoDto getNivelAcademico() {
-//        return nivelAcademico;
-//    }
-//
-//    public void setNivelAcademico(NivelAcademicoDto nivelAcademico) {
-//        this.nivelAcademico = nivelAcademico;
-//    }
- 
+    public List<EstudianteDto> getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(List<EstudianteDto> estudiante) {
+        this.estudiante = estudiante;
+    }
+
 }

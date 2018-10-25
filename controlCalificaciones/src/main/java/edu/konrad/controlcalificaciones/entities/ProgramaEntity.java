@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.konrad.controlcalificaciones.entities;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,10 +29,6 @@ public class ProgramaEntity implements Serializable{
     @ManyToOne
     @JoinColumn(name ="Facultad")
     private FacultadEntity facultad;
-    
-    @ManyToOne
-    @JoinColumn(name ="tipo_curso")
-    private TipoCursoEntity tipoCurso;
     
     @ManyToOne
     @JoinColumn(name ="nivel_academico")
@@ -76,15 +67,7 @@ public class ProgramaEntity implements Serializable{
     public void setFacultad(FacultadEntity facultad) {
         this.facultad = facultad;
     }
-    
-    public TipoCursoEntity getTipoCurso() {
-        return tipoCurso;
-    }
-
-    public void setTipoCurso(TipoCursoEntity tipoCurso) {
-        this.tipoCurso = tipoCurso;
-    }
-
+ 
     public NivelAcademicoEntity getNivelAcademico() {
         return nivelAcademico;
     }

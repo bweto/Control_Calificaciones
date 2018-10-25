@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.konrad.controlcalificaciones.entities;
 
 import java.io.Serializable;
@@ -25,12 +21,12 @@ public class InscripcionEntity implements Serializable{
     private long idInscripcion;
     
     @ManyToOne
-    @JoinColumn(name ="curso")
-    private CursoEntity curso;
+    @JoinColumn(name ="grupo")
+    private GrupoEntity grupo;
     
-//    @ManyToOne
-//    @JoinColumn(name ="estudiante")
-//    private EstudianteEntity estudiante;
+    @ManyToOne
+    @JoinColumn(name ="estudiante")
+    private EstudianteEntity estudiante;
 
     /*
     Constructor de la clase
@@ -52,21 +48,22 @@ public class InscripcionEntity implements Serializable{
         this.idInscripcion = idInscripcion;
     }
 
-    public CursoEntity getCurso() {
-        return curso;
+    
+    public EstudianteEntity getEstudiante() {
+        return estudiante;
     }
 
-    public void setCurso(CursoEntity curso) {
-        this.curso = curso;
+    public void setEstudiante(EstudianteEntity estudiante) {
+        this.estudiante = estudiante;
     }
 
-//    public EstudianteEntity getEstudiante() {
-//        return estudiante;
-//    }
-//
-//    public void setEstudiante(EstudianteEntity estudiante) {
-//        this.estudiante = estudiante;
-//    }
+    public GrupoEntity getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(GrupoEntity grupo) {
+        this.grupo = grupo;
+    }
     
     
     

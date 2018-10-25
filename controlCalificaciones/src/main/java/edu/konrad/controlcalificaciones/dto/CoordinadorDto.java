@@ -54,7 +54,6 @@ public class CoordinadorDto {
             entity.setFacultad(coordinador.getPrograma().getFacultad());
             entity.setNombrePrograma(coordinador.getPrograma().getNombrePrograma());
             entity.setIdPrograma(coordinador.getPrograma().getIdPrograma());
-            entity.setTipoCurso(coordinador.getPrograma().getTipoCurso());
             entity.setNivelAcademico(coordinador.getPrograma().getNivelAcademico());
             this.programa = new ProgramaDto(entity);
         }

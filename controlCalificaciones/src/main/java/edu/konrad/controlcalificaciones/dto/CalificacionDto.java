@@ -56,8 +56,6 @@ public class CalificacionDto {
         this.tercerCorte = calificacion.getTercerCorte();
         if(calificacion.getInscripcion() != null){
             InscripcionEntity entity = new InscripcionEntity();
-            entity.setCurso(calificacion.getInscripcion().getCurso());
-//            entity.setEstudiante(calificacion.getInscripcion().getEstudiante());
             entity.setIdInscripcion(calificacion.getInscripcion().getIdInscripcion());
             this.inscripcion = new InscripcionDto(entity);
         }

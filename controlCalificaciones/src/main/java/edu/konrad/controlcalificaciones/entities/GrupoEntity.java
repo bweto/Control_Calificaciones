@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.konrad.controlcalificaciones.entities;
 
 import java.io.Serializable;
@@ -25,8 +20,12 @@ public class GrupoEntity implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idGrupo;
-    @Column(name = "horario", nullable = false)
-    private String horario;
+    @Column(name = "hora_ini", nullable = false)
+    private String horaInicial;
+    @Column(name = "hora_fin", nullable = false)
+    private String horaFinal;
+     @Column(name = "dia", nullable = false)
+    private String dia;
     @Column(name = "cupo", nullable = false)
     private int cupo;
     
@@ -34,12 +33,9 @@ public class GrupoEntity implements Serializable{
     @JoinColumn(name="profesor")
     private ProfesorEntity profesor;
     
-//    @ManyToOne
-//    @JoinColumn(name="curso")
-//    private CursoEntity curso;
-    /*
-    *
-    */
+    @ManyToOne
+    @JoinColumn(name="curso")
+    private CursoEntity curso;
     
 //     @OneToMany( targetEntity = CursoEntity.class )
 //     private List cursos;
@@ -62,14 +58,6 @@ public class GrupoEntity implements Serializable{
         this.idGrupo = idGrupo;
     }
 
-    public String getHorario() {
-        return horario;
-    }
-
-    public void setHorario(String horario) {
-        this.horario = horario;
-    }
-
     public int getCupo() {
         return cupo;
     }
@@ -86,13 +74,37 @@ public class GrupoEntity implements Serializable{
         this.profesor = profesor;
     }
 
-//    public CursoEntity getCurso() {
-//        return curso;
-//    }
-//
-//    public void setCurso(CursoEntity curso) {
-//        this.curso = curso;
-//    }
+    public CursoEntity getCurso() {
+        return curso;
+    }
+
+    public void setCurso(CursoEntity curso) {
+        this.curso = curso;
+    }
+
+    public String getHoraInicial() {
+        return horaInicial;
+    }
+
+    public void setHoraInicial(String horaInicial) {
+        this.horaInicial = horaInicial;
+    }
+
+    public String getHoraFinal() {
+        return horaFinal;
+    }
+
+    public void setHoraFinal(String horaFinal) {
+        this.horaFinal = horaFinal;
+    }
+
+    public String getDia() {
+        return dia;
+    }
+
+    public void setDia(String dia) {
+        this.dia = dia;
+    }
     
     
     

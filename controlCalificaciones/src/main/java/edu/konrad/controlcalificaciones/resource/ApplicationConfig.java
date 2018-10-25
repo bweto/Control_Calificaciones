@@ -35,7 +35,6 @@ public class ApplicationConfig extends Application{
         resources.add(ProfesorResource.class);
         resources.add(ProgramaResource.class);
         resources.add(RolResource.class);
-        resources.add(TipoCursoResource.class);
         resources.add(TipoIdResource.class);
         resources.add(UsuarioResource.class);
         

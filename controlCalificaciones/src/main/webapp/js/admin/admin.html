@@ -1,26 +1,28 @@
-<div class="container" >
+<div class="container mb-5" >
     <div class="row">
         <div class="col-sm-4">
-           <nav id="navbar-example3" class="navbar navbar-light bg-light">
-                <a class="navbar-brand" href="#">Administración</a>
-                <nav class="nav nav-pills flex-column">
-                    <button class="nav-link" ng-click="tipoid()">Tipos Id</button>
-                    <button class="nav-link" ng-click="rol()">Roles</button>
-                    <button class="nav-link" ng-click="facultad()">Facultades</button>
-                    <button class="nav-link" ng-click="programa()">Programas</button>
-                    <button class="nav-link" ng-click="nivelA()">Niveles Academicos</button>
-                    <button class="nav-link" ng-click="area()">Areas</button>
-                    <button class="nav-link" ng-click="grupo()">Grupos</button>
-                    <button class="nav-link" ng-click="curso()">Cursos</button>
-                    <button class="nav-link" ng-click="estado()">Estados</button>
-                    <button class="nav-link" ng-click="usuario()">Usuarios</button>
-                    <button class="nav-link" ng-click="profesor()">Profesores</button>
-                    <button class="nav-link" ng-click="coordinador()">Coordinadores</button>
-                    <button class="nav-link" ng-click="estudiante()">Estudiantes</button>
-                </nav>
+           <nav id="navbar-example3" class="navbar navbar-light bg-light border border-warning rounded-top">
+               <div class="container">
+                   <div class="row justify-content-center"> 
+                    <h2 class="navbar-brand h2 w-100 text-center text-danger">Administración DB</h2>            
+                    <button class="btn btn-block btn-outline-info w-75" ng-click="tipoid()">Tipos Id</button>
+                    <button class="btn btn-block btn-outline-info w-75" ng-click="rol()">Roles</button>
+                    <button class="btn btn-block btn-outline-info w-75" ng-click="facultad()">Facultades</button>
+                    <button class="btn btn-block btn-outline-info w-75" ng-click="programa()">Programas</button>
+                    <button class="btn btn-block btn-outline-info w-75" ng-click="nivelA()">Niveles Academicos</button>
+                    <button class="btn btn-block btn-outline-info w-75" ng-click="area()">Areas</button>
+                    <button class="btn btn-block btn-outline-info w-75" ng-click="grupo()">Grupos</button>
+                    <button class="btn btn-block btn-outline-info w-75" ng-click="curso()">Cursos</button>
+                    <button class="btn btn-block btn-outline-info w-75" ng-click="estado()">Estados</button>
+                    <button class="btn btn-block btn-outline-info w-75" ng-click="usuario()">Usuarios</button>
+                    <button class="btn btn-block btn-outline-info w-75" ng-click="profesor()">Profesores</button>
+                    <button class="btn btn-block btn-outline-info w-75" ng-click="coordinador()">Coordinadores</button>
+                    <button class="btn btn-block btn-outline-info w-75" ng-click="estudiante()">Estudiantes</button>
+                    </div> 
+               </div>
             </nav> 
         </div>
-        <div class="col-sm-8 card" ui-view="adminV">
+        <div class="col-sm-8 card border border-danger" ui-view="adminV">
             
         </div>
     </div>

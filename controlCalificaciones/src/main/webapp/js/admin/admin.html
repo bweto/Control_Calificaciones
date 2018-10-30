@@ -1,0 +1,29 @@
+<div class="container" >
+    <div class="row">
+        <div class="col-sm-4">
+           <nav id="navbar-example3" class="navbar navbar-light bg-light">
+                <a class="navbar-brand" href="#">Administración</a>
+                <nav class="nav nav-pills flex-column">
+                    <button class="nav-link" ng-click="tipoid()">Tipos Id</button>
+                    <button class="nav-link" ng-click="rol()">Roles</button>
+                    <button class="nav-link" ng-click="facultad()">Facultades</button>
+                    <button class="nav-link" ng-click="programa()">Programas</button>
+                    <button class="nav-link" ng-click="nivelA()">Niveles Academicos</button>
+                    <button class="nav-link" ng-click="area()">Areas</button>
+                    <button class="nav-link" ng-click="grupo()">Grupos</button>
+                    <button class="nav-link" ng-click="curso()">Cursos</button>
+                    <button class="nav-link" ng-click="estado()">Estados</button>
+                    <button class="nav-link" ng-click="usuario()">Usuarios</button>
+                    <button class="nav-link" ng-click="profesor()">Profesores</button>
+                    <button class="nav-link" ng-click="coordinador()">Coordinadores</button>
+                    <button class="nav-link" ng-click="estudiante()">Estudiantes</button>
+                </nav>
+            </nav> 
+        </div>
+        <div class="col-sm-8 card" ui-view="adminV">
+            
+        </div>
+    </div>
+</div>
+
+

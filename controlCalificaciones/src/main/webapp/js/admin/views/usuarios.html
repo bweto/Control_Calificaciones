@@ -1,0 +1,19 @@
+<div >
+    <ul>
+        <li ng-repeat="usuario in usuarios">
+            {{usuario.apellidoUsuario +
+              usuario.email +
+              usuario.genero +
+              usuario.idUsuario +
+              usuario.nombreUsuario +
+              usuario.numeroId +
+              usuario.pass +"\n"+
+              usuario.rol.idRol +"\n"+
+              usuario.rol.nombreRol +"\n"+
+              usuario.tipoId.nombreTipoId +"\n"+
+              usuario.tipoId.idTipoId +"\n"
+            }}
+        </li>
+    </ul>
+    
+</div>

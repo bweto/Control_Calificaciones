@@ -1,0 +1,24 @@
+<div >
+    <ul>
+        <li ng-repeat="profesor in profesores">
+            {{profesor.usuario.apellidoUsuario +
+              profesor.usuario.email +
+              profesor.usuario.genero +
+              profesor.usuario.idUsuario +
+              profesor.usuario.nombreUsuario +
+              profesor.usuario.numeroId +
+              profesor.usuario.pass +"\n"+
+              profesor.usuario.rol.idRol +"\n"+
+              profesor.usuario.rol.nombreRol +"\n"+
+              profesor.usuario.tipoId.nombreTipoId +"\n"+
+              profesor.usuario.tipoId.idTipoId +"\n"+
+              profesor.idProfesor +"\n"+
+              profesor.cantidadCursos +"\n"+
+              profesor.area.idArea +"\n"+
+              profesor.area.nombreArea +"\n"
+              
+            }}
+        </li>
+    </ul>
+    
+</div>

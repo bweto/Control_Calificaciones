@@ -1,0 +1,26 @@
+<div >
+    <ul>
+        <li ng-repeat="estudiante in estudiantes">
+            {{estudiante.usuario.apellidoUsuario +
+              estudiante.usuario.email +
+              estudiante.usuario.genero +
+              estudiante.usuario.idUsuario +
+              estudiante.usuario.nombreUsuario +
+              estudiante.usuario.numeroId +
+              estudiante.usuario.pass +"\n"+
+              estudiante.usuario.rol.idRol +"\n"+
+              estudiante.usuario.rol.nombreRol +"\n"+
+              estudiante.usuario.tipoId.nombreTipoId +"\n"+
+              estudiante.usuario.tipoId.idTipoId +"\n"+
+              estudiante.programa.facultad.idFacultad +"\n"+
+              estudiante.programa.facultad.nombreFacultad +"\n"+
+              estudiante.programa.nombrePrograma +"\n"+
+              estudiante.programa.idPrograma +"\n"+
+              estudiante.cantidadMaterias +"\n"+
+              estudiante.codigoEstudiante +"\n"+
+              estudiante.idEstudiante +"\n"
+            }}
+        </li>
+    </ul>
+    
+</div>

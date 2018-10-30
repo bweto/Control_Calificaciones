@@ -1,0 +1,11 @@
+<div >
+    <ul>
+        <li ng-repeat="p in programas">
+            {{p.idprograma + p.facultad.idFacultad + p.facultad.nombreFacultad +
+             p.nivelAcademico.idNivelAcademico + p.nivelAcademico.nombreNivelAcademico
+             + p.nombrePrograma
+            }}
+        </li>
+    </ul>
+    
+</div>

@@ -1,0 +1,22 @@
+<div >
+    <ul>
+        <li ng-repeat="coordinador in coordinadores">
+            {{coordinador.usuario.apellidoUsuario +
+              coordinador.usuario.email +
+              coordinador.usuario.genero +
+              coordinador.usuario.idUsuario +
+              coordinador.usuario.nombreUsuario +
+              coordinador.usuario.numeroId +
+              coordinador.usuario.pass +"\n"+
+              coordinador.usuario.rol.idRol +"\n"+
+              coordinador.usuario.rol.nombreRol +"\n"+
+              coordinador.usuario.tipoId.nombreTipoId +"\n"+
+              coordinador.usuario.tipoId.idTipoId +"\n"+
+              coordinador.programa.idPrograma +"\n"+
+              coordinador.programa.nombrePrograma +"\n"+
+              coordinador.idCoordindaor +"\n"
+            }}
+        </li>
+    </ul>
+    
+</div>

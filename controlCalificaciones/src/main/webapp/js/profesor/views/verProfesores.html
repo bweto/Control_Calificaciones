@@ -1,4 +1,7 @@
 <div class="container">
+  <div class="row">
+    <div class="col-sm">
+<div class="container">
  <!-- <button type="button" class="btn btn-outline-danger" ng-click="crearP()">Crear</button>-->
 </div> 
 <div class="table-responsive">
@@ -17,23 +20,27 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="table-active" ng-repeat="p in profesores">
-                <td class="font-s">{{p.usuario.nombreUsuario}}</td>
-                <td class="font-s">{{p.usuario.apellidoUsuario}}</td>
-                <td class="font-s">{{p.usuario.tipoId.nombreTipoId}}</td>
-                <td class="font-s">{{p.usuario.numeroId}}</td>
-                <td class="font-s">{{p.usuario.genero}}</td>
-                <td class="font-s">{{p.usuario.email}}</td>
-                <td class="font-s">{{p.usuario.pass}}</td>
-                <td class="font-s">{{p.cantidadMaterias}}</td>
-                <td class="font-s">{{p.area.nombreArea}}</td>
+            <tr class="table-active" ng-repeat="pe in profes">
+                <td class="font-s">{{pe.usuario.nombreUsuario}}</td>
+                <td class="font-s">{{pe.usuario.apellidoUsuario}}</td>
+                <td class="font-s">{{pe.usuario.tipoId.nombreTipoId}}</td>
+                <td class="font-s">{{pe.usuario.numeroId}}</td>
+                <td class="font-s">{{pe.usuario.genero}}</td>
+                <td class="font-s">{{pe.usuario.email}}</td>
+                <td class="font-s">{{pe.usuario.pass}}</td>
+                <td class="font-s">{{pe.cantidadMaterias}}</td>
+                <td class="font-s">{{pe.area.nombreArea}}</td>
                 
                 <td>
                     <!--<button class="btn btn-danger" ng-click="eliminarP(p)">Eliminar</button>-->
-                    <button class="btn btn-success" ui-sref="crearProfesores({id:p.idProfesor})">Actualizar</button>
+                    <button class="btn btn-success" ui-sref="crearIProfesor({id:pe.idProfesor})">Actualizar</button>
                 </td>
             </tr>
         </tbody>
     </table>    
 </div>
+        </div>
+</div>
+</div>
+
 

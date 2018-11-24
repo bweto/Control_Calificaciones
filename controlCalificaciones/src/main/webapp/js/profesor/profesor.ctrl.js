@@ -1,6 +1,6 @@
 var profesorModule = angular.module("profesorModule");
 //El controlador queda asociado al modulo
-profesorModule.controller('profesorctrl',['$scope','$http','$state','$route',function($scope, $http, $state,$route){
+profesorModule.controller('profesorctrl',['$scope','$http','$state','$route','$rootScope',function($scope, $http, $state,$route,$rootScope){
    //variables
     $scope.estudiante = {};
     $scope.profesor = {};
@@ -230,18 +230,29 @@ profesorModule.controller('profesorctrl',['$scope','$http','$state','$route',fun
                             console.log(err);
                         }); 
    }  
-    //obtener todos los Profesores
-  $scope.obtenerProfesores = function (){
+    //obtener todos los Profesores*************************************************
+  $scope.obtenerProfe = function (){
           $scope.profesores = new Array();
           $http.get('api/profesor').then(function(response){
               $scope.profesores = response.data;
-              $state.go('verProfesor');
+              $scope.profesores.forEach(function(e,i,a){
+                  console.log($rootScope.user +" "+$rootScope.pass );
+                  if(e.usuario.numeroId == $rootScope.user 
+                  && e.usuario.pass == $rootScope.pass){
+//                  console.log($rootScope.userActive);
+//                  $scope.profesor = $rootScope.userActive;
+                    console.log(e);
+                    $scope.profes = e;
+                  $state.go('verIProfesor');
+               };
+           });
+              
           },function(err){
               console.log(err);
           });
       };
       //actualizar Profesores
-      $scope.actualizarProfesor = function(){
+      $scope.actualizarProfe = function(){
       if($scope.profesor){
          $scope.actualizarUsuario($scope.profesor.usuario);
          $http.put('api/profesor/'+id,JSON.stringify($scope.profesor)).then(function(response){

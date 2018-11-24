@@ -283,6 +283,51 @@ app.config([
                         }
                     }
                 });
+                
+                 $stateProvider.state("crearIProfesor",{
+                    url:'/Profesor',
+                    parent:'profe',
+                    views:{
+                        profeV:{
+                            templateUrl: './js/profesor/views/crearProfesores.html',
+                            controller: 'profesorctrl'
+                        }
+                    }
+                });
+                        // ----------- infoEstudiante----------
+                $stateProvider.state("estu",{
+                    url: '/estudiante',
+                    views:{
+                        mainView:{
+                            templateUrl: './js/estudiante/estudiante.html',
+                            controller: 'estudiantectrl'
+                            }  
+                    }
+                });
+                
+                $stateProvider.state("verIEstudiante",{
+                    url:'/estudiante',
+                    parent:'estu',
+                    views:{
+                        profeV:{
+                            templateUrl: './js/estudiante/views/verEstudiantes.html',
+                            controller: 'estudiantectrl'
+                        }
+                    }
+                });
+                
+                 $stateProvider.state("crearIEstudiante",{
+                    url:'/Estudiante',
+                    parent:'estu',
+                    views:{
+                        profeV:{
+                            templateUrl: './js/estudiante/views/crearEstudiantes.html',
+                            controller: 'estudiantectrl'
+                        }
+                    }
+                });
+                
+                
             }
             
             ]);

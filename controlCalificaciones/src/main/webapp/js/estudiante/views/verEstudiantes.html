@@ -5,32 +5,34 @@
 <table class="table-warning font-s">
         <thead>
             <tr>
-            <th scope="col" class="font-s">Nombre Profesor</th>
-            <th scope="col" class="font-s">Apellido Profesor</th>
+     <th scope="col" class="font-s">Nombre Estudiante</th>
+            <th scope="col" class="font-s">Apellido Estudiante</th>
             <th scope="col" class="font-s">Tipo de Identificación</th>
             <th scope="col" class="font-s">Numero de identificación</th>
             <th scope="col" class="font-s">Genero</th>
+            <th scope="col" class="font-s">Codigo Estudiante</th>
             <th scope="col" class="font-s">Correo Electronico</th>
             <th scope="col" class="font-s">Contraseña</th>
-            <th scope="col" class="font-s">Cantidad de Cursos</th>
-            <th scope="col" class="font-s" >Área</th>
+            <th scope="col" class="font-s">Cantidad de Materias</th>
+            <th scope="col" class="font-s" >Programa</th>
             </tr>
         </thead>
         <tbody>
-            <tr class="table-active" ng-repeat="p in profesores">
-                <td class="font-s">{{p.usuario.nombreUsuario}}</td>
-                <td class="font-s">{{p.usuario.apellidoUsuario}}</td>
-                <td class="font-s">{{p.usuario.tipoId.nombreTipoId}}</td>
-                <td class="font-s">{{p.usuario.numeroId}}</td>
-                <td class="font-s">{{p.usuario.genero}}</td>
-                <td class="font-s">{{p.usuario.email}}</td>
-                <td class="font-s">{{p.usuario.pass}}</td>
-                <td class="font-s">{{p.cantidadMaterias}}</td>
-                <td class="font-s">{{p.area.nombreArea}}</td>
+            <tr class="table-active" ng-repeat="e in estudiantes">
+                <td class="font-s">{{e.usuario.nombreUsuario}}</td>
+                <td class="font-s">{{e.usuario.apellidoUsuario}}</td>
+                <td class="font-s">{{e.usuario.tipoId.nombreTipoId}}</td>
+                <td class="font-s">{{e.usuario.numeroId}}</td>
+                <td class="font-s">{{e.usuario.genero}}</td>
+                <td class="font-s">{{e.codigoEstudiante}}</td>
+                <td class="font-s">{{e.usuario.email}}</td>
+                <td class="font-s">{{e.usuario.pass}}</td>
+                <td class="font-s">{{e.cantidadMaterias}}</td>
+                <td class="font-s">{{e.programa.nombrePrograma}}</td>
                 
                 <td>
                     <!--<button class="btn btn-danger" ng-click="eliminarP(p)">Eliminar</button>-->
-                    <button class="btn btn-success" ui-sref="crearProfesores({id:p.idProfesor})">Actualizar</button>
+                    <button class="btn btn-success" ui-sref="crearIEstudiante({id:e.idEstudiante})">Actualizar</button>
                 </td>
             </tr>
         </tbody>

@@ -2,44 +2,49 @@
   <div class="row">
     <div class="col-sm">
     <div class="form-group">
-        <label class="control-label">Nombre Profesor</label>
-        <input class="form-control" id="nombre" type="text" placeholder="Ingrese el nombre del Profesor"ng-model="profesor.usuario.nombreUsuario">
+        <label class="control-label">Nombre Estudiante</label>
+        <input class="form-control" id="nombre" type="text" placeholder="Ingrese el nombre del estudiante"ng-model="estudiante.usuario.nombreUsuario">
     </div>
     <div class="form-group">
-        <label class="control-label">Apellido Profesor</label>
-        <input class="form-control" id="apellido" type="text" placeholder="Ingrese el apellido del Profesor" ng-model="profesor.usuario.apellidoUsuario">
+        <label class="control-label">Apellido Estudiante</label>
+        <input class="form-control" id="apellido" type="text" placeholder="Ingrese el apellido del estudiante" ng-model="estudiante.usuario.apellidoUsuario">
     </div>
     <div class="form-group">
         <label class="control-label">Tipo de Identificacion</label>
-        <select ng-options="tipo.nombreTipoId for tipo in tiposId" ng-model="profesor.usuario.tipoId"></select>
+        <select ng-options="tipo.nombreTipoId for tipo in tiposId" ng-model="estudiante.usuario.tipoId"></select>
     </div>
     <div class="form-group">
         <label class="control-label">Número de identificación</label>
-        <input class="form-control" id="numeroId" type="text" placeholder="Ingrese número de identificación" ng-model="profesor.usuario.numeroId">
+        <input class="form-control" id="numeroId" type="text" placeholder="Ingrese número de identificación" ng-model="estudiante.usuario.numeroId">
     </div>
     <div class="form-group">
         <label class="control-label">Genero</label>
-        <select ng-options="genero for genero in generos" ng-model="profesor.usuario.genero"></select>
+        <select ng-options="genero for genero in generos" ng-model="estudiante.usuario.genero"></select>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Codigo Estudiante</label>
+        <input class="form-control" id="codigo" type="text" placeholder="Ingrese codigo de estudiante"ng-model="estudiante.codigoEstudiante">
     </div>
     <div class="form-group">
         <label class="control-label">Correo electronico</label>
-        <input class="form-control" id="correo" type="text" placeholder="Ingrese correo Electronico"ng-model="profesor.usuario.email">
+        <input class="form-control" id="correo" type="text" placeholder="Ingrese correo Electronico"ng-model="estudiante.usuario.email">
     </div>
     <div class="form-group">
         <label class="control-label">Contraseña</label>
-        <input class="form-control" id="contraseña" type="text" placeholder="Ingrese la contraseña"ng-model="profesor.usuario.pass">
+        <input class="form-control" id="contraseña" type="text" placeholder="Ingrese la contraseña"ng-model="estudiante.usuario.pass">
     </div>
     <div class="form-group">
-        <label class="control-label">Cantidad de Cursos</label>
-         <select ng-options="cant for cant in cantidad" ng-model="profesor.cantidadCursos"></select>
+        <label class="control-label">Cantidad de Materias</label>
+         <select ng-options="cant for cant in cantidad" ng-model="estudiante.cantidadMaterias"></select>
     </div>
     <div class="form-group">
-        <label class="control-label">Área</label>
-        <select ng-options="are.nombreArea for are in areas" ng-model="profesor.area" ></select>
-        <br><select ng-options="r.nombreRol for r in roles" ng-model="profesor.usuario.rol"></select>
+        <label class="control-label">Programa</label>
+        <select ng-options="pro.nombrePrograma for pro in programas" ng-model="estudiante.programa" ng-change="show()"></select>
+        <br><label class="control-label" ng-show="activo === 1">Facultad de {{estudiante.programa.facultad.nombreFacultad}}</label>
+        <br><select ng-options="r.nombreRol for r in roles" ng-model="estudiante.usuario.rol"></select>
     </div>
-    <button class="btn btn-primary" id="crearBoton"ng-if="!profesor.idProfesor" ng-click="crearProfesor()">Crear Profesor</button>
-    <button class="btn btn-primary" id="crearBoton"ng-if="profesor.idProfesor" ng-click="actualizarProfesor()">Actualizar Profesor</button>
+    <!--<button class="btn btn-primary" id="crearBoton"ng-if="!estudiante.idEstudiante" ng-click="crearEstudiante()">Crear Estudiante</button>-->
+    <button class="btn btn-primary" id="crearBoton"ng-if="estudiante.idEstudiante" ng-click="actualizarEstudiante()">Actualizar Estudiante</button>
 </div>
 </div>
 </div>

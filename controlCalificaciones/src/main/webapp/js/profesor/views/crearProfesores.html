@@ -38,7 +38,7 @@
         <select ng-options="are.nombreArea for are in areas" ng-model="profesor.area" ></select>
         <br><select ng-options="r.nombreRol for r in roles" ng-model="profesor.usuario.rol"></select>
     </div>
-    <button class="btn btn-primary" id="crearBoton"ng-if="!profesor.idProfesor" ng-click="crearProfesor()">Crear Profesor</button>
+    <!--<button class="btn btn-primary" id="crearBoton"ng-if="!profesor.idProfesor" ng-click="crearProfesor()">Crear Profesor</button> -->
     <button class="btn btn-primary" id="crearBoton"ng-if="profesor.idProfesor" ng-click="actualizarProfesor()">Actualizar Profesor</button>
 </div>
 </div>

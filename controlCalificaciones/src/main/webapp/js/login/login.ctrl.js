@@ -1,6 +1,6 @@
 var loginModule = angular.module("loginModule");
 //El controlador queda asociado al modulo
-loginModule.controller('loginctrl',['$scope','$http','$state',function($scope, $http, $state){
+loginModule.controller('loginctrl',['$scope','$http','$state','$rootScope',function($scope, $http, $state,$rootScope){
         
         $scope.connect = false;
         $scope.content = "Iniciar Sesión";
@@ -18,7 +18,6 @@ loginModule.controller('loginctrl',['$scope','$http','$state',function($scope, $
                $state.go('inicio');
                $scope.connect = true;
                $scope.content = "Iniciar Sesión";
-               
             }
         };
         
@@ -52,44 +51,41 @@ loginModule.controller('loginctrl',['$scope','$http','$state',function($scope, $
        //
        obtener();
        $scope.loginus = function(){
-           $scope.user;
-           $scope.pass;
+           $rootScope.user;
+           $rootScope.pass;
            //Es coordinador ¿?
            $scope.coordinadores.forEach(function(e,i,a){
-                  console.log(e +'Estoy en el for each');
-                  console.log(e.usuario.numeroId);
-                  if(e.usuario.numeroId == $scope.user 
-                  && e.usuario.pass == $scope.pass){
+                  if(e.usuario.numeroId == $rootScope.user 
+                  && e.usuario.pass == $rootScope.pass){
                    $scope.connect = false;
                    $scope.content = "Cerrar Sesión";
+                   $rootScope.userActive = e;
                    $state.go('coor'); 
                };
                });
            //Es Profesor ¿?
            $scope.profesores.forEach(function(e,i,a){
-                  console.log(e +'Estoy en el for each');
-                  console.log(e.usuario.numeroId);
-                  if(e.usuario.numeroId == $scope.user 
-                  && e.usuario.pass == $scope.pass){
+                  if(e.usuario.numeroId == $rootScope.user 
+                  && e.usuario.pass == $rootScope.pass){
                    $scope.connect = false;
                    $scope.content = "Cerrar Sesión";
+                   $rootScope.userActive = e;
                    $state.go('profe'); 
                };
            });
             //Es Estudiante
             $scope.estudiantes.forEach(function(e,i,a){
-                  console.log(e +'Estoy en el for each');
-                  console.log(e.usuario.numeroId);
-                  if(e.usuario.numeroId == $scope.user 
-                    && e.usuario.pass == $scope.pass){
+                  if(e.usuario.numeroId == $rootScope.user
+                    && e.usuario.pass == $rootScope.pass){
                     $scope.connect = false;
                     $scope.content = "Cerrar Sesión";
-                    $state.go('estudi'); 
+                    $rootScope.userActive = e;
+                    $state.go('estu'); 
                }
            });
            // es admin ¿?
-           if('admin' == $scope.user 
-                  && 'admin' == $scope.pass){
+           if('admin' == $rootScope.user 
+                  && 'admin' == $rootScope.pass){
                    $scope.connect = false;
                    $scope.content = "Cerrar Sesión";
                    $state.go('admin'); 

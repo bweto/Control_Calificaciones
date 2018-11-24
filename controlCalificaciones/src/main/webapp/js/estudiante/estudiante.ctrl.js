@@ -1,6 +1,6 @@
 var estudianteModule = angular.module("estudianteModule");
 //El controlador queda asociado al modulo
-estudianteModule.controller('estudiantectrl',['$scope','$http','$state','$route',function($scope, $http, $state,$route){
+estudianteModule.controller('estudiantectrl',['$scope','$http','$state','$route','$rootScope',function($scope, $http, $state,$route,$rootScope){
    //variables
     $scope.estudiante = {};
     $scope.profesor = {};
@@ -175,6 +175,27 @@ estudianteModule.controller('estudiantectrl',['$scope','$http','$state','$route'
               $scope.estudiantes = response.data;
 //              console.log($scope.estudiantes);
               $state.go('verEstudiantes');
+          },function(err){
+              console.log(err);
+          });
+      };
+      //obtener un estudiante
+      $scope.obtenerEstu = function (){
+          $scope.estudiantes = new Array();
+          $http.get('api/estudiante').then(function(response){
+              $scope.estudiantes = response.data;
+              $scope.estudiantes.forEach(function(e,i,a){
+                  console.log($rootScope.user +" "+$rootScope.pass );
+                  if(e.usuario.numeroId == $rootScope.user 
+                  && e.usuario.pass == $rootScope.pass){
+//                  console.log($rootScope.userActive);
+//                  $scope.profesor = $rootScope.userActive;
+                    console.log(e);
+                    $scope.estudiante = e;
+                  $state.go('verIEstudiante');
+               };
+           });
+              
           },function(err){
               console.log(err);
           });

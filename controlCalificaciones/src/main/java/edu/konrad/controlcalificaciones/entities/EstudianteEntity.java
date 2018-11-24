@@ -22,7 +22,8 @@ import javax.persistence.ManyToOne;
 public class EstudianteEntity implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long idEstudiante;
+    private Long idEstudiante;
+    @Column(name = "codigo_estudiante", nullable = false)
     private int codigoEstudiante;
     @Column(name = "cantidad_materias", nullable = false)
     private int cantidadMaterias;
@@ -46,11 +47,11 @@ public class EstudianteEntity implements Serializable{
     /*
     getters and setters de los atributos de la clase.
     */
-    public long getIdEstudiante() {
+    public Long getIdEstudiante() {
         return idEstudiante;
     }
 
-    public void setIdEstudiante(long idEstudiante) {
+    public void setIdEstudiante(Long idEstudiante) {
         this.idEstudiante = idEstudiante;
     }
 

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+    <div class="form-group">
+        <label class="control-label">Nombre Profesor</label>
+        <input class="form-control" id="nombre" type="text" placeholder="Ingrese el nombre del Profesor"ng-model="profesor.usuario.nombreUsuario">
+    </div>
+    <div class="form-group">
+        <label class="control-label">Apellido Profesor</label>
+        <input class="form-control" id="apellido" type="text" placeholder="Ingrese el apellido del Profesor" ng-model="profesor.usuario.apellidoUsuario">
+    </div>
+    <div class="form-group">
+        <label class="control-label">Tipo de Identificacion</label>
+        <select ng-options="tipo.nombreTipoId for tipo in tiposId" ng-model="profesor.usuario.tipoId"></select>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Número de identificación</label>
+        <input class="form-control" id="numeroId" type="text" placeholder="Ingrese número de identificación" ng-model="profesor.usuario.numeroId">
+    </div>
+    <div class="form-group">
+        <label class="control-label">Genero</label>
+        <select ng-options="genero for genero in generos" ng-model="profesor.usuario.genero"></select>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Correo electronico</label>
+        <input class="form-control" id="correo" type="text" placeholder="Ingrese correo Electronico"ng-model="profesor.usuario.email">
+    </div>
+    <div class="form-group">
+        <label class="control-label">Contraseña</label>
+        <input class="form-control" id="contraseña" type="text" placeholder="Ingrese la contraseña"ng-model="profesor.usuario.pass">
+    </div>
+    <div class="form-group">
+        <label class="control-label">Cantidad de Cursos</label>
+         <select ng-options="cant for cant in cantidad" ng-model="profesor.cantidadCursos"></select>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Área</label>
+        <select ng-options="are.nombreArea for are in areas" ng-model="profesor.area" ></select>
+        <br><select ng-options="r.nombreRol for r in roles" ng-model="profesor.usuario.rol"></select>
+    </div>
+    <button class="btn btn-primary" id="crearBoton"ng-if="!profesor.idProfesor" ng-click="crearProfesor()">Crear Profesor</button>
+    <button class="btn btn-primary" id="crearBoton"ng-if="profesor.idProfesor" ng-click="actualizarProfesor()">Actualizar Profesor</button>
+</div>
+</div>
+</div>

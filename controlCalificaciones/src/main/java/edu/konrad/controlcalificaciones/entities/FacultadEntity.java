@@ -6,11 +6,14 @@
 package edu.konrad.controlcalificaciones.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 
 
 /**
@@ -28,8 +31,8 @@ public class FacultadEntity implements Serializable {
      /*
     *relación uno a muchos facultad con programa
     */
-//     @OneToMany( targetEntity = ProgramaEntity.class )
-//     private List programas;
+     @OneToMany( targetEntity = ProgramaEntity.class )
+     private List programa;
     /*
     constructor e la clase
     */
@@ -55,6 +58,14 @@ public class FacultadEntity implements Serializable {
 
     public void setNombreFacultad(String nombreFacultad) {
         this.nombreFacultad = nombreFacultad;
+    }
+
+    public List getPrograma() {
+        return programa;
+    }
+
+    public void setPrograma(List programa) {
+        this.programa = programa;
     }
 
     

@@ -49,7 +49,7 @@ public class CoordinadorResource {
         */
         @POST
         public CoordinadorDto crearCoordinador(CoordinadorDto coordinadorNuevo){
-             return new CoordinadorDto(coordinadorNuevo.toEntity());
+             return new CoordinadorDto(coordinadorLogic.crearCoordinador(coordinadorNuevo.toEntity()));
              
         }
         

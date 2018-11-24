@@ -47,6 +47,7 @@ public class ProfesorDto {
         if(profesor.getUsuario() != null){
             UsuarioEntity entity = new UsuarioEntity();
             entity.setIdUsuario(profesor.getUsuario().getIdUsuario());
+            entity.setNumeroId(profesor.getUsuario().getNumeroId());
             entity.setApellidoUsuario(profesor.getUsuario().getApellidoUsuario());
             entity.setEmail(profesor.getUsuario().getEmail());
             entity.setGenero(profesor.getUsuario().getGenero());

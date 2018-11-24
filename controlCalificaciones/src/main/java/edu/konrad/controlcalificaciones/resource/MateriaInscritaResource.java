@@ -52,7 +52,7 @@ public class MateriaInscritaResource {
     */
     @POST
     public MateriaInscritaDto crearMateria(MateriaInscritaDto nuevaMateria){
-        return new MateriaInscritaDto(nuevaMateria.toEntity());
+        return new MateriaInscritaDto(materiaLogic.crearMateriaInscrita(nuevaMateria.toEntity()));
         
     }
     /*

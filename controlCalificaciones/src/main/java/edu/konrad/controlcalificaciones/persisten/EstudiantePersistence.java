@@ -36,7 +36,7 @@ public class EstudiantePersistence {
     /*
     * Metodo para buscar un estudiante por id
     */
-    public EstudianteEntity find(long id){
+    public EstudianteEntity find(Long id){
         return entityManager.find(EstudianteEntity.class, id);
     }
     
@@ -59,7 +59,7 @@ public class EstudiantePersistence {
     /*
     *Metodo para borrar un estudiante 
     */
-    public void remove(long id){
+    public void remove(Long id){
         EstudianteEntity estudianteRemove = entityManager.find(EstudianteEntity.class, id);
         entityManager.remove(estudianteRemove);
     }

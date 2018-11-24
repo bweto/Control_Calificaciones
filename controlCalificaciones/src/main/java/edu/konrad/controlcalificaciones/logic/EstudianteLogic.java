@@ -25,7 +25,7 @@ public class EstudianteLogic {
         return estudiante;
     }
 
-    public EstudianteEntity ObtenerEstudiante(long id) {
+    public EstudianteEntity ObtenerEstudiante(Long id) {
         EstudianteEntity estudiante = persistence.find(id);
         return estudiante;
     }
@@ -35,12 +35,12 @@ public class EstudianteLogic {
         return estudiante;
     }
 
-    public EstudianteEntity actualizarEstudiante(long id, EstudianteEntity estudiante) {
+    public EstudianteEntity actualizarEstudiante(Long id, EstudianteEntity estudiante) {
         EstudianteEntity estudianteUpdate = persistence.update(estudiante);
         return estudianteUpdate;
     }
 
-    public void borrarEstudiante(long id) {
+    public void borrarEstudiante(Long id) {
         persistence.remove(id);
     }
 }

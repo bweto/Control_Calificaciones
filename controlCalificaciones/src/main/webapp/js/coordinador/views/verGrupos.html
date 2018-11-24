@@ -1,0 +1,31 @@
+<div class="container">
+  <button type="button" class="btn btn-outline-danger" ng-click="crearG()">Crear</button>
+</div> 
+<div class="table-responsive">
+<table class="table-warning font-s">
+        <thead>
+            <tr>
+            <th scope="col" class="font-s">Materia</th>
+            <th scope="col" class="font-s">Hora Inicio</th>
+            <th scope="col" class="font-s">Hora Fin</th>
+            <th scope="col" class="font-s">Día</th>
+            <th scope="col" class="font-s">Cupo</th>
+            <th scope="col" class="font-s">Profesor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-active" ng-repeat="g in grupos">
+                <td class="font-s">{{g.curso.nombreCurso}}</td>
+                <td class="font-s">{{g.horaInicio}}</td>
+                <td class="font-s">{{g.horaFin}}</td>
+                <td class="font-s">{{g.dia}}</td>
+                <td class="font-s">{{g.cupo}}</td>
+                <td class="font-s">{{g.profesor.usuario.nombreUsuario}}</td> 
+                <td>
+                    <button class="btn btn-danger" ng-click="eliminar(g.idGrupo)">Eliminar</button>
+                    <button class="btn btn-success" ui-sref="crearGrupo({id:g.idGrupo})">Actualizar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>    
+</div>

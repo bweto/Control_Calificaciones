@@ -49,7 +49,7 @@ public class GrupoResource {
     */
     @POST
     public GrupoDto crearGrupo(GrupoDto grupoNuevo){
-       return new GrupoDto(grupoNuevo.toEntity());
+       return new GrupoDto(grupoLogic.crearGrupo(grupoNuevo.toEntity()));
        
     }
     

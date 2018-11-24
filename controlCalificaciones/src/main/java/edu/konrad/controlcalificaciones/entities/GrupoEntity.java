@@ -9,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-
-
 /**
  *Clase donde se almacena la información del grupo al que pertenece un curso.
  * @author Dayan Olaya, Roberto Garcia

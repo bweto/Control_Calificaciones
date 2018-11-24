@@ -15,7 +15,7 @@ public class EstudianteDto {
 
    
     
-     private long idEstudiante;
+     private Long idEstudiante;
      private int codigoEstudiante;
      private int cantidadMaterias;
      private UsuarioDto usuario;
@@ -37,6 +37,7 @@ public class EstudianteDto {
         if(estudiante.getUsuario() != null){
             UsuarioEntity entity = new UsuarioEntity();
             entity.setIdUsuario(estudiante.getUsuario().getIdUsuario());
+            entity.setNumeroId(estudiante.getUsuario().getNumeroId());
             entity.setApellidoUsuario(estudiante.getUsuario().getApellidoUsuario());
             entity.setEmail(estudiante.getUsuario().getEmail());
             entity.setGenero(estudiante.getUsuario().getGenero());
@@ -51,6 +52,7 @@ public class EstudianteDto {
             entity.setFacultad(estudiante.getPrograma().getFacultad());
             entity.setNombrePrograma(estudiante.getPrograma().getNombrePrograma());
             entity.setIdPrograma(estudiante.getPrograma().getIdPrograma());
+            entity.setNivelAcademico(estudiante.getPrograma().getNivelAcademico());
             this.programa = new ProgramaDto(entity);
         }
     }
@@ -60,6 +62,7 @@ public class EstudianteDto {
     
     public EstudianteEntity toEntity(){
         EstudianteEntity entity = new EstudianteEntity();
+        entity.setCodigoEstudiante(codigoEstudiante);
         entity.setIdEstudiante(this.idEstudiante);
         entity.setCantidadMaterias(this.cantidadMaterias);
         entity.setUsuario(this.usuario.toEntity());
@@ -79,11 +82,11 @@ public class EstudianteDto {
         return estudianteDtoList;
     }
 
-    public long getIdEstudiante() {
+    public Long getIdEstudiante() {
         return idEstudiante;
     }
 
-    public void setIdEstudiante(long idEstudiante) {
+    public void setIdEstudiante(Long idEstudiante) {
         this.idEstudiante = idEstudiante;
     }
 

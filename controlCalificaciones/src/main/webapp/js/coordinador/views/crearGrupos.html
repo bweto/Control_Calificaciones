@@ -1,0 +1,29 @@
+<div>
+    <div class="form-group">
+        <label class="control-label">Nombre Curso</label>
+        <input class="form-control" id="nombre" type="text" placeholder="Ingrese el nombre del curso"ng-model="grupo.curso.nombreCurso">
+    </div>
+    <div class="form-group">
+        <label class="control-label">Hora Inicial</label>
+        <input class="form-control" id="apellido" type="text" placeholder="Ingrese hora inicial" ng-model="grupo.horaInicio">
+    </div>
+    <div class="form-group">
+        <label class="control-label">Hora Final</label>
+        <input  class="form-control" ng-model="grupo.horaFin">
+    </div>
+    <div class="form-group">
+        <label class="control-label">Día</label>
+        <input class="form-control" id="numeroId" type="text" placeholder="Ingrese día" ng-model="grupo.dia">
+    </div>
+    <div class="form-group">
+        <label class="control-label">Cupo</label>
+        <input  class="form-control" ng-model="grupo.cupo">
+    </div>
+    <div class="form-group">
+        <label class="control-label">Profesor</label>
+        <select ng-options="p.usuario.nombreUsuario for p in profes"  ng-model="grupo.profesor" ng-change="show()"></select>
+        <br><label class="control-label" ng-show="activo === 1">Área {{grupo.profesor.area.nombreArea}}</label>
+    </div>
+    <button class="btn btn-primary" id="crearBoton"ng-if="!grupo.idGrupo" ng-click="crearGrupo()">Crear Grupo</button>
+    <button class="btn btn-primary" id="crearBoton"ng-if="grupo.idGrupo" ng-click="actualizarGrupo()">Actualizar Datos</button>
+</div>

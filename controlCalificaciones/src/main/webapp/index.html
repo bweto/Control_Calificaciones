@@ -25,7 +25,7 @@
                 </button>
             </div>
            <div class="card col-sm-6 p-3" >
-                <form ng-submit="loginus()">
+                <form ng-submit="loginus()"> <!--ng-submit="loginus()" ng-click="loginus()"-->
                     <div class="form-group">
                         <label for="ingreso-usuario">Usuario</label>
                         <input type="text" class="form-control" id="ingreso-usuario" placeholder="Ingrese usuario" ng-model="user">
@@ -35,7 +35,7 @@
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="pass">
                     </div>
     
-                        <button type="submit" class="btn btn-danger">Iniciar Sesión</button>
+                        <button type="submit" class="btn btn-danger" >Iniciar Sesión</button>
                 </form>
             </div> 
             
@@ -80,5 +80,11 @@
     <script src="./js/login/login.ctrl.js"></script>
     <script src="./js/admin/admin.module.js"></script>
     <script src="./js/admin/admin.ctrl.js"></script>
+    <script src="./js/coordinador/coordinador.module.js"></script>
+    <script src="./js/coordinador/coordinador.ctrl.js"></script>
+    <script src="./js/profesor/profesor.module.js"></script>
+    <script src="./js/profesor/profesor.ctrl.js"></script>
+    <script src="./js/estudiante/estudiante.module.js"></script>
+    <script src="./js/estudiante/estudiante.ctrl.js"></script>
     </body>
 </html>

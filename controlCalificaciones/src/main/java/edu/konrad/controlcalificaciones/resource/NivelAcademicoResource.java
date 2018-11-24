@@ -54,7 +54,7 @@ public class NivelAcademicoResource {
     */
     @POST
     public NivelAcademicoDto crearNivel(NivelAcademicoDto nivelNuevo){
-        return new NivelAcademicoDto(nivelNuevo.toEntity());
+        return new NivelAcademicoDto(nivelLogic.crearNivelAcademico(nivelNuevo.toEntity()));
       
     }
     

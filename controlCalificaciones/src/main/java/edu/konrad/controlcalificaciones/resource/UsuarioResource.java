@@ -52,7 +52,6 @@ public class UsuarioResource {
     */
     @POST
     public UsuarioDto crearUsuario(UsuarioDto usuarioNuevo){
-        
         return new UsuarioDto(usuarioLogic.crearUsuario(usuarioNuevo.toEntity()));
     }
     

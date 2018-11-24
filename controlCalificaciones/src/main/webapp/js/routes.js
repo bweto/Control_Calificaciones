@@ -8,6 +8,7 @@ app.config([
             function ($stateProvider,$urlRouterProvider){
                 
                 $urlRouterProvider.otherwise('/');
+                //Raiz
                 $stateProvider.state("inicio",{
                     url: '/',
                     views:{
@@ -16,8 +17,10 @@ app.config([
                             controller: 'inicioctrl'
                         }
                     }       
-                })
-                .state("admin",{
+                });
+                //-------------vistas del administrador---------------
+                //administrador
+                $stateProvider.state("admin",{
                     url: '/admin',
                     views:{
                         mainView:{
@@ -25,8 +28,9 @@ app.config([
                             controller: 'adminctrl'
                             }  
                     }
-                })
-                .state("tipoid",{
+                });
+                //administrador/tipoid
+                $stateProvider.state("tipoid",{
                     url:'/tipoId',
                     parent:'admin',
                     views:{
@@ -35,8 +39,9 @@ app.config([
                             controller: 'adminctrl'
                         }
                     }
-                })
-                .state("roles",{
+                });
+                //administrador/roles
+                $stateProvider.state("roles",{
                     url:'/roles',
                     parent:'admin',
                     views:{
@@ -45,8 +50,9 @@ app.config([
                             controller: 'adminctrl'
                         }
                     }
-                })
-                .state("facultades",{
+                });
+                //admini/facultades
+                $stateProvider.state("facultades",{
                     url:'/facultades',
                     parent:'admin',
                     views:{
@@ -55,8 +61,9 @@ app.config([
                             controller: 'adminctrl'
                         }
                     }
-                })
-                .state("programas",{
+                });
+                //admin/programas
+                $stateProvider.state("programas",{
                     url:'/programas',
                     parent:'admin',
                     views:{
@@ -65,8 +72,9 @@ app.config([
                             controller: 'adminctrl'
                         }
                     }
-                })
-                .state("niveles",{
+                });
+                //admin/niveles
+                $stateProvider.state("niveles",{
                     url:'/nivelesAcademicos',
                     parent:'admin',
                     views:{
@@ -75,8 +83,9 @@ app.config([
                             controller: 'adminctrl'
                         }
                     }
-                })
-                .state("areas",{
+                });
+                //admin/areas
+                $stateProvider.state("areas",{
                     url:'/areas',
                     parent:'admin',
                     views:{
@@ -85,8 +94,9 @@ app.config([
                             controller: 'adminctrl'
                         }
                     }
-                })
-                .state("grupos",{
+                });
+                //admin/grupos
+                $stateProvider.state("grupos",{
                     url:'/grupos',
                     parent:'admin',
                     views:{
@@ -95,8 +105,9 @@ app.config([
                             controller: 'adminctrl'
                         }
                     }
-                })
-                .state("cursos",{
+                });
+                //admin/cursos
+                $stateProvider.state("cursos",{
                     url:'/cursos',
                     parent:'admin',
                     views:{
@@ -105,8 +116,9 @@ app.config([
                             controller: 'adminctrl'
                         }
                     }
-                })
-                .state("estados",{
+                });
+                //admin/estados
+                $stateProvider.state("estados",{
                     url:'/estados',
                     parent:'admin',
                     views:{
@@ -115,8 +127,9 @@ app.config([
                             controller: 'adminctrl'
                         }
                     }
-                })
-                .state("usuarios",{
+                });
+                //admin/usuarios
+                $stateProvider.state("usuarios",{
                     url:'/usuarios',
                     parent:'admin',
                     views:{
@@ -125,8 +138,9 @@ app.config([
                             controller: 'adminctrl'
                         }
                     }
-                })
-                .state("profesores",{
+                });
+                //admin/profesores
+                $stateProvider.state("profesores",{
                     url:'/profesores',
                     parent:'admin',
                     views:{
@@ -135,8 +149,9 @@ app.config([
                             controller: 'adminctrl'
                         }
                     }
-                })
-                .state("coordinadores",{
+                });
+                //admin/coordinadores
+                $stateProvider.state("coordinadores",{
                     url:'/cooridnadores',
                     parent:'admin',
                     views:{
@@ -145,8 +160,9 @@ app.config([
                             controller: 'adminctrl'
                         }
                     }
-                })
-                .state("estudiantes",{
+                });
+                //admin/estudiante
+                $stateProvider.state("estudiantes",{
                     url:'/estudiantes',
                     parent:'admin',
                     views:{
@@ -156,8 +172,117 @@ app.config([
                         }
                     }
                 });
+                //----------------vistas del Coordinador ---------------------
+                //coordinador
+                $stateProvider.state("coor",{
+                    url: '/coordinador',
+                    views:{
+                        mainView:{
+                            templateUrl: './js/coordinador/coordinador.html',
+                            controller: 'coordinadorctrl'
+                            }  
+                    }
+                });
+                //crearEstudiante
+                //administrador/tipoid
+                $stateProvider.state("crearEstudiante",{
+                    url:'/crearEstudiante',
+                    parent:'coor',
+                    views:{
+                        coorV:{
+                            templateUrl: './js/coordinador/views/crearEstudiante.html',
+                            controller: 'coordinadorctrl'
+                        }
+                    }
+                });
+                //ver estudiantes
+                 $stateProvider.state("verEstudiantes",{
+                    url:'/Estudiantes',
+                    parent:'coor',
+                    views:{
+                        coorV:{
+                            templateUrl: './js/coordinador/views/verEstudiantes.html',
+                            controller: 'coordinadorctrl'
+                        }
+                    }
+                });
+                //Editar Estudiante
+                $stateProvider.state("editarEstudiante", {
+                    url: '/Estudiantes/:id',
+                    parent:'coor',
+                views: {
+                coorV: {
+                    templateUrl: './js/coordinador/views/crearEstudiante.html',
+                    controller: 'coordinadorctrl'
+                }
+            }
+        });
+                //crearprofesores
+                $stateProvider.state("crearProfesor",{
+                    url:'/crearProfesor',
+                    parent:'coor',
+                    views:{
+                        coorV:{
+                            templateUrl: './js/coordinador/views/crearProfesores.html',
+                            controller: 'coordinadorctrl'
+                        }
+                    }
+                });
+                //ver profesores
+                 $stateProvider.state("verProfesor",{
+                    url:'/Profesores',
+                    parent:'coor',
+                    views:{
+                        coorV:{
+                            templateUrl: './js/coordinador/views/verProfesores.html',
+                            controller: 'coordinadorctrl'
+                        }
+                    }
+                });
                 
-                     
+                //crear grupos
+                $stateProvider.state("crearGrupo",{
+                    url:'/crearGrupo',
+                    parent:'coor',
+                    views:{
+                        coorV:{
+                            templateUrl: './js/coordinador/views/crearGrupos.html',
+                            controller: 'coordinadorctrl'
+                        }
+                    }
+                });
+                //ver grupos
+                 $stateProvider.state("verGrupos",{
+                    url:'/Grupos',
+                    parent:'coor',
+                    views:{
+                        coorV:{
+                            templateUrl: './js/coordinador/views/verGrupos.html',
+                            controller: 'coordinadorctrl'
+                        }
+                    }
+                });
+                // ----------- infoProfe----------
+                $stateProvider.state("profe",{
+                    url: '/profesor',
+                    views:{
+                        mainView:{
+                            templateUrl: './js/profesor/profesor.html',
+                            controller: 'profesorctrl'
+                            }  
+                    }
+                });
+                
+                $stateProvider.state("verIProfesor",{
+                    url:'/Profesor',
+                    parent:'profe',
+                    views:{
+                        profeV:{
+                            templateUrl: './js/profesor/views/verProfesores.html',
+                            controller: 'profesorctrl'
+                        }
+                    }
+                });
             }
             
             ]);

@@ -1,0 +1,39 @@
+<div class="container">
+  <button type="button" class="btn btn-outline-danger" ng-click="crearP()">Crear</button>
+</div> 
+<div class="table-responsive">
+<table class="table-warning font-s">
+        <thead>
+            <tr>
+            <th scope="col" class="font-s">Nombre Profesor</th>
+            <th scope="col" class="font-s">Apellido Profesor</th>
+            <th scope="col" class="font-s">Tipo de Identificación</th>
+            <th scope="col" class="font-s">Numero de identificación</th>
+            <th scope="col" class="font-s">Genero</th>
+            <th scope="col" class="font-s">Correo Electronico</th>
+            <th scope="col" class="font-s">Contraseña</th>
+            <th scope="col" class="font-s">Cantidad de Cursos</th>
+            <th scope="col" class="font-s" >Área</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-active" ng-repeat="p in profesores">
+                <td class="font-s">{{p.usuario.nombreUsuario}}</td>
+                <td class="font-s">{{p.usuario.apellidoUsuario}}</td>
+                <td class="font-s">{{p.usuario.tipoId.nombreTipoId}}</td>
+                <td class="font-s">{{p.usuario.numeroId}}</td>
+                <td class="font-s">{{p.usuario.genero}}</td>
+                <td class="font-s">{{p.usuario.email}}</td>
+                <td class="font-s">{{p.usuario.pass}}</td>
+                <td class="font-s">{{p.cantidadMaterias}}</td>
+                <td class="font-s">{{p.area.nombreArea}}</td>
+                
+                <td>
+                    <button class="btn btn-danger" ng-click="eliminarP(p)">Eliminar</button>
+                    <button class="btn btn-success" ui-sref="crearProfesores({id:p.idProfesor})">Actualizar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>    
+</div>
+

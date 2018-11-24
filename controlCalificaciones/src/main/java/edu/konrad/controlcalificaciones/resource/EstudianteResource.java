@@ -39,7 +39,7 @@ public class EstudianteResource {
     */
     @GET
     @Path("{id: \\d+}")
-    public EstudianteDto obtenerEstudiante(@PathParam("id")long id){
+    public EstudianteDto obtenerEstudiante(@PathParam("id")Long id){
         return new EstudianteDto(estudianteLogic.ObtenerEstudiante(id));
     }
     
@@ -48,7 +48,7 @@ public class EstudianteResource {
     */
     @POST
     public EstudianteDto crearEstudiante(EstudianteDto estudianteNuevo){
-        return new EstudianteDto(estudianteNuevo.toEntity());
+        return new EstudianteDto(estudianteLogic.crearEstudiante(estudianteNuevo.toEntity()));
         
     }
     
@@ -57,7 +57,7 @@ public class EstudianteResource {
     */
     @PUT
     @Path("{id: \\d+}")
-    public EstudianteDto actualizarEstudiante(@PathParam("id")long id, EstudianteDto estudianteDto){
+    public EstudianteDto actualizarEstudiante(@PathParam("id")Long id, EstudianteDto estudianteDto){
         if(estudianteLogic.ObtenerEstudiante(id) == null){
             throw new RuntimeException("No existe el estudiante");
         }
@@ -72,7 +72,7 @@ public class EstudianteResource {
     */
     @DELETE
     @Path("{id: \\d+}")
-    public void borrarEstudiante(@PathParam("id")long id){
+    public void borrarEstudiante(@PathParam("id")Long id){
         if(estudianteLogic.ObtenerEstudiante(id) == null){
             throw new RuntimeException("No existe el estudiante");
         }

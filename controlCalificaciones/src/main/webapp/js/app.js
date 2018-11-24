@@ -4,7 +4,10 @@ var app = angular.module("controlNotas", [
     'ui.router',
     'inicioModule',
     'loginModule',
-    'adminModule'
+    'adminModule',
+    'coordinadorModule',
+    'profesorModule',
+    'estudianteModule'
 ]);
 
 

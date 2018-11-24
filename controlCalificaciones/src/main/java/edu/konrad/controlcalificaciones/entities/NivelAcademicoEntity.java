@@ -5,6 +5,7 @@
  */
 package edu.konrad.controlcalificaciones.entities;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,14 +19,14 @@ import javax.persistence.OneToMany;
  * @author Dayan Olaya, Roberto Garcia
  */
 @Entity(name = "nivel_academico")
-public class NivelAcademicoEntity {
+public class NivelAcademicoEntity implements Serializable {
      @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idNivelAcademico;
      @Column(name = "nombre_nivel", nullable = false)
     private String nombreNivelAcademico;
-     @OneToMany( targetEntity = CursoEntity.class )
-     private List cursos;
+//     @OneToMany( targetEntity = CursoEntity.class )
+//     private List cursos;
     /*
     Constructor de la clase
     */
@@ -52,14 +53,14 @@ public class NivelAcademicoEntity {
     public void setNombreNivelAcademico(String nombreNivelAcademico) {
         this.nombreNivelAcademico = nombreNivelAcademico;
     }
-
-    public List getCursos() {
-        return cursos;
-    }
-
-    public void setCursos(List cursos) {
-        this.cursos = cursos;
-    }
+//
+//    public List getCursos() {
+//        return cursos;
+//    }
+//
+//    public void setCursos(List cursos) {
+//        this.cursos = cursos;
+//    }
     
     
 }

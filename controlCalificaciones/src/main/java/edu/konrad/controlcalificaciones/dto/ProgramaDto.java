@@ -19,12 +19,12 @@ public class ProgramaDto {
     /*
     *Identificación de la facultad
     */
-    private FacultadDto Facultad;
+    private FacultadDto facultad;
     /*
     *Nombre del programa
     */
     private String nombrePrograma;
-    private NivelAcademicoDto nivelAcademico;
+    private NivelAcademicoDto nivel;
     /*
     *Constructor basico
     */
@@ -43,14 +43,14 @@ public class ProgramaDto {
             FacultadEntity entity = new FacultadEntity();
             entity.setIdFacultad(programa.getFacultad().getIdFacultad());
             entity.setNombreFacultad(programa.getFacultad().getNombreFacultad());
-            this.Facultad = new FacultadDto(entity);
+            this.facultad = new FacultadDto(entity);
         }
         if(programa.getNivelAcademico() != null){
             NivelAcademicoEntity entity = new NivelAcademicoEntity();
-            entity.setCursos(programa.getNivelAcademico().getCursos());
+//            entity.setCursos(programa.getNivelAcademico().getCursos());
             entity.setIdNivelAcademico(programa.getNivelAcademico().getIdNivelAcademico());
             entity.setNombreNivelAcademico(programa.getNivelAcademico().getNombreNivelAcademico());
-            this.nivelAcademico = new NivelAcademicoDto(entity);
+            this.nivel = new NivelAcademicoDto(entity);
         }
         
     }
@@ -62,9 +62,9 @@ public class ProgramaDto {
     public ProgramaEntity toEntity(){
         ProgramaEntity entity = new ProgramaEntity();
         entity.setIdPrograma(this.idPrograma);
-        entity.setFacultad(this.Facultad.toEntity());
+        entity.setFacultad(this.facultad.toEntity());
         entity.setNombrePrograma(this.nombrePrograma);
-        entity.setNivelAcademico(this.nivelAcademico.toEntity());
+        entity.setNivelAcademico(this.nivel.toEntity());
         return entity;
     }
     
@@ -103,18 +103,18 @@ public class ProgramaDto {
     }
 
     public FacultadDto getFacultad() {
-        return Facultad;
+        return facultad;
     }
 
-    public void setFacultad(FacultadDto Facultad) {
-        this.Facultad = Facultad;
+    public void setFacultad(FacultadDto facultad) {
+        this.facultad = facultad;
     }
     
     public NivelAcademicoDto getNivelAcademico() {
-        return nivelAcademico;
+        return nivel;
     }
 
-    public void setNivelAcademico(NivelAcademicoDto nivelAcademico) {
-        this.nivelAcademico = nivelAcademico;
+    public void setNivelAcademico(NivelAcademicoDto nivel) {
+        this.nivel= nivel;
     }
 }

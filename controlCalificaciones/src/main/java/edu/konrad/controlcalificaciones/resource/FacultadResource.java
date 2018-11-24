@@ -50,7 +50,7 @@ public class FacultadResource {
     */
     @POST
     public FacultadDto crearFacultad(FacultadDto facultadNueva){
-        return new FacultadDto(facultadNueva.toEntity());
+        return new FacultadDto(facultadLogic.crearFacultad(facultadNueva.toEntity()));
         
     }
     

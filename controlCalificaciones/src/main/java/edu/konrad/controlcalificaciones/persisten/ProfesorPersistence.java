@@ -5,7 +5,7 @@
  */
 package edu.konrad.controlcalificaciones.persisten;
 
-import edu.konrad.controlcalificaciones.entities.MateriaInscritaEntity;
+
 import edu.konrad.controlcalificaciones.entities.ProfesorEntity;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -23,8 +23,7 @@ public class ProfesorPersistence {
     /*
     *Atributo de persistencia
     */
-    @PersistenceContext(unitName = "contorlcalificacionesPU"
-            + "")
+    @PersistenceContext(unitName = "contorlcalificacionesPU")
     private EntityManager entityManager;
     
     /*
